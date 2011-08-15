@@ -11,13 +11,13 @@ FILES="vimrc vim bashrc my.cnf gitconfig"
 
 for f in $FILES
 do
-  # if file exists, back it up
+  # if file exists and is not a symlink, back it up
   if [ -e ~/."$f" ]
   then
     [ -s ~/."$f" ] && rm ~/."$f" || mv ~/."$f" ~/."$f"'~'
   fi
 
-  ln -s $SCRIPT_PATH/$f ~/."$f"
+  ln -s $SCRIPT_PATH/"$f" ~/."$f"
 
 done
 
