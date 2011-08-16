@@ -14,7 +14,7 @@ do
   # if file exists and is not a symlink, back it up
   if [ -e ~/."$f" ]
   then
-    [ -s ~/."$f" ] && rm ~/."$f" || mv ~/."$f" ~/."$f"'~'
+    [ -h ~/."$f" ] && rm ~/."$f" || mv ~/."$f" ~/."$f"'~'
   fi
 
   ln -s $SCRIPT_PATH/"$f" ~/."$f"

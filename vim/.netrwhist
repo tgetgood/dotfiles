@@ -1,5 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/var/shared/sites/muhc'
 let g:netrw_dirhist_2='/var/shared/sites/muhc/site'
 let g:netrw_dirhist_3='/var/shared/sites/muhc/site/sites/all/modules/ew_mod'
+let g:netrw_dirhist_4='/home/thomas/projects/ew/cookbooks/base'
+let g:netrw_dirhist_5='/home/thomas/projects/rdeploy/EWHACloudServers'
+let g:netrw_dirhist_6='/home/thomas/projects/rdeploy'
+let g:netrw_dirhist_7='/home/thomas/projects/rdeploy/EWCredentials'
+let g:netrw_dirhist_8='/home/thomas/projects/rdeploy'

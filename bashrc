@@ -10,6 +10,10 @@
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # ... or force ignoredups and ignorespace
 export HISTCONTROL=ignoreboth
+export PROMPT_COMMAND=
+
+#Default editor
+export EDITOR=vim
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -106,7 +110,8 @@ cd ~
 
 alias tagthis="ctags --langmap=php:.module.inc.engine -R site/{includes,modules,themes/engines,sites}/*"
 alias tagphp="ctags --langmap=php:.module.inc.engine.theme.php --php-kinds=cdfi --languages=php --recurse"
-export CDPATH=.:/var/shared/sites/
+export CDPATH=.:/var/shared/sites/:/home/thomas/projects
+export PATH="$PATH":/home/thomas/bin
 
 function vimso() {
 FILE=${1:-~/.bashrc}
