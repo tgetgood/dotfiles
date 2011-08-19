@@ -21,6 +21,7 @@
         di = diff
         st = status
         up = pull
+        ls = ls-files
 [branch]
         autosetupmerge = true
 [user]
