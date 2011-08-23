@@ -1,6 +1,6 @@
 set mouse=a hlsearch bs=2 sw=2 ts=2 expandtab autoindent smartindent
 syntax on 
-set bg=light
+set bg=dark
 
 set nu wildmenu
 
