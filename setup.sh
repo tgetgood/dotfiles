@@ -7,7 +7,7 @@
 # last edited by Thomas on 12/08/2011
 
 SCRIPT_PATH=$(readlink -f $(dirname "${VIRTUAL_ENV}"))
-FILES="vimrc vim bashrc my.cnf gitconfig"
+FILES="vimrc vim bashrc my.cnf gitconfig screenrc"
 
 for f in $FILES
 do
