@@ -19,13 +19,16 @@ s.onload = function() {
   var s = document.createElement('script');
   s.appendChild(document.createTextNode("(" + ready.toString() + ")(jQuery)"));
   document.head.appendChild(s);
-}
+};
+
 document.getElementsByTagName('head')[0].appendChild(s);
 
 function ready($) {
 
-  $('.wiki').dblclick(function() {
-    document.location += '/edit';
+  $('.wiki').dblclick(function test() {
+  	var killHash = /#.*$/;
+  	jQuery.noConflict();
+  	document.location += document.location.replace(killHash, '') + '/edit';
   });
 
 }
