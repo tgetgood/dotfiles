@@ -132,3 +132,4 @@ cscope -b -q
 
 alias tailerror="sudo tail -f /var/log/apache2/error.log"
 alias dcc="drush cache clear"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
