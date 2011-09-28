@@ -5,3 +5,5 @@
 // ctags file
 tags
 
+// Patches
+*.patch
