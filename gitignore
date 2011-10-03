@@ -4,6 +4,7 @@
 
 // ctags file
 tags
+cscope.*
 
 // Patches
 *.patch
