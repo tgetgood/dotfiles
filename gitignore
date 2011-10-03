@@ -2,6 +2,9 @@
 *.swp
 *.swo
 
+// Vim command history
+*.netrwhist
+
 // ctags file
 tags
 cscope.*

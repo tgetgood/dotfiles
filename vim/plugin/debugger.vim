@@ -139,8 +139,18 @@ map <Leader>dt :python debugger_command('step_out')<cr>
 
 nnoremap ,e :python debugger_watch_input("eval")<cr>A
 
+" Alex's Mappings
+map <Leader>du :python debugger_run()<cr>
+map <Leader>dq :python debugger_quit()<cr>
+"map <Leader>dc :python debugger_context()<cr>
+"map <Leader>dp :python debugger_property()<cr>
+map <Leader>dc :python debugger_watch_input("context_get")<cr>A<cr>
+map <Leader>dp :python debugger_watch_input("property_get", '<cword>')<cr>A<cr>
+
 map <F5> :python debugger_run()<cr>
+map <Leader>du :python debugger_run()<cr>
 map <F6> :python debugger_quit()<cr>
+map <Leader>dq :python debugger_quit()<cr>
 
 map <F7> :python debugger_command('step_into')<cr>
 map <F8> :python debugger_command('step_over')<cr>
@@ -155,6 +165,7 @@ hi DbgCurrent term=reverse ctermfg=White ctermbg=Red gui=reverse
 hi DbgBreakPt term=reverse ctermfg=White ctermbg=Green gui=reverse
 
 command! -nargs=? Bp python debugger_mark('<args>')
+command! -nargs=? Wa python debugger_auto_watch_input('<args>')
 command! -nargs=0 Up python debugger_up()
 command! -nargs=0 Dn python debugger_down()
 sign define current text=->  texthl=DbgCurrent linehl=DbgCurrent

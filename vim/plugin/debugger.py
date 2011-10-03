@@ -269,7 +269,7 @@ class VimWindow:
   def xml_stringfy_childs(self, node, level = 0):
     line = ''
     for cnode in node.childNodes:
-      line = str(line)
+      line = str(line) #This seems useless
       line += str(self._xml_stringfy(cnode, level))
     return line
 
@@ -277,6 +277,15 @@ class VimWindow:
     self.write(self.xml_stringfy(xml))
   def write_xml_childs(self, xml):
     self.write(self.xml_stringfy_childs(xml))
+  def write_eval(self, xml, exp = 'EVAL_RESULT'):
+    #self.write(self.xml_stringfy(xml.childNodes[0]))
+    #self.write(self.xml_stringfy(xml.getElementsByTagName("response")))
+    #self.write(xml.getElementsByTagName("response").firstChild.toprettyxml())
+    #self.write(self.xml_stringfy(xml))
+    #self.write(xml.toprettyxml())
+    
+    xmlstr = self.xml_stringfy_childs(xml.firstChild)
+    self.write(xmlstr.replace('EVAL_RESULT',exp))
 
 class StackWindow(VimWindow):
   def __init__(self, name = 'STACK_WINDOW'):
@@ -356,6 +365,7 @@ class WatchWindow(VimWindow):
 
       name      = node.getAttribute('name')
       fullname  = node.getAttribute('fullname')
+
       if name == '':
         name = 'EVAL_RESULT'
       if fullname == '':
@@ -626,6 +636,11 @@ class BreakPoint:
     self.maxbno = self.maxbno + 1
     self.breakpt[self.maxbno] = { 'file':file, 'line':line, 'exp':exp, 'id':None }
     return self.maxbno
+  def addcustom(self, breakptdict):
+    """ Add other types of breakpoints """
+    self.maxbno = self.maxbno + 1
+    self.breakpt[self.maxbno] = breakptdict
+    return self.maxbno
   def remove(self, bno):
     """ remove break point numbered with bno """
     del self.breakpt[bno]
@@ -687,6 +702,11 @@ class Debugger:
     self.ui         = DebugUI(minibufexpl)
     self.breakpt    = BreakPoint()
 
+    self.autowatch = []
+    self.watchids  = {}
+
+    self.updateUI = True
+
     vim.command('sign unplace *')
 
   def clear(self):
@@ -698,6 +718,9 @@ class Debugger:
     self.curstack  = 0
     self.laststack = 0
     self.bptsetlst = {} 
+
+    self.autowatch = []
+    self.watchids  = {}
 
     self.protocol.close()
 
@@ -826,11 +849,12 @@ class Debugger:
                              'level': int(s.getAttribute('level'))
                              } )
 
-      self.ui.stackwin.clean()
-      self.ui.stackwin.highlight_stack(self.curstack)
+      if self.updateUI:
+        self.ui.stackwin.clean()
+        self.ui.stackwin.highlight_stack(self.curstack)
 
-      self.ui.stackwin.write_xml_childs(res.firstChild) #str(res.toprettyxml()))
-      self.ui.set_srcview( self.stacks[self.curstack]['file'], self.stacks[self.curstack]['line'] )
+        self.ui.stackwin.write_xml_childs(res.firstChild) #str(res.toprettyxml()))
+        self.ui.set_srcview( self.stacks[self.curstack]['file'], self.stacks[self.curstack]['line'] )
 
 
   def handle_response_step_out(self, res):
@@ -880,7 +904,16 @@ class Debugger:
       #  pass
   def handle_response_eval(self, res):
     """handle <response command=eval> tag """
-    self.ui.watchwin.write_xml_childs(res)
+    msgid = int(res.firstChild.getAttribute('transaction_id'))
+    #print "exp",msgid,self.watchids,
+    if msgid in self.watchids:
+      mode,exp = self.watchids[msgid]
+      del self.watchids[msgid]
+    else:
+      exp = 'EVAL_RESULT'
+    #print exp
+    self.ui.watchwin.write_eval(res,exp)
+    #self.ui.watchwin.write_xml_childs(res)
   def handle_response_property_get(self, res):
     """handle <response command=property_get> tag """
     self.ui.watchwin.write_xml_childs(res)
@@ -915,12 +948,22 @@ class Debugger:
       print "Not connected\n"
       return
     msgid = self.send_command(cmd, arg1, arg2)
+    if cmd == "eval":
+      self.watchids[msgid]=(cmd,arg2)
     self.recv()
+    #Update variables. Assumes stack_get is called after every step
+    if cmd == "stack_get":
+      for towatch in self.autowatch:
+        mode,cmd = towatch
+        if mode == 'eval':
+          self.command('eval', '', cmd)
+        #self.runcmd(mode,cmd)
     return msgid
   def run(self):
     """ start debugger or continue """
     if self.protocol.isconnected():
       self.command('run')
+      #Breaks if we ran until the end
       if self.status != 'stopped':
         self.command('stack_get')
     else:
@@ -971,11 +1014,13 @@ class Debugger:
       self.ui.set_srcview(self.stacks[self.curstack]['file'], self.stacks[self.curstack]['line'])
 
   def mark(self, exp = ''):
-    (row, rol) = vim.current.window.cursor
+    (row, col) = vim.current.window.cursor
     file       = vim.current.buffer.name
 
     bno = self.breakpt.find(file, row)
+    #Toggle breakpoint
     if bno != None:
+      #Remove existing breakpoint
       id = self.breakpt.getid(bno)
       self.breakpt.remove(bno)
       vim.command('sign unplace ' + str(bno))
@@ -983,6 +1028,7 @@ class Debugger:
         self.send_command('breakpoint_remove', '-d ' + str(id))
         self.recv()
     else:
+      #Add new breakpoint
       bno = self.breakpt.add(file, row, exp)
       vim.command('sign place ' + str(bno) + ' name=breakpt line=' + str(row) + ' file=' + file)
       if self.protocol.isconnected():
@@ -992,8 +1038,26 @@ class Debugger:
         self.bptsetlst[msgid] = bno
         self.recv()
 
+  def condmark(self, exp = ''):
+    file = vim.current.buffer.name
+    (row, col) = vim.current.window.cursor
+    bno = self.breakpt.addcustom({'file':file, 'exp':exp, 'line':row, 'id':None})
+    if self.protocol.isconnected():
+      msgid = self.send_command('breakpoint_set',
+                                '-t conditional'+' -f ' + self.breakpt.getfile(bno) + ' -n ' + str(self.breakpt.getline(bno)), 
+                                self.breakpt.getexp(bno))
+      self.bptsetlst[msgid] = bno
+      self.recv()
+
   def watch_input(self, mode, arg = ''):
     self.ui.watchwin.input(mode, arg)
+
+  def auto_watch_input(self, exp, mode="eval"):
+    if mode == 'eval':
+      self.autowatch.append((mode,exp))
+      msgid = self.command('eval', '', exp)
+    #self.runcmd(mode,exp)
+    #self.ui.watchwin.input(mode, arg)
 
   def property_get(self, name = ''):
     if name == '':
@@ -1004,6 +1068,9 @@ class Debugger:
   def watch_execute(self):
     """ execute command in watch window """
     (cmd, expr) = self.ui.watchwin.get_command()
+    self.runcmd(cmd,expr)
+
+  def runcmd(self,cmd,expr):
     if cmd == 'exec':
       self.command('exec', '', expr)
       print cmd, '--', expr
@@ -1073,6 +1140,47 @@ def debugger_command(msg, arg1 = '', arg2 = ''):
     debugger.stop()
     print 'Connection closed, stop debugging', sys.exc_info()
 
+#Call via ':python debugger_custom()' in vim
+def debugger_custom():
+  while 1:
+    try:
+      debugger.command('step_into')
+      if debugger.status != 'stopped':
+        debugger.command('stack_get')
+        f=open("/tmp/debug","a")
+        print >>f, debugger.stacks[debugger.curstack]['file'], debugger.stacks[debugger.curstack]['line']
+        f.close()
+      else:
+        break
+    except:
+      debugger.ui.tracewin.write(sys.exc_info())
+      debugger.ui.tracewin.write("".join(traceback.format_tb( sys.exc_info()[2])))
+      debugger.stop()
+      print 'Connection closed, stop debugging', sys.exc_info()
+      break
+
+#Call via ':python debugger_breakonfile("filename.php")' in vim
+def debugger_breakonfile(filename):
+  debugger.updateUI = False
+  while 1:
+    try:
+      debugger.command('step_into')
+      if debugger.status != 'stopped':
+        debugger.command('stack_get')
+        if filename in debugger.stacks[debugger.curstack]['file']:
+          break
+      else:
+        break
+    except:
+      debugger.ui.tracewin.write(sys.exc_info())
+      debugger.ui.tracewin.write("".join(traceback.format_tb( sys.exc_info()[2])))
+      debugger.stop()
+      print 'Connection closed, stop debugging', sys.exc_info()
+      break
+  debugger.updateUI = True
+  if debugger.status != 'stopped':
+    debugger.command('stack_get')
+
 def debugger_run():
   try:
     debugger.run()
@@ -1081,6 +1189,15 @@ def debugger_run():
     debugger.ui.tracewin.write("".join(traceback.format_tb( sys.exc_info()[2])))
     debugger.stop()
     print 'Connection closed, stop debugging', sys.exc_info()
+
+def debugger_auto_watch_input(exp,mode="eval"):
+  try:
+    debugger.auto_watch_input(exp,mode)
+  except:
+    debugger.ui.tracewin.write( sys.exc_info() )
+    debugger.ui.tracewin.write( "".join(traceback.format_tb(sys.exc_info()[2])) )
+    debugger.stop()
+    print 'Connection closed, stop debugging'
 
 def debugger_watch_input(cmd, arg = ''):
   try:
@@ -1114,6 +1231,15 @@ def debugger_property(name = ''):
 def debugger_mark(exp = ''):
   try:
     debugger.mark(exp)
+  except:
+    debugger.ui.tracewin.write(sys.exc_info())
+    debugger.ui.tracewin.write("".join(traceback.format_tb( sys.exc_info()[2])))
+    debugger.stop()
+    print 'Connection closed, stop debugging', sys.exc_info()
+
+def debugger_condmark(exp):
+  try:
+    debugger.condmark(exp)
   except:
     debugger.ui.tracewin.write(sys.exc_info())
     debugger.ui.tracewin.write("".join(traceback.format_tb( sys.exc_info()[2])))
