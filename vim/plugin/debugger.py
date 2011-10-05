@@ -539,6 +539,7 @@ class DebugUI:
       self.file = file
       self.go_srcview()
       vim.command('silent edit ' + file)
+      vim.command('set nomodifiable')
 
     vim.command('sign place ' + nextsign + ' name=current line='+str(line)+' file='+file)
     vim.command('sign unplace ' + self.cursign)
@@ -1266,6 +1267,7 @@ def debugger_down():
 
 def debugger_quit():
   global debugger
+  vim.command('set modifiable')
   debugger.quit()
 
 mode = 0
