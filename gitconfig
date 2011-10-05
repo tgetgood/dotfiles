@@ -27,3 +27,5 @@
 [user]
         name = Thomas Getgood
         email = thomas@evolvingweb.ca
+[core]
+	excludesfile = /home/thomas/.gitignore
