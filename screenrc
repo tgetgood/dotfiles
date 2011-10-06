@@ -1,1 +1,4 @@
 defscrollback 5000
+shelltitle "$ |bash" # make screen assign window titles automatically
+bind <F6> <F6>
+
