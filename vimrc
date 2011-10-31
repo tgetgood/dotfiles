@@ -54,6 +54,20 @@ if has("cscope")
   call SetCscope()
 endif
 
+function ReScope()
+  cs kill -1
+
+  let dir = finddir('.git', '.;/var/shared/sites;/var/www;/home')
+  execute "cd " . dir 
+  cd ..
+
+  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune ,  \\( -name *.module -o -name *.inc -o -name *.php -o -name *.install -o -name *.engine -o -name *.test -o -name *.theme \\))"
+  
+  execute "cs add  " . getcwd() . "/cscope.out"
+endfunction
+
+comm! -nargs=0 RS call ReScope()
+
 "inspired by http://cscope.sourceforge.net/cscope_maps.vim
 map <C-\>p :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 nmap <C-\>o :cs find c <C-R>=expand("<cword>")<CR><CR>	
