@@ -112,6 +112,7 @@ alias tagthis="ctags --langmap=php:.module.inc.engine -R site/{includes,modules,
 alias tagphp="ctags --langmap=php:.module.inc.engine.theme.php --php-kinds=cdfi --languages=php --recurse"
 export CDPATH=.:/var/shared/sites/:/home/thomas/projects
 export PATH="$PATH":/home/thomas/bin
+export PAGER=less
 
 function vimso() {
 FILE=${1:-~/.bashrc}
