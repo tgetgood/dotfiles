@@ -126,8 +126,9 @@ cd $1
 
 function scopethis() {
 REPOS=`pwd`
-find $REPOS -path "\.git" -prune -o -path "\.svn" -prune -path "\.gitk" -prune -o \( -name "*\.module" -o -name "*\.inc" -o -name "*\.php" -o -name "*\.install" -o -name "*\.engine" -o -name "*\.test" -o -name "*\.theme" \) -print > $REPOS/cscope.files
-cscope -b -q
+cscope -b -q <(find $REPOS -O3 -path "\.git/*" -prune , -path '.svn/*' -prune ,  \( -name "*\.module" -o -name "*\.inc" -o -name "*\.php" -o -name "*\.install" -o -name "*\.engine" -o -name "*\.test" -o -name "*\.theme" \))
+
+export CSCOPE_DB="$REPOS/cscope.out"
 }
 
 alias tailerror="sudo tail -f /var/log/apache2/error.log"
