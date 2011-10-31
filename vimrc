@@ -57,11 +57,13 @@ endif
 function ReScope()
   cs kill -1
 
+  " Assume the top level of the project contains the .git folder
   let dir = finddir('.git', '.;/var/shared/sites;/var/www;/home')
   execute "cd " . dir 
   cd ..
 
-  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune ,  \\( -name *.module -o -name *.inc -o -name *.php -o -name *.install -o -name *.engine -o -name *.test -o -name *.theme \\))"
+  "TODO: extend this to find source files in other languages 
+  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune ,  \\( -name *.module -o -name *.inc -o -name *.php -o -name *.install -o -name *.engine -o -name *.test -o -name *.theme -o -name *.js -o -name *.rb -o -name *.rhtml -o -name *.py -o -name *.yml -o -name Rakefile \\))"
   
   execute "cs add  " . getcwd() . "/cscope.out"
 endfunction
