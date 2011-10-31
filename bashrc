@@ -126,7 +126,7 @@ cd $1
 
 function scopethis() {
 REPOS=`pwd`
-cscope -b -q -u <(find $REPOS  -path "\.git/*" -prune , -path '.svn/*' -prune ,  \( -name "*\.module" -o -name "*\.inc" -o -name "*\.php" -o -name "*\.install" -o -name "*\.engine" -o -name "*\.test" -o -name "*\.theme" \))
+cscope -b -q -u < <(find $REPOS -path "\.git/*" -prune , -path '.svn/*' -prune ,  \( -name "*\.module" -o -name "*\.inc" -o -name "*\.php" -o -name "*\.install" -o -name "*\.engine" -o -name "*\.test" -o -name "*\.theme" \))
 
 export CSCOPE_DB="$REPOS/cscope.out"
 }
