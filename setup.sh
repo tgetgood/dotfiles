@@ -8,7 +8,7 @@
 
 SCRIPT_PATH=$(readlink -f $(dirname "${VIRTUAL_ENV}"))
 # This is not very good in general, just so far. 
-FILES=`ls | grep -v '.sh'`
+FILES=`ls | grep -v '\.sh$'`
 
 for f in $FILES
 do
