@@ -133,5 +133,15 @@ export CSCOPE_DB="$REPOS/cscope.out"
 }
 
 alias tailerror="sudo tail -f /var/log/apache2/error.log"
-alias dcc="drush cache clear"
+alias cccc="drush cc all && drush cc all && drush cc all && drush cc all"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# Custom autocomplete
+ _gitsync() { 
+   cur=${COMP_WORDS[$COMP_CWORD]}
+   COMPREPLY=($(compgen -W "$(git branch | sed s/\*// | sed s/^\ *//)" -- $cur))
+   return $?
+ }
+ complete -F _gitsync gitsync
+
+ 
