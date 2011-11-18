@@ -137,11 +137,27 @@ alias cccc="drush cc all && drush cc all && drush cc all && drush cc all"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Custom autocomplete
- _gitsync() { 
+
+_gitsync() { 
    cur=${COMP_WORDS[$COMP_CWORD]}
    COMPREPLY=($(compgen -W "$(git branch | sed s/\*// | sed s/^\ *//)" -- $cur))
    return $?
- }
- complete -F _gitsync gitsync
+}
+complete -F _gitsync gitsync
 
+# VERY rough autocomplete for drush.
+_drush() {
+  if [ $COMP_CWORD -gt 1 ]
+  then
+    COMPREPLY=
+    return 0
+  fi
+
+  cur=${COMP_WORDS[$COMP_CWORD]}
+  RESULT=$(find /usr/local/lib/drush/commands . -name *.drush.inc -exec cat {} + | grep '^ *$items\[' | sed "s/^ *\\$\items\['//" | sed "s/'\].*$//")
+
+  COMPREPLY=($(compgen -W  "$RESULT" -- "$cur"))
+  return $?
+}
+complete -F _drush drush
  

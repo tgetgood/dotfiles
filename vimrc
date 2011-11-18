@@ -72,5 +72,16 @@ comm! -nargs=0 RS call ReScope()
 
 "inspired by http://cscope.sourceforge.net/cscope_maps.vim
 map <C-\>p :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-nmap <C-\>o :cs find c <C-R>=expand("<cword>")<CR><CR>	
 
+"Taken from http://www.thingy-ma-jig.co.uk/comment/7067#comment-7067
+function! DrupalImplementsComment(fname)
+  let hook = substitute(a:fname,"^[0-9a-zA-Z]\\+_","","")
+  set paste
+ 
+  exe "normal! O/**\<CR>"
+  \          . " * Implements hook_" . hook . "().\<CR>"
+  \          . " */\<Esc>"
+ 
+  set nopaste
+endfunction
+nmap <C-\>o :cs find c <C-R>=expand("<cword>")<CR><CR>	
