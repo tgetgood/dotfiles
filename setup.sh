@@ -1,14 +1,14 @@
 # Simple script to copy dotfiles to home directory.
 # If the files already exist, back them up and delete them.
 # Does not back up symlinks.
-# overwirtes .file~ if it exists.
+# overwrites .file~ if it exists.
 
-# last edited by on 14/12/2011
+# last edited 14/12/2011
 
 HOME=~thomas
 
 SCRIPT_PATH=$PWD
-# This is not very good in general, just so far. 
+
 shopt -s dotglob
 
 for f in *
@@ -19,7 +19,7 @@ do
     continue
   fi
 
-  # if file exists and is not a symlink, back it up
+  # If file exists and is not a symlink, back it up, otherwise replace it.
   if [ -h "$HOME/$f" ]
   then
     rm "$HOME/$f"
