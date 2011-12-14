@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# gitsync [-p] master dev
+# Thomas Getgood
+# Wed Dec 14 10:21:21 EST 2011
+#
+# automates git workflow with dev and master branches
+#
+# co $1; pull; co $2; pull; merge $1; co $1; merge $2; co $2; push (if -p)
+
+STASH=:
+UNSTASH=:
+PULL="git pull"
+CO="git checkout"
+MERGE="git merge"
+PUSH=:
+
+# p means push
+# s means stash
+while getopts ":ps" FLAG
+do
+  case $FLAG in 
+    p ) 
+      PUSH="git push"
+      ;;
+    s )
+      STASH="git stash"
+      UNSTASH="git stash pop"
+      ;;
+  esac
+done
+
+shift $((OPTIND - 1))
+
+if [ -z "$1" -o -z "$2" ]
+then
+  echo "Usage: `basename $0` trunk dev_branch."
+  exit 65
+fi
+
+$STASH && $CO $1 && $PULL && $CO $2 && $PULL && $MERGE $1 && $CO $1 && $MERGE $2 && $PUSH && $CO $2 && $UNSTASH
+
