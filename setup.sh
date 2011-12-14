@@ -9,14 +9,23 @@ HOME=~thomas
 
 SCRIPT_PATH=$PWD
 # This is not very good in general, just so far. 
-FILES=`ls -a | grep -v 'setup\.sh|\.git'`
+shopt -s dotglob
 
-for f in $FILES
+for f in *
 do
-  # if file exists and is not a symlink, back it up
-  if [ -e $HOME/"$f" ]
+  # There should be only two special cases...
+  if [ "$f" == `basename $0` -o "$f" == ".git" ]
   then
-    [ -h "$HOME/$f" ] && rm "$HOME/$f" || mv "$HOME/$f" "$HOME/$f~"
+    continue
+  fi
+
+  # if file exists and is not a symlink, back it up
+  if [ -h "$HOME/$f" ]
+  then
+    rm "$HOME/$f"
+  elif [ -e "$HOME/$f" ]
+  then
+    mv "$HOME/$f" "$HOME/$f~"
   fi
 
   ln -s "$SCRIPT_PATH/$f" "$HOME/$f"
