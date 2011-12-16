@@ -7,7 +7,7 @@
 
 HOME=~thomas
 
-SCRIPT_PATH=$(dirname $0)
+SCRIPT_PATH=$( readlink -e $(dirname $0))
 
 shopt -s dotglob
 
