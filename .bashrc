@@ -82,18 +82,18 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -103,7 +103,6 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 #custom additions
-alias t="gnome-terminal"
 alias ack="ack-grep -a"
 
 cd ~
@@ -113,6 +112,10 @@ alias tagphp="ctags --langmap=php:.module.inc.engine.theme.php --php-kinds=cdfi 
 export CDPATH=.:/var/shared/sites/:/home/thomas/projects
 export PATH="$PATH":/home/thomas/bin
 export PAGER=less
+
+if [ PS1 ]; then
+PS1="\W \$ " 
+fi
 
 function vimso() {
 FILE=${1:-~/.bashrc}
