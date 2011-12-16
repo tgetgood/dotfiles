@@ -7,12 +7,14 @@
 
 HOME=~thomas
 
-SCRIPT_PATH=$PWD
+SCRIPT_PATH=$(dirname $0)
 
 shopt -s dotglob
 
-for f in *
+for file in $SCRIPT_PATH/*
 do
+  f=`basename $file`
+
   # There should be only two special cases...
   if [ "$f" == `basename $0` -o "$f" == ".git" ]
   then
