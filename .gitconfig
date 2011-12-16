@@ -16,16 +16,13 @@
        changed = green
        untracked = cyan
 [alias]
-        ci = commit
         co = checkout
-        di = diff
         st = status
-        up = pull
         ls = ls-files
 [branch]
         autosetupmerge = true
 [user]
         name = Thomas Getgood
-        email = thomas@evolvingweb.ca
+        email = thomas.getgood@gmail.com
 [core]
 	excludesfile = /home/thomas/.gitignore
