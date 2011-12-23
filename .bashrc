@@ -112,10 +112,6 @@ export PAGER=less
 #PATH additions
 export PATH=$PATH:/home/thomas/bin:/usr/local/node/bin
 
-if [ PS1 ]; then
-PS1="\W \$ " 
-fi
-
 function vimso() {
 FILE=${1:-~/.bashrc}
 vim $FILE
