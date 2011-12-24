@@ -14,3 +14,8 @@ typescript
 
 // Patches
 *.patch
+
+// Compiled files
+*.o
+*.pyc
+

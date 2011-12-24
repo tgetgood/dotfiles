@@ -38,27 +38,16 @@ map gr :grep <cword> site/sites/all
 map <F5> :silent !echo "BrowserReload(); repl.quit();^D" \| nc -s0 192.168.2.122 4242;<CR><C-C><C-L>
 set tags=./tags;/
 
-"cscope file-searching alternative
-function SetCscope()
-  let curdir = getcwd()
-  while !filereadable("cscope.out") && getcwd() != "/"
-    cd ..
-  endwhile
-  if filereadable("cscope.out")
-    execute "cs add " . getcwd() . "/cscope.out"
-  endif
-  execute "cd " . curdir
-endfunction
 
-if has("cscope")
-  call SetCscope()
-endif
-
+" Rebuild the cScope database and reconnect to the server.
 function ReScope()
   cs kill -1
 
   " Assume the top level of the project contains the .git folder
   let dir = finddir('.git', '.;/var/shared/sites;/var/www;/home')
+  if (!dir)
+    return
+  endif
   execute "cd " . dir 
   cd ..
 
@@ -67,6 +56,10 @@ function ReScope()
   
   execute "cs add  " . getcwd() . "/cscope.out"
 endfunction
+
+if has("cscope")
+  call ReScope()
+endif
 
 comm! -nargs=0 RS call ReScope()
 
@@ -85,3 +78,9 @@ function! DrupalImplementsComment(fname)
   set nopaste
 endfunction
 nmap <C-\>o :cs find c <C-R>=expand("<cword>")<CR><CR>	
+
+" Rope setup
+let ropevim_vim_completion=1
+let ropevim_extend_complete=1
+
+
