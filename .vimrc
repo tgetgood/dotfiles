@@ -2,6 +2,9 @@ set mouse=a hlsearch bs=2 sw=2 ts=2 expandtab autoindent smartindent
 syntax on 
 set bg=dark
 
+"Better runtime paths
+call pathogen#infect()
+
 set nu wildmenu
 
 runtime! macros/matchit.vim
