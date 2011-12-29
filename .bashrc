@@ -159,3 +159,4 @@ _drush() {
 }
 complete -F _drush drush
  
+[ -r ~/.bash_local ] && . ~/.bash_local
