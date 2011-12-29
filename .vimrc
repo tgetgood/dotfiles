@@ -2,6 +2,18 @@ set mouse=a hlsearch bs=2 sw=2 ts=2 expandtab autoindent smartindent
 syntax on 
 set bg=dark
 
+" Switch windows more fluidly in normal or insert mode. 
+" I never used the defaults for these keys anyway (if there are any).
+nmap <c-h> <c-w>h
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-l> <c-w>l
+
+imap <c-h> <c-o><c-w>h
+imap <c-j> <c-o><c-w>j
+imap <c-k> <c-o><c-w>k
+imap <c-l> <c-o><c-w>l
+
 "Better runtime paths
 call pathogen#infect()
 
