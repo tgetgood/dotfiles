@@ -5,6 +5,9 @@ set bg=dark
 "Better runtime paths
 call pathogen#infect()
 
+filetype plugin on
+set ofu=syntaxcomplete#Complete
+
 set nu wildmenu
 
 runtime! macros/matchit.vim
@@ -48,9 +51,9 @@ function ReScope()
 
   " Assume the top level of the project contains the .git folder
   let dir = finddir('.git', '.;/var/shared/sites;/var/www;/home')
-  if (!dir)
-    return
-  endif
+  " if (dir == '.' || dir == '/home' || dir == '/var/www' || dir = '/var/shared/sites')
+  "   return
+  " endif
   execute "cd " . dir 
   cd ..
 
@@ -60,9 +63,9 @@ function ReScope()
   execute "cs add  " . getcwd() . "/cscope.out"
 endfunction
 
-if has("cscope")
-  call ReScope()
-endif
+" if has("cscope")
+"   call ReScope()
+" endif
 
 comm! -nargs=0 RS call ReScope()
 
