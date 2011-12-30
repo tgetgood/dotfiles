@@ -18,4 +18,11 @@ typescript
 // Compiled files
 *.o
 *.pyc
+*.pyo
+*.out
 
+// Eclipse files
+*.cdt*
+*.pydev*
+*.eclipse*
+.project
