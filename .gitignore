@@ -22,7 +22,8 @@ typescript
 *.out
 
 // Eclipse files
-*.cdt*
-*.pydev*
-*.eclipse*
+.cdt*
+.pydev*
+.eclipse*
 .project
+.texclipse
