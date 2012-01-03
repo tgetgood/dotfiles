@@ -111,6 +111,8 @@ export CDPATH=.:/var/shared/sites/:/home/thomas/projects
 export PAGER=less
 #PATH additions
 export PATH=$PATH:/home/thomas/bin:/usr/local/node/bin
+# Tell the python interpreter what to load on startup
+[ -r ~/.pythonstartup ] && export PYTHONSTARTUP=~/.pythonstartup
 
 function vimso() {
 FILE=${1:-~/.bashrc}
