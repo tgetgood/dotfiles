@@ -2,6 +2,24 @@ set mouse=a hlsearch bs=2 sw=2 ts=2 expandtab autoindent smartindent
 syntax on 
 set bg=dark
 
+" Switch windows more fluidly in normal or insert mode. 
+" I never used the defaults for these keys anyway (if there are any).
+nmap <c-h> <c-w>h
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-l> <c-w>l
+
+imap <c-h> <c-o><c-w>h
+imap <c-j> <c-o><c-w>j
+imap <c-k> <c-o><c-w>k
+imap <c-l> <c-o><c-w>l
+
+"Better runtime paths
+call pathogen#infect()
+
+filetype plugin on
+set ofu=syntaxcomplete#Complete
+
 set nu wildmenu
 
 runtime! macros/matchit.vim
@@ -38,35 +56,27 @@ map gr :grep <cword> site/sites/all
 map <F5> :silent !echo "BrowserReload(); repl.quit();^D" \| nc -s0 192.168.2.122 4242;<CR><C-C><C-L>
 set tags=./tags;/
 
-"cscope file-searching alternative
-function SetCscope()
-  let curdir = getcwd()
-  while !filereadable("cscope.out") && getcwd() != "/"
-    cd ..
-  endwhile
-  if filereadable("cscope.out")
-    execute "cs add " . getcwd() . "/cscope.out"
-  endif
-  execute "cd " . curdir
-endfunction
 
-if has("cscope")
-  call SetCscope()
-endif
-
+" Rebuild the cScope database and reconnect to the server.
 function ReScope()
   cs kill -1
 
   " Assume the top level of the project contains the .git folder
-  let dir = finddir('.git', '.;/var/shared/sites;/var/www;/home')
-  execute "cd " . dir 
-  cd ..
+  let dir = finddir('.git', getcwd())
+
+  execute "!cd " . dir 
 
   "TODO: extend this to find source files in other languages 
-  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune ,  \\( -name *.module -o -name *.inc -o -name *.php -o -name *.install -o -name *.engine -o -name *.test -o -name *.theme -o -name *.js -o -name *.rb -o -name *.rhtml -o -name *.py -o -name *.yml -o -name Rakefile \\))"
+  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune , -name *.module -o -name *.inc -o -name *.php -o -name *.install -o -name *.engine -o -name *.test -o -name *.theme -o -name *.js -o -name *.rb -o -name *.rhtml -o -name *.py -o -name *.yml -o -name Rakefile -o -name Makefile -o -name *.c -o -name *.cpp -o -name *.h -o -name *.hpp)" 
   
   execute "cs add  " . getcwd() . "/cscope.out"
 endfunction
+
+if has("cscope")
+  if findfile(getcwd() . '/cscope.out')
+    execute "cs add " . getcwd() . "/cscope.out"
+  endif
+endif
 
 comm! -nargs=0 RS call ReScope()
 
@@ -85,3 +95,9 @@ function! DrupalImplementsComment(fname)
   set nopaste
 endfunction
 nmap <C-\>o :cs find c <C-R>=expand("<cword>")<CR><CR>	
+
+" Rope setup
+let ropevim_vim_completion=1
+let ropevim_extend_complete=1
+
+
