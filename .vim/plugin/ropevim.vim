@@ -4,4 +4,6 @@ import ropevim
 EOF
 endfunction
 
-call LoadRope()
+if has("ropevim")
+  call LoadRope()
+endif

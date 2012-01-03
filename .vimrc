@@ -1,4 +1,4 @@
-set mouse=a hlsearch bs=2 sw=2 ts=2 expandtab autoindent smartindent
+
 syntax on 
 set bg=dark
 
@@ -97,7 +97,9 @@ endfunction
 nmap <C-\>o :cs find c <C-R>=expand("<cword>")<CR><CR>	
 
 " Rope setup
-let ropevim_vim_completion=1
-let ropevim_extend_complete=1
+if has("ropevim")
+  let ropevim_vim_completion=1
+  let ropevim_extend_complete=1
+endif
 
 
