@@ -76,9 +76,9 @@ function ReScope()
 
   execute "!cd " . dir
 
-  "TODO: extend this to find source files in other languages
-  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune , -name *.module -o -name *.inc -o -name *.php -o -name *.install -o -name *.engine -o -name *.test -o -name *.theme -o -name *.js -o -name *.rb -o -name *.rhtml -o -name *.py -o -name *.yml -o -name Rakefile -o -name Makefile -o -name *.c -o -name *.cpp -o -name *.h -o -name *.hpp)"
-
+  "TODO: extend this to find source files in other languages 
+  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune  -name '*.module' -o -name '*.inc' -o -name '*.php' -o -name '*.install' -o -name '*.engine' -o -name '*.test' -o -name '*.theme' -o -name '*.js' -o -name '*.rb' -o -name '*.rhtml' -o -name '*.py' -o -name '*.yml' -o -name Rakefile -o -name Makefile -o -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp')" 
+  
   execute "cs add  " . getcwd() . "/cscope.out"
 endfunction
 
