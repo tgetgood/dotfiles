@@ -1,8 +1,19 @@
-set mouse=a hlsearch bs=2 sw=2 ts=2 expandtab autoindent smartindent
-syntax on 
+set mouse=a hlsearch bs=2 sw=2 ts=2 expandtab autoindent smartindent ruler incsearch
 set bg=dark
+set hidden
+set history=5000
+set ignorecase smartcase
+set backspace=indent,eol,start
 
-" Switch windows more fluidly in normal or insert mode. 
+syntax on
+filetype on
+filetype indent on
+filetype plugin on
+
+runtime macros/matchit.vim
+let mapleader = '\'
+
+" Switch windows more fluidly in normal or insert mode.
 " I never used the defaults for these keys anyway (if there are any).
 nmap <c-h> <c-w>h
 nmap <c-j> <c-w>j
@@ -17,7 +28,6 @@ imap <c-l> <c-o><c-w>l
 "Better runtime paths
 call pathogen#infect()
 
-filetype plugin on
 set ofu=syntaxcomplete#Complete
 
 set nu wildmenu
@@ -64,11 +74,11 @@ function ReScope()
   " Assume the top level of the project contains the .git folder
   let dir = finddir('.git', getcwd())
 
-  execute "!cd " . dir 
+  execute "!cd " . dir
 
-  "TODO: extend this to find source files in other languages 
-  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune , -name *.module -o -name *.inc -o -name *.php -o -name *.install -o -name *.engine -o -name *.test -o -name *.theme -o -name *.js -o -name *.rb -o -name *.rhtml -o -name *.py -o -name *.yml -o -name Rakefile -o -name Makefile -o -name *.c -o -name *.cpp -o -name *.h -o -name *.hpp)" 
-  
+  "TODO: extend this to find source files in other languages
+  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune , -name *.module -o -name *.inc -o -name *.php -o -name *.install -o -name *.engine -o -name *.test -o -name *.theme -o -name *.js -o -name *.rb -o -name *.rhtml -o -name *.py -o -name *.yml -o -name Rakefile -o -name Makefile -o -name *.c -o -name *.cpp -o -name *.h -o -name *.hpp)"
+
   execute "cs add  " . getcwd() . "/cscope.out"
 endfunction
 
@@ -87,14 +97,17 @@ map <C-\>p :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 function! DrupalImplementsComment(fname)
   let hook = substitute(a:fname,"^[0-9a-zA-Z]\\+_","","")
   set paste
- 
+
   exe "normal! O/**\<CR>"
   \          . " * Implements hook_" . hook . "().\<CR>"
   \          . " */\<Esc>"
- 
+
   set nopaste
 endfunction
-nmap <C-\>o :cs find c <C-R>=expand("<cword>")<CR><CR>	
+nmap <C-\>o :cs find c <C-R>=expand("<cword>")<CR><CR>
+
+" Easy clean up trailing whitespace.
+nmap <silent> <leader>s :%s/[ \t]\+$//g<CR>
 
 " Rope setup
 if has("ropevim")
