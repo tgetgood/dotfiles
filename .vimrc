@@ -25,6 +25,10 @@ imap <c-j> <c-o><c-w>j
 imap <c-k> <c-o><c-w>k
 imap <c-l> <c-o><c-w>l
 
+" Fast buffer navigation
+nmap <silent> <leader>l :bn<cr>
+nmap <silent> <leader>h :bp<cr>
+
 "Better runtime paths
 call pathogen#infect()
 
@@ -76,7 +80,8 @@ function ReScope()
 
   execute "!cd " . dir
 
-  "TODO: extend this to find source files in other languages 
+  "TODO: Read from a file or something; as I add more languages, this is
+  "getting ridiculous.
   execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune  -name '*.module' -o -name '*.inc' -o -name '*.php' -o -name '*.install' -o -name '*.engine' -o -name '*.test' -o -name '*.theme' -o -name '*.js' -o -name '*.rb' -o -name '*.rhtml' -o -name '*.py' -o -name '*.yml' -o -name Rakefile -o -name Makefile -o -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp')" 
   
   execute "cs add  " . getcwd() . "/cscope.out"
