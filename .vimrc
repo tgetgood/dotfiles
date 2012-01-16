@@ -9,6 +9,8 @@ syntax on
 filetype on
 filetype indent on
 filetype plugin on
+filetype plugin indent on
+"TODO: One day, figure out if the above are redundant.
 
 runtime macros/matchit.vim
 let mapleader = '\'
@@ -29,10 +31,15 @@ imap <c-l> <c-o><c-w>l
 nmap <silent> <leader>l :bn<cr>
 nmap <silent> <leader>h :bp<cr>
 
+" Quickfix shortcuts
+nmap <leader>, :cprevious<cr>
+nmap <leader>. :cnext<cr>
+
 "Better runtime paths
 call pathogen#infect()
 
-set ofu=syntaxcomplete#Complete
+" I don't fully understand omnicomplete.
+" set ofu=syntaxcomplete#Complete
 
 set nu wildmenu
 
@@ -50,7 +57,6 @@ if has("autocmd")
 endif
 
 "some rails stuff
-filetype plugin indent on
 augroup myfiletypes
   autocmd!
   autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
@@ -82,8 +88,8 @@ function ReScope()
 
   "TODO: Read from a file or something; as I add more languages, this is
   "getting ridiculous.
-  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune  -name '*.module' -o -name '*.inc' -o -name '*.php' -o -name '*.install' -o -name '*.engine' -o -name '*.test' -o -name '*.theme' -o -name '*.js' -o -name '*.rb' -o -name '*.rhtml' -o -name '*.py' -o -name '*.yml' -o -name Rakefile -o -name Makefile -o -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp')" 
-  
+  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune  -name '*.module' -o -name '*.inc' -o -name '*.php' -o -name '*.install' -o -name '*.engine' -o -name '*.test' -o -name '*.theme' -o -name '*.js' -o -name '*.rb' -o -name '*.rhtml' -o -name '*.py' -o -name '*.yml' -o -name Rakefile -o -name Makefile -o -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp')"
+
   execute "cs add  " . getcwd() . "/cscope.out"
 endfunction
 
