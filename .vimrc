@@ -15,6 +15,12 @@ filetype plugin indent on
 runtime macros/matchit.vim
 let mapleader = '\'
 
+" Rope setup
+if has("ropevim")
+  let ropevim_vim_completion=1
+  let ropevim_extend_complete=1
+endif
+
 " Switch windows more fluidly in normal or insert mode.
 " I never used the defaults for these keys anyway (if there are any).
 nmap <c-h> <c-w>h
@@ -120,10 +126,20 @@ nmap <C-\>o :cs find c <C-R>=expand("<cword>")<CR><CR>
 " Easy clean up trailing whitespace.
 nmap <silent> <leader>s :%s/[ \t]\+$//g<CR>
 
-" Rope setup
-if has("ropevim")
-  let ropevim_vim_completion=1
-  let ropevim_extend_complete=1
-endif
+" Smart completion, based on CleverTab and Schultz's improvement (Hacking vim
+" 2007)
+function! AutoComplete() 
+  if &omnifunc != ''
+    return "\<C-x>\<C-o>"
+  " Figure out how to check if tags will work...
+  else
+    return "\<C-x>\<C-]>"
+  endif
+endfunction
+
+" Call me eclipse, but I like ctrl-space
+imap <C-Space> <C-x><C-o>
+
+"<C-r>=AutoComplete()<cr>
 
 
