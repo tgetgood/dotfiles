@@ -59,6 +59,7 @@ if has("autocmd")
     autocmd BufRead *.inc set filetype=php
     autocmd BufRead *.install set filetype=php
     autocmd BufRead *.engine set filetype=php
+    autocmd BufRead *.test set filetype=php
   augroup END
 endif
 
