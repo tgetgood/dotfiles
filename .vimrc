@@ -4,6 +4,7 @@ set hidden
 set history=5000
 set ignorecase smartcase
 set backspace=indent,eol,start
+let icase=1
 
 syntax on
 filetype on
@@ -134,13 +135,11 @@ function! AutoComplete()
     return "\<C-x>\<C-o>"
   " Figure out how to check if tags will work...
   else
-    return "\<C-x>\<C-]>"
+    return "\<C-n>"
   endif
 endfunction
 
 " Call me eclipse, but I like ctrl-space
-imap <C-Space> <C-x><C-o>
+imap <Nul> <C-R>=AutoComplete()<cr>
 
 "<C-r>=AutoComplete()<cr>
-
-
