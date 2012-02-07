@@ -142,4 +142,5 @@ endfunction
 " Call me eclipse, but I like ctrl-space
 imap <Nul> <C-R>=AutoComplete()<cr>
 
-"<C-r>=AutoComplete()<cr>
+" Customise tasklist.
+let g:tlTokenList = ["TODO", "FIXME", 'N.B.', "@todo", "@fixme"]
