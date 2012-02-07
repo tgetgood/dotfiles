@@ -29,10 +29,10 @@ nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
 
-imap <c-h> <c-o><c-w>h
-imap <c-j> <c-o><c-w>j
-imap <c-k> <c-o><c-w>k
-imap <c-l> <c-o><c-w>l
+imap <c-h> <esc><c-w>h
+imap <c-j> <esc><c-w>j
+imap <c-k> <esc><c-w>k
+imap <c-l> <esc><c-w>l
 
 " Fast buffer navigation
 nmap <silent> <leader>l :bn<cr>
