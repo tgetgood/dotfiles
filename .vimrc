@@ -72,7 +72,7 @@ augroup END
 
 command SW execute 'w !sudo tee % >/dev/null' | e! %
 command DCC execute '! drush cache clear'
-
+command E execute 'Explore'
 
 "make gd work for drupal
 map gd :exe '/\s*function\s*'.expand("<cword>")<CR>
@@ -144,3 +144,4 @@ imap <Nul> <C-R>=AutoComplete()<cr>
 
 " Customise tasklist.
 let g:tlTokenList = ["TODO", "FIXME", 'N.B.', "@todo", "@fixme"]
+
