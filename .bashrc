@@ -3,7 +3,7 @@
 # for examples
 
 # Add system bash completion. Sometimes this doesn't happen over ssh.
-test -x /etc/bashcompletion && /etc/bash_completion
+test -r /etc/bashcompletion && . /etc/bash_completion
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
