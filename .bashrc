@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Add system bash completion. Sometimes this doesn't happen over ssh.
+test -x /etc/bashcompletion && /etc/bash_completion
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -152,3 +155,9 @@ _drush() {
 }
 complete -F _drush drush
  
+_chef-remote() {
+  cur=${COMP_WORDS[$COMP_CWORD]}
+  RESULT=$(cat ~/.ssh/known_hosts | grep -v ^\| | cut -d, -f1 | cut -d\  -f1)
+  COMPREPLY=($(compgen -W "$RESULT" -- "$cur"))
+}
+complete -F _chef-remote chef-remote
