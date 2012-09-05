@@ -111,7 +111,7 @@ alias tagphp="ctags --langmap=php:.module.inc.engine.theme.php --php-kinds=cdfi 
 
 # Custom ENV init
 export PATH=$PATH:/home/thomas/bin:/usr/local/node/bin
-export CDPATH=.:/var/shared/sites/:/home/thomas/projects
+export CDPATH=.:$CDPATH
 export PAGER=less
 export EDITOR=vim
 export PROMPT_COMMAND= # Handy against some forms of juvenile mischief.
