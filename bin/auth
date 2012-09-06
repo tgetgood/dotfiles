@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if test ${#*} -ne 1
+then
+  echo "Usage: auth KEYNAME"
+  exit 1
+fi
+
+KEY=~/.ssh/$1
+
+PRINT=`ssh-keygen -lf $KEY | cut -d\  -f2`
+
+for added in `ssh-add -l | cut -d\  -f2`
+do
+  if test "$added" == "$PRINT"
+  then
+    echo "Key $1 already present. Doing nothing."
+  else
+    ssh-add $KEY
+  fi
+done
+
