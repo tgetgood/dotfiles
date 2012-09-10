@@ -1,4 +1,4 @@
-set mouse=a hlsearch bs=2 sw=2 ts=2 expandtab autoindent smartindent ruler incsearch
+set mouse=a hlsearch bs=2 sw=2 ts=2 autoindent smartindent ruler incsearch
 set bg=dark
 set hidden
 set history=5000
