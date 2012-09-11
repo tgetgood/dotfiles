@@ -1,4 +1,5 @@
 set mouse=a hlsearch bs=2 sw=2 ts=2 autoindent smartindent ruler incsearch
+set fileformats=unix
 set bg=dark
 set hidden
 set history=5000
@@ -34,13 +35,19 @@ imap <c-j> <esc><c-w>j
 imap <c-k> <esc><c-w>k
 imap <c-l> <esc><c-w>l
 
+" vim-unimpaired has better shortcuts for these.
+"
 " Fast buffer navigation
-nmap <silent> <leader>l :bn<cr>
-nmap <silent> <leader>h :bp<cr>
-
+"nmap <silent> <leader>l :bn<cr>
+"nmap <silent> <leader>h :bp<cr>
+"
 " Quickfix shortcuts
-nmap <leader>, :cprevious<cr>
-nmap <leader>. :cnext<cr>
+"nmap <leader>, :cprevious<cr>
+"nmap <leader>. :cnext<cr>
+
+" Quickfix window
+nmap <leader>q :copen<cr>
+nmap <leader>c :ccl<cr>
 
 "Better runtime paths
 call pathogen#infect()
@@ -102,6 +109,7 @@ function ReScope()
 endfunction
 
 if has("cscope")
+	set cscopequickfix=s-,c-,d-,i-,t-,e-
   if findfile(getcwd() . '/cscope.out')
     execute "cs add " . getcwd() . "/cscope.out"
   endif
