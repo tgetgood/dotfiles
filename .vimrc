@@ -109,7 +109,7 @@ function ReScope()
 endfunction
 
 if has("cscope")
-	set cscopequickfix=s-,c-,d-,i-,t-,e-
+	set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
   if findfile(getcwd() . '/cscope.out')
     execute "cs add " . getcwd() . "/cscope.out"
   endif
