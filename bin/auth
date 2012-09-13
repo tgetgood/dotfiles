@@ -15,8 +15,9 @@ do
   if test "$added" == "$PRINT"
   then
     echo "Key $1 already present. Doing nothing."
-  else
-    ssh-add $KEY
+		exit 0
   fi
 done
 
+ssh-add $KEY
+exit $?
