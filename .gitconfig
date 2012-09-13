@@ -26,5 +26,6 @@
         email = thomas.getgood@gmail.com
 [core]
 	excludesfile = /home/thomas/.gitignore
+	filemodes = false
 	autocrlf = input
 	eol = lf
