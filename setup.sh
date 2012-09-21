@@ -15,8 +15,8 @@ for file in $SCRIPT_PATH/*
 do
   f=`basename $file`
 
-  # There should be only two special cases...
-  if [ "$f" == `basename $0` -o "$f" == ".git" ]
+  # What to do if the special cases take over?
+  if [ "$f" == `basename $0` -o "$f" == ".git" -o "$f" == "bin" ]
   then
     continue
   fi
@@ -32,5 +32,15 @@ do
 
   ln -s "$SCRIPT_PATH/$f" "$HOME/$f"
 
+done
+
+# Symlink all scripts (clobber ~/bin is a bad idea).
+
+test -d "$HOME/bin" || mkdir "$HOME/bin"
+
+for file in $SCRIPT_PATH/bin/*
+do
+	f=`basename $file`
+	ln -s "$SCRIPT_PATH/bin/$f" "$HOME/bin/$f"
 done
 
