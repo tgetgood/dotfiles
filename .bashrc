@@ -3,7 +3,15 @@
 # for examples
 
 # Add system bash completion. Sometimes this doesn't happen over ssh.
-test -r /etc/bashcompletion && . /etc/bash_completion
+# And on some systems (notably certain versions of RedHat) there is one-shot
+# script.
+if test -r /etc/bash_completion 
+then
+	. /etc/bash_completion 
+elif test -d /etc/bash_completion.d 
+then
+	 . /etc/bash_completion.d/*
+fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return

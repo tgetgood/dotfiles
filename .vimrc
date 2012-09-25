@@ -153,5 +153,7 @@ imap <Nul> <C-R>=AutoComplete()<cr>
 " Customise tasklist.
 let g:tlTokenList = ["TODO", "FIXME", 'N.B.', "@todo", "@fixme"]
 
-" TODO: Figure out syntastic for python and javascript.
-" let g:syntastic_javascript_checker = "jslintnode.js"
+" Custom jslint config
+if !exists("g:syntastic_javascript_jslint_conf")
+    let g:syntastic_javascript_jslint_conf = "--nomen --white --regexp --plusplus --vars --continue --stupid"
+endif
