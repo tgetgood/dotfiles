@@ -19,3 +19,9 @@
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
+[submodule ".vim/bundle/jscomplete"]
+	path = .vim/bundle/jscomplete
+	url = https://github.com/teramako/jscomplete-vim.git
+[submodule ".vim/bundle/nodejs-complete"]
+	path = .vim/bundle/nodejs-complete
+	url = https://github.com/myhere/vim-nodejs-complete.git
