@@ -40,6 +40,7 @@ test -d "$HOME/bin" || mkdir "$HOME/bin"
 
 for file in $SCRIPT_PATH/bin/*
 do
+	#TODO: Make a function out of the above.
 	f=`basename $file`
 	ln -s "$SCRIPT_PATH/bin/$f" "$HOME/bin/$f"
 done

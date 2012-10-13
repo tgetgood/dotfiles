@@ -106,8 +106,9 @@ fi
 # Custom additions
 alias ack="ack-grep -a"
 # alias cccc="drush cc all && drush cc all && drush cc all && drush cc all"
-alias tagthis="ctags --langmap=php:.module.inc.engine -R site/{includes,modules,themes/engines,sites}/*"
-alias tagphp="ctags --langmap=php:.module.inc.engine.theme.php --php-kinds=cdfi --languages=php --recurse"
+# alias tagthis="ctags --langmap=php:.module.inc.engine -R site/{includes,modules,themes/engines,sites}/*"
+# alias tagphp="ctags --langmap=php:.module.inc.engine.theme.php --php-kinds=cdfi --languages=php --recurse"
+alias emacs="emacs -nw"
 
 # Custom ENV init
 export PATH=$PATH:/home/thomas/bin:/usr/local/node/bin
