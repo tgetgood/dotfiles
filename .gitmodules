@@ -25,3 +25,9 @@
 [submodule ".emacs-plugins/ensime"]
 	path = .emacs-plugins/ensime
 	url = https://github.com/aemoncannon/ensime.git
+[submodule ".vim/bundle/jscomplete"]
+	path = .vim/bundle/jscomplete
+	url = https://github.com/teramako/jscomplete-vim.git
+[submodule ".vim/bundle/nodejs-complete"]
+	path = .vim/bundle/nodejs-complete
+	url = https://github.com/myhere/vim-nodejs-complete.git

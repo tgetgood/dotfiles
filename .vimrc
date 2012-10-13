@@ -7,6 +7,9 @@ set ignorecase smartcase
 set backspace=indent,eol,start
 let icase=1
 
+"Better runtime paths
+call pathogen#infect()
+
 syntax on
 filetype on
 filetype indent on
@@ -48,9 +51,6 @@ imap <c-l> <esc><c-w>l
 " Quickfix window
 nmap <leader>q :copen<cr>
 nmap <leader>c :ccl<cr>
-
-"Better runtime paths
-call pathogen#infect()
 
 " I don't fully understand omnicomplete.
 " set ofu=syntaxcomplete#Complete
@@ -153,5 +153,13 @@ imap <Nul> <C-R>=AutoComplete()<cr>
 " Customise tasklist.
 let g:tlTokenList = ["TODO", "FIXME", 'N.B.', "@todo", "@fixme"]
 
-" TODO: Figure out syntastic for python and javascript.
-" let g:syntastic_javascript_checker = "jslintnode.js"
+" Custom jslint config
+if !exists("g:syntastic_javascript_jslint_conf")
+    let g:syntastic_javascript_jslint_conf = "--nomen --white --regexp --plusplus --vars --continue --stupid"
+endif
+ 
+let g:node_usejscomplete = 1
+autocmd FileType javascript :setl omnifunc=jscomplete#CompleteJS
+
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
