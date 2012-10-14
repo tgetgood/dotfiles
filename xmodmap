@@ -1,0 +1,5 @@
+! Set capslock to F12
+
+clear lock
+keycode 66 = F12
+
