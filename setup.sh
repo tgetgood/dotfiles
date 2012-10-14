@@ -5,43 +5,51 @@
 
 # last edited 14/12/2011
 
-HOME=~thomas
+HOME=~
 
 SCRIPT_PATH=$( readlink -e $(dirname $0))
 
-shopt -s dotglob
+# shopt -s dotglob
 
-for file in $SCRIPT_PATH/*
+replace_link() {
+  # If file exists and is not a symlink, back it up, otherwise replace it.
+	FILE=$1
+	FROM=$2
+	TO=$3
+
+  if [ -h "$TO/$FILE" ]
+  then
+    rm "$TO/$FILE"
+  elif [ -e "$TO/$FILE" ]
+  then
+    mv "$TO/$FILE" "$TO/$FILE~"
+  fi
+
+  ln -s "$FROM/$FILE" "$TO/$FILE"
+}
+
+
+# N.B.: any file name consisting soley of dots will be ignored
+for file in `ls -a $SCRIPT_PATH | grep "^\." | grep -v '^\.*$'`
 do
   f=`basename $file`
 
   # What to do if the special cases take over?
-  if [ "$f" == `basename $0` -o "$f" == ".git" -o "$f" == "bin" ]
+  if [ "$f" == ".git" ]
   then
     continue
   fi
 
-  # If file exists and is not a symlink, back it up, otherwise replace it.
-  if [ -h "$HOME/$f" ]
-  then
-    rm "$HOME/$f"
-  elif [ -e "$HOME/$f" ]
-  then
-    mv "$HOME/$f" "$HOME/$f~"
-  fi
-
-  ln -s "$SCRIPT_PATH/$f" "$HOME/$f"
+	replace_link "$f" "$SCRIPT_PATH" "$HOME"
 
 done
 
-# Symlink all scripts (clobber ~/bin is a bad idea).
+# Populate ~/bin with custom scripts.
 
 test -d "$HOME/bin" || mkdir "$HOME/bin"
 
 for file in $SCRIPT_PATH/bin/*
 do
-	#TODO: Make a function out of the above.
-	f=`basename $file`
-	ln -s "$SCRIPT_PATH/bin/$f" "$HOME/bin/$f"
+	replace_link `basename $file` "$SCRIPT_PATH/bin" "$HOME/bin"
 done
 
