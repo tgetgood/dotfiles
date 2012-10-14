@@ -13,6 +13,9 @@ then
 	 . /etc/bash_completion.d/*
 fi
 
+# Add custom global keybindings to ~/.xmodmap
+test -r ~/.xmodmap && xmodmap ~/.xmodmap
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
