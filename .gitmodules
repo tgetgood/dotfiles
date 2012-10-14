@@ -19,9 +19,6 @@
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
-[submodule ".emacs-plugins/ensime"]
-	path = .emacs-plugins/ensime
-	url = https://github.com/aemoncannon/ensime.git
 [submodule ".vim/bundle/jscomplete"]
 	path = .vim/bundle/jscomplete
 	url = https://github.com/teramako/jscomplete-vim.git
