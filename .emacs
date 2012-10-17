@@ -35,6 +35,15 @@
    (package . font-lock-preprocessor-face)
    ))
 
+(windmove-default-keybindings)
+
+(defun dont-kill-emacs ()
+	(interactive)
+  (error (substitute-command-keys "To exit emacs: \\[kill-emacs]")))
+  
+(global-set-key "\C-x\C-c" 'dont-kill-emacs)
+
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
