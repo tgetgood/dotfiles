@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/nodejs-complete"]
 	path = .vim/bundle/nodejs-complete
 	url = https://github.com/myhere/vim-nodejs-complete.git
+[submodule ".vim/bundle/vim-scala"]
+	path = .vim/bundle/vim-scala
+	url = https://github.com/derekwyatt/vim-scala.git
