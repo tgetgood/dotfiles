@@ -1,5 +1,6 @@
 (set-face-attribute 'default nil :height 80)
 
+(add-to-list 'load-path "/home/thomas/.emacs-plugins/")
 (add-to-list 'load-path "/home/thomas/.emacs-plugins/scala-mode")
 (add-to-list 'load-path "/home/thomas/.emacs-plugins/ensime/elisp")
 (add-to-list 'load-path "/home/thomas/.emacs-plugins/color-theme")
@@ -7,6 +8,7 @@
 (require 'scala-mode-auto)
 (require 'ensime)
 (require 'color-theme)
+(require 'linum+)
 
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
  
@@ -43,6 +45,7 @@
   
 (global-set-key "\C-x\C-c" 'dont-kill-emacs)
 
+(global-linum-mode t)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
