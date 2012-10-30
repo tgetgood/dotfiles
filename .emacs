@@ -47,6 +47,7 @@
 
 (global-linum-mode t)
 (show-paren-mode 1)
+(global-auto-revert-mode t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

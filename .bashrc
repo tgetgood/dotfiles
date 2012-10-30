@@ -107,16 +107,11 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Enable programmable completion features (Just in case).
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
-
 # Per machine config
 [ -r ~/.bash_local ] && . ~/.bash_local
 
 # Custom additions
-alias ack="ack-grep -a"
+# alias ack="ack-grep -a"
 # alias cccc="drush cc all && drush cc all && drush cc all && drush cc all"
 # alias tagthis="ctags --langmap=php:.module.inc.engine -R site/{includes,modules,themes/engines,sites}/*"
 # alias tagphp="ctags --langmap=php:.module.inc.engine.theme.php --php-kinds=cdfi --languages=php --recurse"
@@ -130,16 +125,6 @@ export PROMPT_COMMAND= # Handy against some forms of juvenile mischief.
 
 # Tell the python interpreter what to load on startup
 [ -r ~/.pythonstartup ] && export PYTHONSTARTUP=~/.pythonstartup
-
-# Custom functions
-
-function vimso() {
-FILE=${1:-~/.bashrc}
-vim $FILE
-source $FILE
-}
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Custom autocomplete
 
