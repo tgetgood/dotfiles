@@ -29,3 +29,5 @@
 	filemodes = false
 	autocrlf = input
 	eol = lf
+[push]
+	default = matching
