@@ -100,3 +100,6 @@ _chef-remote() {
   COMPREPLY=($(compgen -W "$RESULT" -- "$cur"))
 }
 complete -F _chef-remote chef-remote
+
+# Set custom keyboard remapping
+test -r ~/.Xmodmap && xmodmap ~/.Xmodmap
