@@ -59,18 +59,6 @@ set nu wildmenu
 
 runtime! macros/matchit.vim
 
-"Drupal Specific settings
-if has("autocmd")
-  " Drupal *.module files.
-  augroup module
-    autocmd BufRead *.module set filetype=php
-    autocmd BufRead *.inc set filetype=php
-    autocmd BufRead *.install set filetype=php
-    autocmd BufRead *.engine set filetype=php
-    autocmd BufRead *.test set filetype=php
-  augroup END
-endif
-
 "some rails stuff
 augroup myfiletypes
   autocmd!
@@ -78,14 +66,7 @@ augroup myfiletypes
 augroup END
 
 command SW execute 'w !sudo tee % >/dev/null' | e! %
-command DCC execute '! drush cache clear'
 command E execute 'Explore'
-
-"make gd work for drupal
-map gd :exe '/\s*function\s*'.expand("<cword>")<CR>
-map <F11> :set hlsearch!<CR>
-set grepprg=ack\ -a
-map gr :grep <cword> site/sites/all
 
 "-s0 allows nc to respond to ^D (EOF); see `man nc`
 map <F5> :silent !echo "BrowserReload(); repl.quit();^D" \| nc -s0 192.168.2.122 4242;<CR><C-C><C-L>
@@ -103,7 +84,7 @@ function ReScope()
 
   "TODO: Read from a file or something; as I add more languages, this is
   "getting ridiculous.
-  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune  -name '*.module' -o -name '*.inc' -o -name '*.php' -o -name '*.install' -o -name '*.engine' -o -name '*.test' -o -name '*.theme' -o -name '*.js' -o -name '*.rb' -o -name '*.rhtml' -o -name '*.py' -o -name '*.yml' -o -name Rakefile -o -name Makefile -o -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' -o -name '*.js')"
+  execute "!cscope -b -q -u -i<(find " . getcwd() . " -path '.git/*' -prune , -path '.svn/*' -prune  -name '*.module' -o -name '*.inc' -o -name '*.php' -o -name '*.install' -o -name '*.engine' -o -name '*.test' -o -name '*.theme' -o -name '*.js' -o -name '*.rb' -o -name '*.rhtml' -o -name '*.py' -o -name '*.yml' -o -name Rakefile -o -name Makefile -o -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' -o -name '*.js' -o -name '*.cs')"
 
   execute "cs add  " . getcwd() . "/cscope.out"
 endfunction
