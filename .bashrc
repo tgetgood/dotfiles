@@ -5,11 +5,16 @@
 # Add system bash completion. Sometimes this doesn't happen over ssh.
 # And on some systems (notably certain versions of RedHat) there is one-shot
 # script.
-test -r /etc/bash_completion && . /etc/bash_completion ||
-	(test -d /etc/bash_completion.d && . /etc/bash_completion.d/*)
-
-# Add custom global keybindings to ~/.xmodmap
-test -r ~/.xmodmap && xmodmap ~/.xmodmap
+if test -r /etc/bash_completion 
+then
+	. /etc/bash_completion 
+elif test -d /etc/bash_completion.d 
+then
+	for f in /etc/bash_completion.d/*
+	do 
+		. $f 2&>/dev/null
+	done
+fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
