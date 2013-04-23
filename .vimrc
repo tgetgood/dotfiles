@@ -21,12 +21,6 @@ filetype plugin indent on
 runtime macros/matchit.vim
 let mapleader = '\'
 
-" Rope setup
-if has("ropevim")
-  let ropevim_vim_completion=1
-  let ropevim_extend_complete=1
-endif
-
 " Switch windows more fluidly in normal or insert mode.
 " I never used the defaults for these keys anyway (if there are any).
 nmap <c-h> <c-w>h
