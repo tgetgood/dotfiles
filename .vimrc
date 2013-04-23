@@ -9,6 +9,7 @@ let icase=1
 
 "Better runtime paths
 call pathogen#infect()
+call pathogen#helptags()
 
 syntax on
 filetype on
