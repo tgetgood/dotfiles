@@ -13,8 +13,8 @@
 (require 'color-theme)
 (require 'linum+)
 (require 'paredit)
-; (require 'clojure-mode)
-; (require 'clojure-test-mode)
+(require 'clojure-mode)
+(require 'clojure-test-mode)
 (require 'nrepl)
 
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
