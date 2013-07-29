@@ -37,3 +37,12 @@
 [submodule ".vim/bundle/VimClojure"]
 	path = .vim/bundle/VimClojure
 	url = https://github.com/vim-scripts/VimClojure.git
+[submodule ".emacs-plugins/clojure-mode"]
+	path = .emacs-plugins/clojure-mode
+	url = https://github.com/clojure-emacs/clojure-mode.git
+[submodule ".emacs-plugins/nrepl"]
+	path = .emacs-plugins/nrepl
+	url = https://github.com/clojure-emacs/nrepl.el.git
+[submodule ".emacs-plugins/paredit"]
+	path = .emacs-plugins/paredit
+	url = http://mumble.net/~campbell/git/paredit.git/
