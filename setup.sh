@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Simple script to copy dotfiles to home directory.
 # If the files already exist, back them up and delete them.
 # Does not back up symlinks.
