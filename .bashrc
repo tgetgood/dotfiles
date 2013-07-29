@@ -108,3 +108,5 @@ complete -F _chef-remote chef-remote
 
 # Set custom keyboard remapping
 test -r ~/.Xmodmap && xmodmap ~/.Xmodmap
+
+export VIMCLOJURE_SERVER_JAR="/opt/ng-server/server-2.3.0.jar"
