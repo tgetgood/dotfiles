@@ -4,11 +4,18 @@
 (add-to-list 'load-path "/home/thomas/.emacs-plugins/scala-mode")
 (add-to-list 'load-path "/home/thomas/.emacs-plugins/ensime/elisp")
 (add-to-list 'load-path "/home/thomas/.emacs-plugins/color-theme")
+(add-to-list 'load-path "/home/thomas/.emacs-plugins/clojure-mode")
+(add-to-list 'load-path "/home/thomas/.emacs-plugins/nrepl")
+(add-to-list 'load-path "/home/thomas/.emacs-plugins/paredit")
 
 (require 'scala-mode-auto)
 (require 'ensime)
 (require 'color-theme)
 (require 'linum+)
+(require 'paredit)
+; (require 'clojure-mode)
+; (require 'clojure-test-mode)
+(require 'nrepl)
 
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
  
@@ -61,3 +68,16 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(add-hook 'clojure-mode-hook 'paredit-mode)
+
+;; nrepl config
+(add-hook 'nrepl-interaction-mode-hook
+	'nrepl-turn-on-eldoc-mode)
+(add-hook 'nrepl-mode-hook 'paredit-mode)
+
+(setq nrepl-hide-special-buffers t)
+(setq nrepl-popup-stacktraces nil)
+(setq nrepl-popup-stacktraces-in-repl t)
+
+(add-to-list 'same-window-buffer-names "*nrepl*")
