@@ -140,12 +140,9 @@ autocmd FileType javascript :setl omnifunc=jscomplete#CompleteJS
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
-" VimClojure config
-let Vimclojure#SplitPos = "bottom"
-let Vimclojure#SplitSize = 10
-let vimclojure#DynamicHighlighting = 1
-let vimclojure#NailgunClient = "/home/thomas/bin/ng"
-let vimclojure#WantNailgun = 1
-" au BufRead,BufNewFile *.clj imap <c-up>
-" au BufRead,BufNewFile *.clj imap <c-down> <Plug>ClojureReplDownHistory
-
+" Shortcuts for fireplace.vim
+" TODO: look into using autocmd FileType clojure... to prevent shortcut
+" collisions.
+map <leader>e :Eval<cr>
+nmap <leader>E vip:Eval<cr>
+comm! -nargs=0 EF %Eval
