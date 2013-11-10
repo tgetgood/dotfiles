@@ -16,6 +16,13 @@ then
 	done
 fi
 
+
+# SSH Key management and setup
+eval `ssh-agent`
+
+# Let Gnome keyring do it's thing
+eval `gnome-keyring-daemon -s`
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
