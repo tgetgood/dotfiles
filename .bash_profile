@@ -6,3 +6,7 @@ case $- in
     ;;
 esac
 
+# if [ -f ~/.bashrc ]; then
+# 	 source ~/.bashrc
+# fi
+

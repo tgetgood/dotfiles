@@ -5,7 +5,7 @@ if [ -f $HOME/.Xmodmap ]; then
 fi
 
 #disable touchpad while typing
-syndaemon -K -i 1 -d &
+syndaemon -R -K -i 1 -d &
 
 pulseaudio --start
 
