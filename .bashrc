@@ -20,8 +20,6 @@ fi
 # SSH Key management and setup
 eval `ssh-agent`
 
-# Let Gnome keyring do it's thing
-test -z "$(which gnome-keyring-daemon 2>/dev/null)" || eval $(gnome-keyring-daemon -s)
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
