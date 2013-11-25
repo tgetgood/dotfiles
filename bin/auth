@@ -2,11 +2,12 @@
 
 if test ${#*} -ne 1
 then
-  echo "Usage: auth KEYNAME"
-  exit 1
+	KEY=~/.ssh/`hostname`
+  # echo "Usage: auth KEYNAME"
+  # exit 1
+else
+	KEY=~/.ssh/$1
 fi
-
-KEY=~/.ssh/$1
 
 PRINT=`ssh-keygen -lf $KEY | cut -d\  -f2`
 
