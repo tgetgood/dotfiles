@@ -10,4 +10,4 @@ syndaemon -R -K -i 1 -d &
 pulseaudio --start
 
 
-exec awesome
+ssh-agent awesome
