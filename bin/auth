@@ -20,5 +20,5 @@ do
 done
 
 # Expire the key after 2 hours just in case.
-ssh-add -t 7200 $KEY
+ssh-add  $KEY
 exit $?

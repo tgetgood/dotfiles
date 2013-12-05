@@ -12,10 +12,10 @@
 	url = https://github.com/tpope/vim-eunuch.git
 [submodule ".vim/bundle/vim-vividchalk"]
 	path = .vim/bundle/vim-vividchalk
-	url = git@github.com:tpope/vim-vividchalk.git
+	url = https://github.com/tpope/vim-vividchalk.git
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
-	url = git@github.com:scrooloose/syntastic.git
+	url = https://github.com/scrooloose/syntastic.git
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
@@ -45,10 +45,10 @@
 	url = https://github.com/clojure-emacs/nrepl.el.git
 [submodule ".emacs-plugins/paredit"]
 	path = .emacs-plugins/paredit
-	url = http://mumble.net/~campbell/git/paredit.git/
+	url = https://mumble.net/~campbell/git/paredit.git/
 [submodule ".vim/bundle/vim-fireplace"]
 	path = .vim/bundle/vim-fireplace
-	url = git://github.com/tpope/vim-fireplace.git
+	url = https://github.com/tpope/vim-fireplace.git
 [submodule ".vim/bundle/clojure-static"]
 	path = .vim/bundle/clojure-static
-	url = git://github.com/guns/vim-clojure-static.git
+	url = https://github.com/guns/vim-clojure-static.git
