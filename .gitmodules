@@ -45,7 +45,7 @@
 	url = https://github.com/clojure-emacs/nrepl.el.git
 [submodule ".emacs-plugins/paredit"]
 	path = .emacs-plugins/paredit
-	url = https://mumble.net/~campbell/git/paredit.git/
+	url = http://mumble.net/~campbell/git/paredit.git/
 [submodule ".vim/bundle/vim-fireplace"]
 	path = .vim/bundle/vim-fireplace
 	url = https://github.com/tpope/vim-fireplace.git
