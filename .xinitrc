@@ -7,7 +7,7 @@ fi
 #disable touchpad while typing
 syndaemon -R -K -i 1 -d &
 
-pulseaudio --start
+pulseaudio --start -D 
 
 
 ssh-agent awesome
