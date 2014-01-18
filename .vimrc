@@ -146,3 +146,7 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 map <leader>e :Eval<cr>
 nmap <leader>E vip:Eval<cr>
 comm! -nargs=0 EF %Eval
+
+
+" vim-javascript
+let javascript_enable_domhtmlcss=1

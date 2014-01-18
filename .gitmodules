@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/vim-slamhound"]
 	path = .vim/bundle/vim-slamhound
 	url = https://github.com/guns/vim-slamhound.git
+[submodule ".vim/bundle/vim-javascript"]
+	path = .vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
