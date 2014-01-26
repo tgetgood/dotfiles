@@ -134,8 +134,8 @@ if !exists("g:syntastic_javascript_jslint_conf")
     let g:syntastic_javascript_jslint_conf = "--nomen --white --regexp --plusplus --vars --continue --stupid"
 endif
  
-let g:node_usejscomplete = 1
-autocmd FileType javascript :setl omnifunc=jscomplete#CompleteJS
+" let g:node_usejscomplete = 1
+" autocmd FileType javascript :setl omnifunc=jscomplete#CompleteJS
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
