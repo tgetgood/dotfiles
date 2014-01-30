@@ -1,10 +1,10 @@
-(set-face-attribute 'default nil :height 80)
+;;(set-face-attribute 'default nil :height 80)
 
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(scroll-bar-mode -1)
+;;(tool-bar-mode 0)
+;;(menu-bar-mode 0)
+;;(scroll-bar-mode -1)
 
-(set-frame-parameter nil 'fullscreen 'fullboth)
+;;(set-frame-parameter nil 'fullscreen 'fullboth)
 
 (defun dont-kill-emacs ()
 	(interactive)
