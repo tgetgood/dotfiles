@@ -57,4 +57,4 @@
 	url = https://github.com/jsx/jsx.vim.git
 [submodule ".emacs.d"]
 	path = .emacs.d
-	url = https://github.com/overtone/emacs-live.git
+	url = https://github.com/bbatsov/prelude.git
