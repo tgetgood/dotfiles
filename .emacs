@@ -4,8 +4,7 @@
 (menu-bar-mode -1)
 (global-linum-mode 1)
 (column-number-mode)
-
-(ido-mode)
+(show-paren-mode)
 
 ;; Windmove customization
 
@@ -16,7 +15,22 @@
 
 ;; How in hell?? (set-fill-column 80)
 
-;; this is a reall really long comment to test out wrapping and see if we can get anything
+;; handy stolen methods
+
+(dolist (command '(yank yank-pop))
+   (eval `(defadvice ,command (after indent-region activate)
+            (and (not current-prefix-arg)
+                 (member major-mode '(emacs-lisp-mode lisp-mode
+                                                      clojure-mode    scheme-mode
+                                                      haskell-mode    ruby-mode
+                                                      rspec-mode      python-mode
+                                                      c-mode          c++-mode
+                                                      objc-mode       latex-mode
+                                                      plain-tex-mode))
+                 (let ((mark-even-if-inactive transient-mark-mode))
+                   (indent-region (region-beginning) (region-end) nil))))))
+
+
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
@@ -52,6 +66,52 @@
   (provide 'prelude-packages)
 ;; prelude-packages.el ends here
 )
+
+;; package config
+
+(require 'ac-nrepl)
+(add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
+(add-hook 'cider-mode-hook 'ac-nrepl-setup)
+(eval-after-load "auto-complete"
+  '(add-to-list 'ac-modes 'cider-repl-mode))
+
+(defun set-auto-complete-as-completion-at-point-function ()
+  (setq completion-at-point-functions '(auto-complete)))
+(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
+
+(add-hook 'cider-repl-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
+
+;; Cider
+
+(defun cider-namespace-refresh ()
+  (interactive)
+  (cider-interactive-eval
+   "(require 'clojure.tools.namespace.repl)
+    (clojure.tools.namespace.repl/refresh)"))
+
+(define-key clojure-mode-map (kbd "M-r") 'cider-namespace-refresh)
+
+;; clj-refactor
+
+(require 'clj-refactor)
+(add-hook 'clojure-mode-hook (lambda ()
+                               (clj-refactor-mode 1)
+                               (cljr-add-keybindings-with-prefix "C-c C-v")
+                               ))
+
+;; auto-complete? 
+
+(require 'auto-complete)
+(global-auto-complete-mode t)
+
+
+(ido-mode)
+
+(require 'undo-tree)
+(global-undo-tree-mode t)
+
+;; I should just learn to be careful about not doing this..
 
 (defun dont-kill-emacs ()
 	(interactive)
