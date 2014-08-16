@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/jsx"]
 	path = .vim/bundle/jsx
 	url = https://github.com/jsx/jsx.vim.git
+[submodule ".vim/bundle/vim-clojure-highlight"]
+	path = .vim/bundle/vim-clojure-highlight
+	url = https://github.com/guns/vim-clojure-highlight.git
