@@ -21,6 +21,8 @@ filetype plugin indent on
 runtime macros/matchit.vim
 let mapleader = '\'
 
+au BufNewFile,BufRead *.cljs set filetype=clojure
+
 " Switch windows more fluidly in normal or insert mode.
 " I never used the defaults for these keys anyway (if there are any).
 nmap <c-h> <c-w>h
