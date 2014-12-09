@@ -16,10 +16,8 @@ then
 	done
 fi
 
-
-# SSH Key management and setup
-# eval `ssh-agent`
-
+# Damned bell...
+xset -b
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
