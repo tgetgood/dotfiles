@@ -49,6 +49,7 @@
     
     
     ;; Misc
+		projectile
 		undo-tree
     auto-complete
     ack-and-a-half

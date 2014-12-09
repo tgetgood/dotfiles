@@ -49,7 +49,7 @@
 (setq cider-auto-select-error-buffer t)
 
 ;; Where to store the cider history.
-(setq cider-repl-history-file "~/.emacs.d/transient/cider-history")
+(setq cider-repl-history-file (concat user-emacs-directory "transient/cider-history"))
 
 ;; Wrap when navigating history.
 (setq cider-repl-wrap-history t)

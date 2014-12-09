@@ -1,3 +1,8 @@
-elpa
-auto-save-list
-transient
+# Ignore everything and treat this as a whitelist
+
+*
+
+# My config.
+
+!init.el
+!config/
