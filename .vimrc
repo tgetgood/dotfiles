@@ -7,6 +7,16 @@ set ignorecase smartcase
 set backspace=indent,eol,start
 let icase=1
 
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
+
 "Better runtime paths
 call pathogen#infect()
 call pathogen#helptags()
@@ -22,6 +32,7 @@ runtime macros/matchit.vim
 let mapleader = '\'
 
 au BufNewFile,BufRead *.cljs set filetype=clojure
+au BufNewFile,BufRead *.cljx set filetype=clojure
 
 " Switch windows more fluidly in normal or insert mode.
 " I never used the defaults for these keys anyway (if there are any).
