@@ -8,19 +8,6 @@
 ;; A little more syntax highlighting
 (require 'clojure-mode-extra-font-locking)
 
-;; syntax hilighting for midje
-(add-hook 'clojure-mode-hook
-					(lambda ()
-						(setq inferior-lisp-program "lein repl")
-						(font-lock-add-keywords
-						 nil
-						 '(("(\\(facts?\\)"
-								(1 font-lock-keyword-face))
-							 ("(\\(background?\\)"
-								(1 font-lock-keyword-face))))
-						(define-clojure-indent (fact 1))
-						(define-clojure-indent (facts 1))))
-
 ;;;;;
 ;; Autocompletion
 ;;;;;
@@ -98,3 +85,30 @@
                                (clj-refactor-mode 1)
                                (cljr-add-keybindings-with-prefix "C-c C-v")
                                ))
+
+;;;;;
+;; Kibit
+;;;;;
+
+;;; Stolen verbatim from the README
+
+;; Teach compile the syntax of the kibit output
+(require 'compile)
+(add-to-list 'compilation-error-regexp-alist-alist
+         '(kibit "At \\([^:]+\\):\\([[:digit:]]+\\):" 1 2 nil 0))
+(add-to-list 'compilation-error-regexp-alist 'kibit)
+
+;; A convenient command to run "lein kibit" in the project to which
+;; the current emacs buffer belongs to.
+(defun kibit ()
+  "Run kibit on the current project.
+Display the results in a hyperlinked *compilation* buffer."
+  (interactive)
+  (compile "lein kibit"))
+
+(defun kibit-current-file ()
+  "Run kibit on the current file.
+Display the results in a hyperlinked *compilation* buffer."
+  (interactive)
+  (compile (concat "lein kibit " buffer-file-name)))
+

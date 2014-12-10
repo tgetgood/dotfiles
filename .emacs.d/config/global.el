@@ -18,11 +18,13 @@
 (global-linum-mode 1)
 
 ;; Is there really not a simpler way to do this?
-(setq linum-format (lambda (line)
-										 (propertize
-											(format
-											 (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
-												 (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
+(setq linum-format
+			(lambda (line)
+				(propertize
+				 (format
+					(let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
+						(concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
+
 
 ;; TODO: create JS setup file.
 (setq js-indent-level 2)
@@ -34,6 +36,20 @@
 (global-set-key (kbd "C-c l") 'windmove-right)
 (global-set-key (kbd "C-c k")    'windmove-up)
 (global-set-key (kbd "C-c j")  'windmove-down)
+
+;;;;;
+;; Global keywords (...?)
+;;;;;
+
+;; Feeding my inline TODO list habit
+;; FIXME: This seems an incredibly sub-optimal way to do this...
+
+(add-hook 'buffer-list-update-hook
+ (lambda ()
+	 (progn
+		 (font-lock-add-keywords nil '(("\\<\\(FIXME\\|TODO\\|HACK\\):"
+																		1 font-lock-warning-face t)))
+		 (font-lock-fontify-buffer))))
 
 ;;;;;
 ;; Setup globalish things
@@ -97,6 +113,9 @@
 
  ;; Mouse yank commands yank at point instead of at click.
  mouse-yank-at-point t)
+
+;; Paste like a terminal 
+(global-set-key (kbd "C-S-v") 'x-clipboard-yank)
 
 ;;;;;
 ;; Misc special funcs
