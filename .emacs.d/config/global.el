@@ -2,6 +2,12 @@
 ;; Truly global editor config
 ;;;;;
 
+;; No need for ~ files when editing
+(setq create-lockfiles nil)
+
+;; Go straight to scratch buffer on startup
+(setq inhibit-startup-message t)
+
 (menu-bar-mode -1)
 (column-number-mode)
 (show-paren-mode)
@@ -44,6 +50,13 @@
 ;; in the current directory displayed in the minibuffer
 (setq ido-auto-merge-work-directories-length -1)
 
+;; Turn this behavior off because it's annoying
+(setq ido-use-filename-at-point nil)
+
+;; Includes buffer names of recently open files, even if they're not
+;; open now
+(setq ido-use-virtual-buffers t)
+
 ;; This enables ido in all contexts where it could be useful, not just
 ;; for selecting buffer and file names
 (ido-ubiquitous-mode 1)
@@ -51,7 +64,6 @@
 ;; Override default buffer view
 ;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-
 
 (require 'undo-tree)
 (global-undo-tree-mode t)
@@ -66,6 +78,25 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 40)
 
+;;;;;
+;; Cut and paste
+;;;;;
+
+(setq
+ ;; makes killing/yanking interact with the clipboard
+ x-select-enable-clipboard t
+
+ ;; I'm actually not sure what this does but it's recommended?
+ x-select-enable-primary t
+
+ ;; Save clipboard strings into kill ring before replacing them.
+ ;; When one selects something in another program to paste it into Emacs,
+ ;; but kills something in Emacs before actually pasting it,
+ ;; this selection is gone unless this variable is non-nil
+ save-interprogram-paste-before-kill t
+
+ ;; Mouse yank commands yank at point instead of at click.
+ mouse-yank-at-point t)
 
 ;;;;;
 ;; Misc special funcs
@@ -98,9 +129,9 @@
 ;;;;;
 
 (defun ask-before-closing ()
-  "Prompt before closing."
+	"Prompt before closing."
   (interactive)
-  (if (yes-or-no-p (format "Are you sure you want to exit Emacs? "))
+  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
       (if (< emacs-major-version 22)
 	  (save-buffers-kill-terminal)
 	(save-buffers-kill-emacs))
