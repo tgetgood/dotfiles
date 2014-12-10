@@ -79,8 +79,6 @@
 
 (load "clojure-setup.el")
 
-(load "gui.el")
-
 ;;;;;
 ;; Machine Generated
 ;;;;;
@@ -110,4 +108,10 @@
 (load-theme 'cyberpunk t)		
 
 ;;;;; This needs to override the theme settings.
-(load "font-setup.el")
+
+(if (window-system)
+	(load "gui.el")
+	(add-hook 'server-visit-hook
+						(lambda ()
+							(load "gui.el"))))
+	
