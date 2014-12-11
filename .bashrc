@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 # Add system bash completion. Sometimes this doesn't happen over ssh.
 # And on some systems (notably certain versions of RedHat) there is one-shot
 # script.
@@ -18,9 +21,6 @@ fi
 
 # Damned bell...
 xset -b
-
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
@@ -61,6 +61,9 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+
+alias emacs='emacsclient -nw'
+alias emacsc='emacsclient -c'
 
 # Per machine config
 [ -r ~/.bash_local ] && . ~/.bash_local
