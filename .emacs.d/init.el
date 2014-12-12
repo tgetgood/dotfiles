@@ -38,11 +38,10 @@
     paredit
     cider
     clj-refactor
-    ac-cider
 
-		;;Evil
-		evil
-		evil-paredit
+    ;;Evil
+    evil
+    evil-paredit
 		
     ;; Themes
     cyberpunk-theme
@@ -52,18 +51,13 @@
     markdown-mode
     
     ;; Completion
-		ac-cider-compliment
-		ac-html
+    company
 		
     ;; Misc
-		multiple-cursors
-		projectile
-		undo-tree
-    auto-complete
+    undo-tree
     ack-and-a-half
     ido-ubiquitous
     smex
-    projectile
     tagedit
     magit
     ))

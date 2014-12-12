@@ -66,11 +66,24 @@
 		 (font-lock-fontify-buffer))))
 
 ;;;;;
-;; Setup globalish things
+;; Auto completion
 ;;;;;
 
-(require 'auto-complete)
-(global-auto-complete-mode t)
+(add-hook 'after-init-hook 'global-company-mode)
+
+(defun indent-or-complete ()
+	(interactive)
+	(if (looking-at "\\_>")
+			(company-complete-common)
+		(indent-according-to-mode)))
+
+;; Rebind TAB
+;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(global-set-key (kbd "TAB") 'indent-or-complete)
+
+;;;;;
+;; 
+;;;;;
 
 ;;;; ido
 
@@ -153,9 +166,6 @@
 ;; Override M-x
 ;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 (global-set-key (kbd "M-x") 'smex)
-
-;; projectile everywhere!
-(projectile-global-mode)
 
 ;;;;;
 ;; Function overrides

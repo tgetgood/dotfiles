@@ -6,19 +6,6 @@
 (require 'clojure-mode-extra-font-locking)
 
 ;;;;;
-;; Autocompletion
-;;;;;
-
-;; TODO: Some of this is not clojure specific.
-
-(defun set-auto-complete-as-completion-at-point-function ()
-  (setq completion-at-point-functions '(auto-complete)))
-
-(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-(add-hook 'cider-repl-mode-hook 'set-auto-complete-as-completion-at-point-function)
-(add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
-
-;;;;;
 ;; Cider
 ;;;;;
 
