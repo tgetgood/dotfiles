@@ -43,7 +43,6 @@
 		;;Evil
 		evil
 		evil-paredit
-		evil-escape
 		
     ;; Themes
     cyberpunk-theme
@@ -52,8 +51,12 @@
     scss-mode
     markdown-mode
     
-    
+    ;; Completion
+		ac-cider-compliment
+		ac-html
+		
     ;; Misc
+		multiple-cursors
 		projectile
 		undo-tree
     auto-complete
@@ -73,11 +76,18 @@
 ;; Config
 ;;;;;
 
+(setenv "PATH" (concat (getenv "PATH") ":/home/thomas/bin"))
+(setq exec-path (append exec-path '("/home/thomas/bin")))
+
 (add-to-list 'load-path "~/.emacs.d/config")
 
 (load "global.el")
 
 (load "clojure-setup.el")
+
+(load "evil-setup.el")
+
+(load "paredit-setup.el")
 
 ;;;;;
 ;; Machine Generated

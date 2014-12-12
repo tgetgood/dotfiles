@@ -14,6 +14,18 @@
 (setq-default tab-width 2)
 (global-auto-revert-mode 1)
 
+;;;; Auto-indent
+
+
+(electric-indent-mode -1)
+
+(defun simple-ret-tab ()
+	(interactive)
+	(newline-and-indent)
+	(indent-relative-maybe))
+
+(global-set-key (kbd "RET") 'simple-ret-tab)
+
 ;; Line numbers with a space at the end.
 (global-linum-mode 1)
 
@@ -26,8 +38,17 @@
 						(concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
 
 
+;;;;;
+;; Stuff that should have separate files
+;;;;;
+
 ;; TODO: create JS setup file.
 (setq js-indent-level 2)
+
+;; TODO: scss file? web file? 
+(setq scss-compile-at-save nil)
+
+(global-set-key (kbd "C-c r") 'mc/mark-all-like-this-dwim)
 
 ;;;;;
 ;; Easy window navigation
