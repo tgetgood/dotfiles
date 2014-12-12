@@ -83,6 +83,9 @@
                                (cljr-add-keybindings-with-prefix "C-c C-v")
                                ))
 
+(add-hook 'clojure-mode-hook 'cider-mode)
+(add-hook 'cider-repl-mode-hook 'cider-mode)
+
 ;;;;;
 ;; Kibit
 ;;;;;

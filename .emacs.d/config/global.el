@@ -16,15 +16,9 @@
 
 ;;;; Auto-indent
 
-
 (electric-indent-mode -1)
 
-(defun simple-ret-tab ()
-	(interactive)
-	(newline-and-indent)
-	(indent-relative-maybe))
-
-(global-set-key (kbd "RET") 'simple-ret-tab)
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; Line numbers with a space at the end.
 (global-linum-mode 1)
@@ -36,7 +30,6 @@
 				 (format
 					(let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
 						(concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
-
 
 ;;;;;
 ;; Stuff that should have separate files
