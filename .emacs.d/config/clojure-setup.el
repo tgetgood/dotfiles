@@ -99,3 +99,13 @@ Display the results in a hyperlinked *compilation* buffer."
   (interactive)
   (compile (concat "lein kibit " buffer-file-name)))
 
+
+;;;;;
+;; Compilation tasks
+;;;;;
+
+(defun lein-run ()
+	(interactive)
+	(compile "lein trampoline run")
+	(switch-to-buffer-other-window "*compilation*")
+	(rename-buffer "*lein-run*"))

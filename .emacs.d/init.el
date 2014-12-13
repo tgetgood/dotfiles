@@ -39,6 +39,9 @@
     cider
     clj-refactor
 
+		;; cljs
+		cljsbuild-mode
+		
     ;;Evil
     evil
     evil-paredit
@@ -49,6 +52,8 @@
     ;; Web
     scss-mode
     markdown-mode
+		;; HTML pseudo-paredit
+    tagedit
     
     ;; Completion
     company
@@ -58,7 +63,6 @@
     ack-and-a-half
     ido-ubiquitous
     smex
-    tagedit
     magit
     ))
 
@@ -83,6 +87,11 @@
 
 (load "paredit-setup.el")
 
+(load "compilation-setup.el")
+
+(load "grunt-setup.el")
+
+(load "workflows.el")
 ;;;;;
 ;; Machine Generated
 ;;;;;
@@ -111,7 +120,10 @@
 
 (load-theme 'cyberpunk t)		
 
-;;;;; This needs to override the theme settings.
+;;;;; This needs to override the theme settings. Which in turn need to
+;;;;; come after the custom stuff.
+;;;;;
+;;;;; TODO: Can this be rearranged more sensibly?
 
 (if (window-system)
 	(load "gui.el")

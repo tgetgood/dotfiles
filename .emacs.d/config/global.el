@@ -41,8 +41,6 @@
 ;; TODO: scss file? web file? 
 (setq scss-compile-at-save nil)
 
-(global-set-key (kbd "C-c r") 'mc/mark-all-like-this-dwim)
-
 ;;;;;
 ;; Easy window navigation
 ;;;;;
