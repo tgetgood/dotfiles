@@ -106,6 +106,6 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (defun lein-run ()
 	(interactive)
-	(compile "lein trampoline run")
+	(compile "lein trampoline run" t)
 	(switch-to-buffer-other-window "*compilation*")
 	(rename-buffer "*lein-run*"))
