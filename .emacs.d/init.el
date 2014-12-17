@@ -1,3 +1,4 @@
+
 ;;;;
 ;; Packages
 ;;;;
@@ -57,6 +58,11 @@
     
     ;; Completion
     company
+		bash-completion
+
+		;; Comms
+		wanderlust
+		jabber
 		
     ;; Misc
     undo-tree
@@ -81,11 +87,14 @@
 
 (load "global.el")
 
-(load "clojure-setup.el")
-
 (load "evil-setup.el")
 
 (load "paredit-setup.el")
+
+(load "clojure-setup.el")
+
+;; Indentation exceptions for clojure.
+(load "clojure-indentation.el")
 
 (load "compilation-setup.el")
 

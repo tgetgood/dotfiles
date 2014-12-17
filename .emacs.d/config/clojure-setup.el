@@ -109,3 +109,10 @@ Display the results in a hyperlinked *compilation* buffer."
 	(compile "lein trampoline run" t)
 	(switch-to-buffer-other-window "*compilation*")
 	(rename-buffer "*lein-run*"))
+
+
+;;;;;
+;; Evil customisations
+;;;;;
+
+(define-key evil-normal-state-map "K" 'cider-doc)

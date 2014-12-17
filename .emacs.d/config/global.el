@@ -49,6 +49,9 @@
 (global-set-key (kbd "C-c k")    'windmove-up)
 (global-set-key (kbd "C-c j")  'windmove-down)
 
+;; C-x 4 b ... you're kidding me...
+(global-set-key (kbd "C-c b") 'switch-to-buffer-other-window)
+
 ;;;;;
 ;; Global keywords (...?)
 ;;;;;
@@ -74,6 +77,19 @@
 	(if (looking-at "\\_>")
 			(company-complete-common)
 		(indent-according-to-mode)))
+
+;; Shell-mode (bash)
+
+(autoload 'bash-completion-dynamic-complete 
+  "bash-completion"
+  "BASH completion hook")
+(add-hook 'shell-dynamic-complete-functions
+  'bash-completion-dynamic-complete)
+(add-hook 'shell-command-complete-functions
+  'bash-completion-dynamic-complete)
+
+(require 'bash-completion)
+(bash-completion-setup)
 
 ;; Rebind TAB
 ;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
