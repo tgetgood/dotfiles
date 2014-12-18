@@ -15,7 +15,25 @@
 
 (define-key key-translation-map (kbd "C-g") 'esc-non-normal)
 
+(defvar my-emacs-modes
+	'(
+		cider-docview-mode
+		cider-stacktrace-mode
+		haskell-error-mode
+		haskell-interactive-mode
+		
+		))
+
 (evil-mode 1)
+
+;; Handy helper to figure out buffer mode names for below list. 
+(defun buffer-mode (buffer-or-string)
+  "Returns the major mode associated with a buffer."
+  (with-current-buffer buffer-or-string
+     major-mode))
+
+(dolist (m my-emacs-modes) 
+	(add-to-list 'evil-emacs-state-modes m))
 
 ;; Evil isn't always appropriate... Or is it?
 ;; (add-to-list 'evil-emacs-state-modes ...)
