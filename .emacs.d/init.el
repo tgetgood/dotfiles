@@ -40,8 +40,12 @@
     cider
     clj-refactor
 
-		;; cljs
-		cljsbuild-mode
+    ;; cljs
+    cljsbuild-mode
+    
+    ;; Haskell
+    haskell-mode
+    scion
 		
     ;;Evil
     evil
@@ -53,16 +57,16 @@
     ;; Web
     scss-mode
     markdown-mode
-		;; HTML pseudo-paredit
+    ;; HTML pseudo-paredit
     tagedit
     
     ;; Completion
     company
-		bash-completion
+    bash-completion
 
-		;; Comms
-		wanderlust
-		jabber
+    ;; Comms
+    wanderlust
+    jabber
 		
     ;; Misc
     undo-tree
