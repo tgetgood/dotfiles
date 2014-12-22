@@ -70,7 +70,7 @@ alias emacs='emacs -nw'
 [ -r ~/.bash_local ] && . ~/.bash_local
 
 # Custom ENV init
-export PATH=$PATH:~/bin:/usr/local/node/bin
+export PATH=$PATH:~/bin:/usr/local/node/bin:/opt/LightTable
 export CDPATH=.:$CDPATH
 export PAGER=less
 export EDITOR=vim

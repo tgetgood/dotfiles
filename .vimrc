@@ -36,12 +36,12 @@ imap <c-l> <esc><c-w>l
 " vim-unimpaired has better shortcuts for these.
 "
 " Fast buffer navigation
-"nmap <silent> <leader>l :bn<cr>
-"nmap <silent> <leader>h :bp<cr>
+nmap <silent> <leader>l :bn<cr>
+nmap <silent> <leader>h :bp<cr>
 "
 " Quickfix shortcuts
-"nmap <leader>, :cprevious<cr>
-"nmap <leader>. :cnext<cr>
+nmap <leader>, :cprevious<cr>
+nmap <leader>. :cnext<cr>
 
 " Quickfix window
 nmap <leader>q :copen<cr>
@@ -127,7 +127,7 @@ endfunction
 imap <Nul> <C-R>=AutoComplete()<cr>
 
 " Customise tasklist.
-let g:tlTokenList = ["TODO", "FIXME", 'N.B.', "@todo", "@fixme"]
+let g:tlTokenList = ["TODO", "FIXME", "@todo", "@fixme"]
 
 " Custom jslint config
 if !exists("g:syntastic_javascript_jslint_conf")
