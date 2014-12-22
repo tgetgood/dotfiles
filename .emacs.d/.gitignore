@@ -1,0 +1,11 @@
+# Ignore everything and treat this as a whitelist
+
+*
+
+# My config.
+
+!.gitignore
+!init.el
+
+!config/
+!config/*

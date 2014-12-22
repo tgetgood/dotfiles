@@ -1,7 +1,13 @@
 #!/bin/bash
 
-if [ -f $HOME/.Xmodmap ]; then
-	/usr/bin/xmodmap $HOME/.Xmodmap
+if [ -f $HOME/.Xmodmap ]
+then
+	/usr/bin/env xmodmap $HOME/.Xmodmap
+fi
+
+if [ -f $HOME/.Xresources ]
+then
+		/usr/bin/env xrdb $HOME/.Xresources
 fi
 
 #disable touchpad while typing

@@ -1,0 +1,24 @@
+xterm*termName: xterm-256color
+XTerm*locale: true
+XTerm*metaSendsEscape: true
+xterm*ttyModes: erase ^?
+xterm*backarrowKeyIsErase: true
+
+xterm*visualBell: false
+
+Xterm*saveLines: 16384
+
+Xterm*reverseVideo: on
+XTerm*foreground: SkyBlue
+XTerm*background: grey0
+XTerm*color2: DarkGreen
+
+xterm*faceName: DejaVu Sans Mono
+xterm*faceNameDoublesize: WenQuanYi Bitmap Song
+xterm*faceSize: 9
+
+! Key mappings... (Panic)
+
+! Term.VT100.translations: #override \
+!   Ctrl Shift ~Meta <key>v string("
+

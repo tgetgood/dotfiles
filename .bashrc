@@ -1,6 +1,9 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# Not much is original in here. As I get older I seem to be getting
+# more and more comfortable using the default settings. I should think
+# more deeply about what this means...
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
 
 # Add system bash completion. Sometimes this doesn't happen over ssh.
 # And on some systems (notably certain versions of RedHat) there is one-shot
@@ -16,13 +19,8 @@ then
 	done
 fi
 
-
-# SSH Key management and setup
-# eval `ssh-agent`
-
-
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+# Damned bell...
+xset -b
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
@@ -64,7 +62,8 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias emacs='emacs -nw'
+alias emacs='emacsclient -nw'
+alias emacsc='emacsclient -c'
 
 # Per machine config
 [ -r ~/.bash_local ] && . ~/.bash_local
@@ -75,42 +74,9 @@ export CDPATH=.:$CDPATH
 export PAGER=less
 export EDITOR=vim
 export PROMPT_COMMAND= # Handy against some forms of juvenile mischief.
+
+# TODO: This should be covered in .Xresources. Check.
 export TERM=xterm-256color
 
 # Tell the python interpreter what to load on startup
 [ -r ~/.pythonstartup ] && export PYTHONSTARTUP=~/.pythonstartup
-
-# Custom autocomplete
-
-# FIXME: Will crash if git isn't installed. Do I care enough?
-_gitsync() { 
-   cur=${COMP_WORDS[$COMP_CWORD]}
-   COMPREPLY=($(compgen -W "$(git branch | sed s/\*// | sed s/^\ *//)" -- $cur))
-   return $?
-}
-complete -F _gitsync gitsync
-
-# VERY rough autocomplete for drush.
-_drush() {
-  if [ $COMP_CWORD -gt 1 ]
-  then
-    COMPREPLY=
-    return 0
-  fi
-
-  cur=${COMP_WORDS[$COMP_CWORD]}
-  RESULT=$(find /usr/local/lib/drush/commands . -name *.drush.inc -exec cat {} + | grep '^ *$items\[' | sed "s/^ *\\$\items\['//" | sed "s/'\].*$//")
-
-  COMPREPLY=($(compgen -W  "$RESULT" -- "$cur"))
-  return $?
-}
-complete -F _drush drush
- 
-_chef-remote() {
-  cur=${COMP_WORDS[$COMP_CWORD]}
-  RESULT=$(cat ~/.ssh/known_hosts | grep -v ^\| | cut -d, -f1 | cut -d\  -f1)
-  COMPREPLY=($(compgen -W "$RESULT" -- "$cur"))
-}
-complete -F _chef-remote chef-remote
-
-export VIMCLOJURE_SERVER_JAR="/opt/ng-server/server-2.3.0.jar"
