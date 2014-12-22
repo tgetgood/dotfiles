@@ -44,13 +44,13 @@
 ;;;;;
 ;; Easy window navigation
 ;;;;;
-(global-set-key (kbd "C-c h")  'windmove-left)
-(global-set-key (kbd "C-c l") 'windmove-right)
-(global-set-key (kbd "C-c k")    'windmove-up)
-(global-set-key (kbd "C-c j")  'windmove-down)
+(global-set-key (kbd "<f12> h")  'windmove-left)
+(global-set-key (kbd "<f12> l") 'windmove-right)
+(global-set-key (kbd "<f12> k")    'windmove-up)
+(global-set-key (kbd "<f12> j")  'windmove-down)
 
 ;; C-x 4 b ... you're kidding me...
-(global-set-key (kbd "C-c b") 'switch-to-buffer-other-window)
+(global-set-key (kbd "<f12> b") 'switch-to-buffer-other-window)
 
 ;;;;;
 ;; Global keywords (...?)
