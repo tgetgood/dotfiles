@@ -134,10 +134,24 @@
     stop
     tspan))
 
+(defvar defy-funcs
+	'(
+		render
+		render-state
+		init
+		init-state
+		will-mount
+		did-mount
+		will-unmount
+		))
+
 (dolist (tag my-dom-tags)
 	(put-clojure-indent tag 1))
 
 ;;TODO: This is replicated because neither nested dolists nor concat
 ;;seemed to work. Why ever not?
 (dolist (tag my-funcs)
+	(put-clojure-indent tag 1))
+
+(dolist (tag defy-funcs)
 	(put-clojure-indent tag 1))

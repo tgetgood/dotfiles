@@ -62,8 +62,8 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias emacs='emacsclient -nw'
-alias emacsc='emacsclient -c'
+alias emacs='emacsclient -c'
+alias emacsnw='emacsclient -nw'
 
 # Per machine config
 [ -r ~/.bash_local ] && . ~/.bash_local
