@@ -7,6 +7,23 @@
 		row
 		))
 
+(defvar om-fn-symbols
+	'(
+		init-state
+		will-mount
+		did-mount
+		should-update
+		will-receive-props
+		will-update
+		did-update
+		render
+		render-state
+		display-name
+		will-unmount
+		build
+		build-all
+		))
+
 (defvar my-dom-tags
   '(
 		a
@@ -137,7 +154,11 @@
 (dolist (tag my-dom-tags)
 	(put-clojure-indent tag 1))
 
+(dolist (tag om-fn-symbols)
+	(put-clojure-indent tag 1))
+
 ;;TODO: This is replicated because neither nested dolists nor concat
 ;;seemed to work. Why ever not?
 (dolist (tag my-funcs)
 	(put-clojure-indent tag 1))
+
