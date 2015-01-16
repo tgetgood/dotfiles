@@ -151,6 +151,7 @@
     stop
     tspan))
 
+
 (dolist (tag my-dom-tags)
 	(put-clojure-indent tag 1))
 
