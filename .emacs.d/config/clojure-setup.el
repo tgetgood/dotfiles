@@ -110,9 +110,15 @@ Display the results in a hyperlinked *compilation* buffer."
 	(switch-to-buffer-other-window "*compilation*")
 	(rename-buffer "*lein-run*"))
 
+;; (set-variable 'cljsbuild-compile-command "lein trampoline cljsbuild auto dev")
+
+(defun cljsbuild ()
+	(interactive)
+	(cljsbuild-start "lein trampoline cljsbuild auto dev"))
 
 ;;;;;
 ;; Evil customisations
 ;;;;;
 
 (define-key evil-normal-state-map "K" 'cider-doc)
+

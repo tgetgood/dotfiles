@@ -6,7 +6,7 @@
 	(interactive)
 	(cider-jack-in)
 	(lein-run)
-	(cljsbuild-start "lein cljsbuild auto dev")
+	(cljsbuild-start "lein trampoline cljsbuild auto dev")
 	(grunt-watch)
 	)
 
