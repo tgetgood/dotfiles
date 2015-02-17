@@ -34,8 +34,6 @@
 (add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
 
 
-;; key bindings
-;; these help me out with the way I usually develop web apps
 (defun cider-start-http-server ()
 	(interactive)
 	(cider-load-current-buffer)
@@ -59,6 +57,20 @@
 		 (define-key clojure-mode-map (kbd "C-M-r") 'cider-refresh)
 		 (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
 		      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
+
+;;;;;
+;; Clojure quick repls
+;;;;;
+
+(setq clojure-quick-repls-cljs-setup
+			"(require 'weasel.repl.websocket)
+         (cemerick.piggieback/cljs-repl
+           :repl-env (weasel.repl.websocket/repl-env))")
+
+(setq cider-switch-to-repl-command (quote clojure-quick-repls-switch-to-relevant-repl))
+
+(define-key clojure-mode-map (kbd "C-c C-j") 'clojure-quick-repls-connect)
+
 
 ;;;;;
 ;; clj-refactor
@@ -115,6 +127,16 @@ Display the results in a hyperlinked *compilation* buffer."
 (defun cljsbuild ()
 	(interactive)
 	(cljsbuild-start "lein trampoline cljsbuild auto dev"))
+
+;; Reset repl
+
+(defun cider-ns-refresh ()
+	(interactive)
+	(cider-interactive-eval
+	 "(require 'clojure.tools.namespace.repl)
+    (clojure.tools.namespace.repl/refresh)"))
+
+(define-key clojure-mode-map (kbd "C-c r") 'cider-ns-refresh)
 
 ;;;;;
 ;; Evil customisations

@@ -39,6 +39,10 @@
     paredit
     cider
     clj-refactor
+		clojure-quick-repls
+		kibit-mode
+		slamhound
+		flycheck-clojure
 
     ;; cljs
     cljsbuild-mode
@@ -69,6 +73,7 @@
     jabber
 		
     ;; Misc
+		flycheck-pos-tip
     undo-tree
     ack-and-a-half
     ido-ubiquitous

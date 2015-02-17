@@ -31,7 +31,9 @@
 	'(
 		cider-docview-mode
 		cider-stacktrace-mode
-
+		cider-test-report-mode
+		cider-repl-mode
+		
 		haskell-error-mode
 		haskell-interactive-mode
 
