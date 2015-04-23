@@ -5,6 +5,7 @@
 (defvar my-funcs
 	'(
 		row
+		for-all
 		))
 
 (defvar om-fn-symbols
