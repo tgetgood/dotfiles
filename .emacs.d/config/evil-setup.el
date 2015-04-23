@@ -1,6 +1,6 @@
 ;;;;; Modified from the wiki.
 
-;;; C-c as general purpose escape key sequence.
+;;; C-g as general purpose escape key sequence.
 ;;;
 (defun esc-non-normal (prompt)
 	"Functionality for escaping generally.  Includes exiting Evil insert state and C-g binding. "
