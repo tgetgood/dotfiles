@@ -60,20 +60,6 @@
 		      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
 
 ;;;;;
-;; Clojure quick repls
-;;;;;
-
-(setq clojure-quick-repls-cljs-setup
-			"(require 'weasel.repl.websocket)
-         (cemerick.piggieback/cljs-repl
-           :repl-env (weasel.repl.websocket/repl-env))")
-
-(setq cider-switch-to-repl-command (quote clojure-quick-repls-switch-to-relevant-repl))
-
-(define-key clojure-mode-map (kbd "C-c C-j") 'clojure-quick-repls-connect)
-
-
-;;;;;
 ;; clj-refactor
 ;;;;;
 

@@ -110,6 +110,10 @@
 (load "grunt-setup.el")
 
 (load "workflows.el")
+
+;; Hack to get the right version of clj-refactor
+(load "clj-refactor.el")
+
 ;;;;;
 ;; Machine Generated
 ;;;;;

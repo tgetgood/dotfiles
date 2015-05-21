@@ -2,11 +2,17 @@
 ;; Custom indentation for clojure(script)
 ;;;;;
 
-(defvar my-funcs
+(defvar my-put-1
 	'(
 		row
 		for-all
 		))
+
+(defvar my-put-2
+	'(
+		respond-to
+		authorized?
+))
 
 (defvar om-fn-symbols
 	'(
@@ -161,6 +167,8 @@
 
 ;;TODO: This is replicated because neither nested dolists nor concat
 ;;seemed to work. Why ever not?
-(dolist (tag my-funcs)
+(dolist (tag my-put-1)
 	(put-clojure-indent tag 1))
 
+(dolist (tag my-put-2)
+	(put-clojure-indent tag 2))

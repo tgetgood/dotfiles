@@ -58,3 +58,6 @@
 [submodule ".vim/bundle/vim-clojure-highlight"]
 	path = .vim/bundle/vim-clojure-highlight
 	url = https://github.com/guns/vim-clojure-highlight.git
+[submodule ".emacs.d/submodules/clj-refactor.el"]
+	path = .emacs.d/submodules/clj-refactor.el
+	url = https://github.com/clojure-emacs/clj-refactor.el.git
