@@ -28,6 +28,12 @@ filetype plugin on
 filetype plugin indent on
 "TODO: One day, figure out if the above are redundant.
 
+"Hide tmp files away from source files.
+set backup
+set swapfile
+set backupdir=~/.vim-tmp
+set directory=~/.vim-tmp
+
 runtime macros/matchit.vim
 let mapleader = '\'
 

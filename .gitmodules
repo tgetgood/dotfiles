@@ -61,3 +61,12 @@
 [submodule ".emacs.d/submodules/clj-refactor.el"]
 	path = .emacs.d/submodules/clj-refactor.el
 	url = https://github.com/clojure-emacs/clj-refactor.el.git
+[submodule ".vim/bundle/vim-clojure-static"]
+	path = .vim/bundle/vim-clojure-static
+	url = https://github.com/guns/vim-clojure-static.git
+[submodule ".vim/bundle/paredit"]
+	path = .vim/bundle/paredit
+	url = https://github.com/vim-scripts/paredit.vim.git
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
+	url = https://github.com/vim-scripts/paredit.vim.git
