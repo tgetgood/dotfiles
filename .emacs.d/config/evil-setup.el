@@ -60,3 +60,5 @@
 (dolist (m my-emacs-modes) 
 	(add-to-list 'evil-emacs-state-modes m))
 
+
+(define-key evil-normal-state-map (kbd "M-.") nil)
