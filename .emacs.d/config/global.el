@@ -52,7 +52,9 @@
 ;; C-x 4 b ... you're kidding me...
 (global-set-key (kbd "<f12> b") 'switch-to-buffer-other-window)
 
+;;;;;
 ;; Transpose windows
+;;;;;
 
 (defun transpose-windows (arg)
    "Transpose the buffers shown in two windows."
@@ -94,6 +96,18 @@
 		 (font-lock-add-keywords nil my-warning-highlights)
 		 (font-lock-fontify-buffer))))
 
+
+;; TODO: work out the prefix/suffix stuff
+;; TODO: Read a project's .gitignore and search all git files.
+;; FIXME: Redundant keyword declaration
+(defun tasklist-ack (currentp)
+	(interactive)
+	(ack-and-a-half-run (if currentp
+													"."
+												  (concat (ack-and-a-half-guess-project-root) "src"))
+											t
+											"(FIXME|TODO|HACK|OPTIMIZE|REVIEW)"))
+
 ;;;;;
 ;; Auto completion
 ;;;;;
@@ -122,10 +136,6 @@
 ;; Rebind TAB
 ;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 (global-set-key (kbd "TAB") 'indent-or-complete)
-
-;;;;;
-;; 
-;;;;;
 
 ;;;; ido
 
@@ -223,3 +233,4 @@
     (message "Canceled exit")))
 
 (global-set-key (kbd "C-x C-c") 'ask-before-closing)
+
