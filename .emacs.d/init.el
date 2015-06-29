@@ -53,6 +53,7 @@
 		
     ;;Evil
     evil
+		evil-leader
     evil-paredit
 		
     ;; Themes

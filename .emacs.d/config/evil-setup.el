@@ -15,6 +15,7 @@
 
 (define-key key-translation-map (kbd "C-g") 'esc-non-normal)
 
+(global-evil-leader-mode)
 (evil-mode 1)
 
 ;; Handy helper to figure out buffer mode names for below list. 
@@ -62,3 +63,13 @@
 
 
 (define-key evil-normal-state-map (kbd "M-.") nil)
+
+;;;;;
+;; leader keybindings
+;;;;;
+
+(evil-leader/set-key
+ "[" 'previous-error
+ "]" 'next-error
+ "t" (lambda () (interactive) (tasklist-ack nil))
+ "T" (lambda () (interactive) (tasklist-ack t)))
