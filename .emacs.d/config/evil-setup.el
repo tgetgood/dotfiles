@@ -71,5 +71,7 @@
 (evil-leader/set-key
  "[" 'previous-error
  "]" 'next-error
- "t" (lambda () (interactive) (tasklist-ack nil))
- "T" (lambda () (interactive) (tasklist-ack t)))
+ "t" 'tasklist-ack
+ "q" (lambda () (interactive)
+			 (progn (switch-to-buffer-other-window "*Ack-and-a-half*")
+							(kill-buffer-and-window))))
