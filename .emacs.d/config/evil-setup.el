@@ -68,10 +68,23 @@
 ;; leader keybindings
 ;;;;;
 
+;; TODO: Switch out on modes for clojure specific bindings
+;; REVIEW: Should these be scattered about or all here?
+
 (evil-leader/set-key
- "[" 'previous-error
- "]" 'next-error
+ "-" 'previous-error
+ "=" 'next-error
  "t" 'tasklist-ack
+ ;; TODO: figure out how to pass a function
+ "[" (lambda () (interactive)
+			 (progn (paredit-backward)
+							(paredit-wrap-square)))
+ "{" (lambda () (interactive)
+			 (progn (paredit-backward)
+							(paredit-wrap-curly)))
+ "(" (lambda () (interactive)
+			 (progn (paredit-backward)
+							(paredit-wrap-sexp)))
  "q" (lambda () (interactive)
 			 (progn (switch-to-buffer-other-window "*Ack-and-a-half*")
 							(kill-buffer-and-window))))
