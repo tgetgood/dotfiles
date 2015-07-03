@@ -131,3 +131,12 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (define-key evil-normal-state-map "K" 'cider-doc)
 
+(evil-leader/set-key
+	"r" 'cider-eval-region
+	"E" 'cider-load-buffer
+	"e" (lambda () (interactive)
+				(progn
+					(evil-insert-state)
+					(paredit-forward-up)
+					(cider-eval-last-sexp)
+					(evil-normal-state))))
