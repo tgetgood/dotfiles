@@ -102,10 +102,9 @@
 ;; FIXME: Redundant keyword declaration
 (defun tasklist-ack ()
 	(interactive)
-	(ack-and-a-half-run (ido-read-directory-name "Directory to search:"
-																					(ack-and-a-half-guess-project-root))
-											t
-											"(FIXME|TODO|HACK|OPTIMIZE|REVIEW)"))
+	(ack-and-a-half [["(FIXME|TODO|HACK|OPTIMIZE|REVIEW)"]] t
+									(ido-read-directory-name "Directory to search:"
+																					 (ack-and-a-half-guess-project-root))))
 
 ;;;;;
 ;; Auto completion
