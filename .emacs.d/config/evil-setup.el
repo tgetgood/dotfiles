@@ -69,12 +69,32 @@
 ;;;;;
 
 ;; TODO: Switch out on modes for clojure specific bindings
-;; REVIEW: Should these be scattered about or all here?
 
 (evil-leader/set-key
+
+	;;;;; Clojure bindings
+	"r" 'cider-eval-region
+	"E" 'cider-load-buffer
+	"e" (lambda () (interactive)
+				(progn
+					(evil-insert-state)
+					(paredit-forward-up)
+					(cider-eval-last-sexp)
+					(evil-normal-state)))
+
+	;;;;; compilation error list
  "-" 'previous-error
  "=" 'next-error
+
+ ;;;;; Ghetto tasklist pluging
  "t" 'tasklist-ack
+ "q" (lambda () (interactive)
+			 (progn (switch-to-buffer-other-window "*Ack-and-a-half*")
+							(quit-window)))
+
+ ;;;;; General paredit bindings
+ ;; FIXME: If at the beginning of a token, it jumps back to the
+ ;; previous.
  ;; TODO: figure out how to pass a function
  "[" (lambda () (interactive)
 			 (progn (paredit-backward)
@@ -85,6 +105,4 @@
  "(" (lambda () (interactive)
 			 (progn (paredit-backward)
 							(paredit-wrap-sexp)))
- "q" (lambda () (interactive)
-			 (progn (switch-to-buffer-other-window "*Ack-and-a-half*")
-							(kill-buffer-and-window))))
+)
