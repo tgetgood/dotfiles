@@ -91,11 +91,13 @@
 			 (beginning-of-line)
 			 (evil-paredit-delete-line nil nil)
 			 (previous-line)
-			 (evil-join (point) (1+) (point)))
+			 (evil-join (point) (1+ (point))))
 
  ;;;;; indentation helpers
- "tab" 'evil-indent
-
+ "TAB" (lambda () (interactive)
+				 (if (region-active-p)
+						 (evil-indent (region-beginning) (region-end))
+					   (evil-indent-line (point) (1+ (point)))))
 
  ;;;;; Ghetto tasklist pluging
  "t" 'tasklist-ack
