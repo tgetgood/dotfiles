@@ -86,6 +86,17 @@
  "-" 'previous-error
  "=" 'next-error
 
+ ;s;;;; evil fixups
+ "d" (lambda () (interactive)
+			 (beginning-of-line)
+			 (evil-paredit-delete-line nil nil)
+			 (previous-line)
+			 (evil-join (point) (1+) (point)))
+
+ ;;;;; indentation helpers
+ "tab" 'evil-indent
+
+
  ;;;;; Ghetto tasklist pluging
  "t" 'tasklist-ack
  "q" (lambda () (interactive)
