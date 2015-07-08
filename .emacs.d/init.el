@@ -1,4 +1,3 @@
-
 ;;;;
 ;; Packages
 ;;;;
@@ -37,13 +36,14 @@
     clojure-mode
     clojure-mode-extra-font-locking
     paredit
-    cider
-    clj-refactor
     clojure-quick-repls
     kibit-mode
     slamhound
     flycheck-clojure
 
+		yasnippet
+		multiple-cursors
+		
     ;; cljs
     cljsbuild-mode
     
@@ -82,6 +82,9 @@
     magit
     ))
 
+(add-to-list 'load-path "~/.emacs.d/submodules/cider")
+(require 'cider)
+
 (dolist (p packages)
   (when (not (package-installed-p p))
         (package-install p)))
@@ -92,6 +95,9 @@
 
 (setenv "PATH" (concat (getenv "PATH") ":/home/thomas/bin"))
 (setq exec-path (append exec-path '("/home/thomas/bin")))
+
+(add-to-list 'load-path "~/.emacs.d/submodules/clj-refactor")
+(require 'clj-refactor)
 
 (add-to-list 'load-path "~/.emacs.d/config")
 
@@ -113,7 +119,7 @@
 (load "workflows.el")
 
 ;; Hack to get the right version of clj-refactor
-(load "clj-refactor.el")
+; (load "clj-refactor.e")
 
 ;;;;;
 ;; Machine Generated

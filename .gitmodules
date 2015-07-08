@@ -70,3 +70,9 @@
 [submodule ".vim/bundle/ack"]
 	path = .vim/bundle/ack
 	url = https://github.com/vim-scripts/paredit.vim.git
+[submodule ".emacs.d/submodules/cider"]
+	path = .emacs.d/submodules/cider
+	url = https://github.com/clojure-emacs/cider.git
+[submodule ".emacs.d/submodules/clj-refactor"]
+	path = .emacs.d/submodules/clj-refactor
+	url = https://github.com/clojure-emacs/clj-refactor.el.git
