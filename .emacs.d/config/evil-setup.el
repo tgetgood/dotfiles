@@ -99,8 +99,11 @@
 						 (evil-indent (region-beginning) (region-end))
 					   (evil-indent-line (point) (1+ (point)))))
 
+ "b" 'eval-buffer
+ "a" 'ack-and-a-half
+
  ;;;;; Ghetto tasklist pluging
- "t" 'tasklist-ack
+ "t" 'tasklist-ack ; Defined in global.el
  "q" (lambda () (interactive)
 			 (progn (switch-to-buffer-other-window "*Ack-and-a-half*")
 							(quit-window)))
