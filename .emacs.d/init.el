@@ -41,7 +41,8 @@
     slamhound
     flycheck-clojure
 
-		yasnippet
+edn
+    yasnippet
 		multiple-cursors
 		
     ;; cljs
