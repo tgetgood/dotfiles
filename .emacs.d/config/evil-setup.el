@@ -75,23 +75,10 @@
 	;;;;; Clojure bindings
 	"r" 'cider-eval-region
 	"E" 'cider-load-buffer
-	"e" (lambda () (interactive)
-				(progn
-					(evil-insert-state)
-					(paredit-forward-up)
-					(cider-eval-last-sexp)
-					(evil-normal-state)))
 
 	;;;;; compilation error list
  "-" 'previous-error
  "=" 'next-error
-
- ;s;;;; evil fixups
- "d" (lambda () (interactive)
-			 (beginning-of-line)
-			 (evil-paredit-delete-line nil nil)
-			 (previous-line)
-			 (evil-join (point) (1+ (point))))
 
  ;;;;; indentation helpers
  "TAB" (lambda () (interactive)
@@ -108,17 +95,4 @@
 			 (progn (switch-to-buffer-other-window "*Ack-and-a-half*")
 							(quit-window)))
 
- ;;;;; General paredit bindings
- ;; FIXME: If at the beginning of a token, it jumps back to the
- ;; previous.
- ;; TODO: figure out how to pass a function
- "[" (lambda () (interactive)
-			 (progn (paredit-backward)
-							(paredit-wrap-square)))
- "{" (lambda () (interactive)
-			 (progn (paredit-backward)
-							(paredit-wrap-curly)))
- "(" (lambda () (interactive)
-			 (progn (paredit-backward)
-							(paredit-wrap-sexp)))
 )

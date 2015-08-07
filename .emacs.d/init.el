@@ -35,15 +35,15 @@
     ;; Clojure
     clojure-mode
     clojure-mode-extra-font-locking
-    paredit
-    clojure-quick-repls
+    smartparens
+		paredit
     kibit-mode
     slamhound
-    flycheck-clojure
+    
 
-edn
+    edn
     yasnippet
-		multiple-cursors
+    multiple-cursors
 		
     ;; cljs
     cljsbuild-mode
@@ -54,8 +54,8 @@ edn
 		
     ;;Evil
     evil
-		evil-leader
-    evil-paredit
+    evil-leader
+    evil-smartparens
 		
     ;; Themes
     cyberpunk-theme
@@ -118,9 +118,6 @@ edn
 (load "grunt-setup.el")
 
 (load "workflows.el")
-
-;; Hack to get the right version of clj-refactor
-; (load "clj-refactor.e")
 
 ;;;;;
 ;; Machine Generated
