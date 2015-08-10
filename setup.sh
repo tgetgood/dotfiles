@@ -55,3 +55,7 @@ do
 	replace_link `basename $file` "$SCRIPT_PATH/bin" "$HOME/bin"
 done
 
+# Create vim tempfile dir
+
+test -d ~/.vim-tmp || mkdir ~/.vim-tmp
+
