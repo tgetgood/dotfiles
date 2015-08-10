@@ -76,8 +76,6 @@
 ;; leader keybindings
 ;;;;;
 
-;; TODO: Switch out on modes for clojure specific bindings
-
 (evil-leader/set-key
 
 	;;;;; Clojure bindings
