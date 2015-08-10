@@ -106,7 +106,7 @@
 
 (load "evil-setup.el")
 
-(load "paredit-setup.el")
+(load "paren-setup.el")
 
 (load "clojure-setup.el")
 

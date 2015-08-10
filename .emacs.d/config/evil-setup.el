@@ -64,6 +64,14 @@
 
 (define-key evil-normal-state-map (kbd "M-.") nil)
 
+;; Abusing the g bindings for smartparens since cider doesn't know
+;; about them anyway...
+(define-key evil-normal-state-map (kbd "g l") 'sp-forward-slurp-sexp)
+(define-key evil-normal-state-map (kbd "g L") 'sp-forward-barf-sexp)
+(define-key evil-normal-state-map (kbd "g h") 'sp-backward-slurp-sexp)
+(define-key evil-normal-state-map (kbd "g H") 'sp-backward-barf-sexp)
+(define-key evil-normal-state-map (kbd "g k") 'sp-raise-sexp)
+
 ;;;;;
 ;; leader keybindings
 ;;;;;

@@ -24,3 +24,5 @@
 			(smartparens-mode 1)))
 
 (add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
+
+
