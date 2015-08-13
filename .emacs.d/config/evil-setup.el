@@ -70,7 +70,10 @@
 (define-key evil-normal-state-map (kbd "g L") 'sp-forward-barf-sexp)
 (define-key evil-normal-state-map (kbd "g h") 'sp-backward-slurp-sexp)
 (define-key evil-normal-state-map (kbd "g H") 'sp-backward-barf-sexp)
-(define-key evil-normal-state-map (kbd "g k") 'sp-raise-sexp)
+(define-key evil-normal-state-map (kbd "g k") 'sp-splice-sexp)
+(define-key evil-normal-state-map (kbd "g K") 'sp-splice-sexp-killing-backward)
+(define-key evil-normal-state-map (kbd "g j") 'sp-join-sexp)
+(define-key evil-normal-state-map (kbd "g s") 'sp-split-sexp)
 
 ;;;;;
 ;; leader keybindings
@@ -83,8 +86,8 @@
 	"E" 'cider-load-buffer
 
 	;;;;; compilation error list
- "-" 'previous-error
- "=" 'next-error
+ "[" 'previous-error
+ "]" 'next-error
 
  ;;;;; indentation helpers
  "TAB" (lambda () (interactive)
