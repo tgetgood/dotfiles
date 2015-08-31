@@ -35,7 +35,6 @@
     ;; Clojure
     clojure-mode
     clojure-mode-extra-font-locking
-    smartparens
 		paredit
     kibit-mode
     slamhound
@@ -106,7 +105,7 @@
 
 (load "evil-setup.el")
 
-(load "paren-setup.el")
+(load "parens-setup.el")
 
 (load "clojure-setup.el")
 
@@ -133,7 +132,8 @@
  '(custom-safe-themes
 	 (quote
 		("f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default)))
- '(fci-rule-color "#383838"))
+ '(fci-rule-color "#383838")
+ '(sp-autoskip-closing-pair t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
