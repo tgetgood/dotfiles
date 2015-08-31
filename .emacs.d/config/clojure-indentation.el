@@ -6,6 +6,7 @@
 	'(
 		row
 		for-all
+		this-as
 		))
 
 (defvar my-put-2
