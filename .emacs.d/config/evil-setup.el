@@ -92,5 +92,6 @@
  "q" (lambda () (interactive)
 			 (progn (switch-to-buffer-other-window "*Ack-and-a-half*")
 							(quit-window)))
+ )
 
-)
+(evil-ex-define-cmd "E[xplore]" (lambda () (interactive) (dired ".")))
