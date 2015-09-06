@@ -47,6 +47,14 @@ beginning, does not go to previous sexp. Check is rather naive."
 			 (beginning-of-current-sexp)
 			 (,command))))
 
+(defmacro smart-slurp (command)
+	`(lambda ()
+		 (interactive)
+		 (progn
+			 (when (member (char-after) '(?\( ?\[ ?\" ?\{))
+				 (right-char))
+			 (,command))))
+
 ;; Extensions to evil-smartparens
 
 (evil-define-operator smart-substitute (beg end type register)
@@ -68,9 +76,9 @@ which case it's a no-op."
 
 ;; Paredit keymap REVIEW: should I not be using the g prefix here?
 
-(define-key evil-normal-state-map (kbd "g l") 'paredit-forward-slurp-sexp)
+(define-key evil-normal-state-map (kbd "g l") (smart-slurp paredit-forward-slurp-sexp))
 (define-key evil-normal-state-map (kbd "g L") 'paredit-forward-barf-sexp)
-(define-key evil-normal-state-map (kbd "g h") 'paredit-backward-slurp-sexp)
+(define-key evil-normal-state-map (kbd "g h") (smart-slurp paredit-backward-slurp-sexp))
 (define-key evil-normal-state-map (kbd "g H") 'paredit-backward-barf-sexp)
 (define-key evil-normal-state-map (kbd "g k k") 'paredit-splice-sexp)
 (define-key evil-normal-state-map (kbd "g k h") 'paredit-splice-sexp-killing-backward)
