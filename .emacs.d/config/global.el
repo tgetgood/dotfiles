@@ -103,8 +103,15 @@
 (defun tasklist-ack ()
 	(interactive)
 	(ack-and-a-half "(FIXME|TODO|HACK|OPTIMIZE|REVIEW)" t
-									(ido-read-directory-name "Directory to search:"
+									(ido-read-directory-name "Directory to search: "
 																					 (ack-and-a-half-guess-project-root))))
+
+(defun easy-ack (re dir)
+	(interactive
+	 (list (read-string "Search: " (thing-at-point 'symbol))
+				 (ido-read-directory-name "Dir to search: "
+																	(ack-and-a-half-guess-project-root))))
+	(ack-and-a-half re t dir))
 
 ;;;;;
 ;; Auto completion

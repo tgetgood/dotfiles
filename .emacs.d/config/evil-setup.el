@@ -85,7 +85,7 @@
 					   (evil-indent-line (point) (1+ (point)))))
 
  "b" 'eval-buffer
- "a" 'ack-and-a-half
+ "a" 'easy-ack
 
  ;;;;; Ghetto tasklist pluging
  "t" 'tasklist-ack ; Defined in global.el
