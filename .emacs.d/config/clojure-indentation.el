@@ -173,3 +173,16 @@
 
 (dolist (tag my-put-2)
 	(put-clojure-indent tag 2))
+
+(defun paredit-space-for-reader-conditional (endp delim)
+	"Do not insert a space between #? and ("
+	(or endp
+			(cond ((eq (char-syntax delim) ?\()
+						 (not (looking-back (regexp-quote "#?") 2 nil)))
+						(else t))))
+
+(add-hook 'clojure-mode-hook
+					(lambda ()
+						(add-to-list
+						 'paredit-space-for-delimiter-predicates
+						 'paredit-space-for-reader-conditional)))
