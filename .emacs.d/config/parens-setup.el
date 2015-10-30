@@ -86,6 +86,8 @@ which case it's a no-op."
 (define-key evil-normal-state-map (kbd "g j") 'paredit-join-sexp)
 (define-key evil-normal-state-map (kbd "g s") 'paredit-split-sexp)
 
+(define-key evil-normal-state-map (kbd "g c") 'sp-convolute-sexp)
+
 (define-key evil-normal-state-map (kbd "g (") (smart-wrap paredit-wrap-round))
 (define-key evil-normal-state-map (kbd "g [") (smart-wrap paredit-wrap-square))
 (define-key evil-normal-state-map (kbd "g {") (smart-wrap paredit-wrap-curly))

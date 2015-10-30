@@ -28,6 +28,7 @@
 ;; Use clojure mode for other extensions
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.cljx.*$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljc.*$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.boot.*$" . clojure-mode))
 
@@ -63,8 +64,7 @@
 (require 'clj-refactor)
 (add-hook 'clojure-mode-hook (lambda ()
                                (clj-refactor-mode 1)
-                               (cljr-add-keybindings-with-prefix "C-c C-v")
-                               ))
+                               (cljr-add-keybindings-with-prefix "C-c C-v")))
 
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'cider-repl-mode-hook 'cider-mode)
