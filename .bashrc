@@ -91,7 +91,7 @@ export BOOT_VERSION=2.2.0
 export BOOT_JVM_OPTIONS="-client 
 -XX:+TieredCompilation 
 -XX:TieredStopAtLevel=1 
--Xmx2g 
+-Xmx3g
 -XX:+UseConcMarkSweepGC 
 -XX:+CMSClassUnloadingEnabled 
 -Xverify:none"
