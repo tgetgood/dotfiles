@@ -83,7 +83,7 @@ which case it's a no-op."
 (define-key evil-normal-state-map (kbd "g k k") 'paredit-splice-sexp)
 (define-key evil-normal-state-map (kbd "g k h") 'paredit-splice-sexp-killing-backward)
 (define-key evil-normal-state-map (kbd "g k l") 'paredit-splice-sexp-killing-forward)
-(define-key evil-normal-state-map (kbd "g j") 'paredit-join-sexp)
+(define-key evil-normal-state-map (kbd "g j") 'paredit-join-sexps) 
 (define-key evil-normal-state-map (kbd "g s") 'paredit-split-sexp)
 
 (define-key evil-normal-state-map (kbd "g c") 'sp-convolute-sexp)
@@ -106,6 +106,47 @@ which case it's a no-op."
 (define-key evil-visual-state-map (kbd "g \"") 'wrap-double-quote)
 
 	
+;;;;; Overriding evil-smartparens....
+;; TODO: There's got to be a better way to do this...
 
-	
 
+(evil-define-operator evil-sp-delete (beg end type register yank-handler)
+  "Call `evil-delete' with a balanced region"
+  (interactive "<R><x><y>")
+  (if (or (evil-sp--override)
+          (= beg end)
+          (and (eq type 'block)
+               (evil-sp--block-is-balanced beg end)))
+      (evil-delete beg end type register yank-handler)
+    (condition-case nil
+        (let ((new-beg (evil-sp--new-beginning beg end))
+              (new-end (evil-sp--new-ending beg end)))
+          (if (and (= new-end end)
+                   (= new-beg beg))
+              (evil-delete beg end type register yank-handler)
+            (evil-delete new-beg new-end 'inclusive register yank-handler)))
+      (error (let* ((beg (evil-sp--new-beginning beg end :shrink))
+                    (end (evil-sp--new-ending beg end)))
+               (evil-delete beg end type register yank-handler))))))
+
+(evil-define-operator evil-sp-change (beg end type register yank-handler)
+  "Call `evil-change' with a balanced region"
+  (interactive "<R><x><y>")
+  ;; #20 don't delete the space after a word
+  (when (save-excursion (goto-char end) (looking-back " " (- (point) 5)))
+    (setq end (1- end)))
+  (if (or (evil-sp--override)
+          (= beg end)
+          (and (eq type 'block)
+               (evil-sp--block-is-balanced beg end)))
+      (evil-change beg end type register yank-handler)
+    (condition-case nil
+        (let ((new-beg (evil-sp--new-beginning beg end))
+              (new-end (evil-sp--new-ending beg end)))
+          (if (and (= new-end end)
+                   (= new-beg beg))
+              (evil-change beg end type register yank-handler)
+            (evil-change new-beg new-end 'inclusive register yank-handler)))
+      (error (let* ((beg (evil-sp--new-beginning beg end :shrink))
+                    (end (evil-sp--new-ending beg end)))
+               (evil-change beg end type register yank-handler))))))
