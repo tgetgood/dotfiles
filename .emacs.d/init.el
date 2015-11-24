@@ -133,6 +133,7 @@
 	 (quote
 		("f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default)))
  '(fci-rule-color "#383838")
+ '(ido-enable-flex-matching t)
  '(sp-autoskip-closing-pair t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -93,6 +93,8 @@ which case it's a no-op."
 (define-key evil-normal-state-map (kbd "g {") (smart-wrap paredit-wrap-curly))
 (define-key evil-normal-state-map (kbd "g \"") (smart-wrap wrap-double-quote))
 
+(define-key evil-normal-state-map (kbd "g :") 'clojure-toggle-keyword-string)
+
 (define-key evil-normal-state-map (kbd "M-h") 'paredit-backward)
 (define-key evil-normal-state-map (kbd "M-l") 'paredit-forward)
 (define-key evil-normal-state-map (kbd "M-k") 'paredit-backward-up)
