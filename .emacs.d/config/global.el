@@ -106,6 +106,8 @@
 									(ido-read-directory-name "Directory to search: "
 																					 (ack-and-a-half-guess-project-root))))
 
+(require 'ack-and-a-half)
+
 (defun easy-ack (re dir)
 	(interactive
 	 (list (read-string "Search: " (thing-at-point 'symbol))

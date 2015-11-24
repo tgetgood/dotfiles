@@ -83,16 +83,3 @@ export TERM=xterm-256color
 # Tell the python interpreter what to load on startup
 [ -r ~/.pythonstartup ] && export PYTHONSTARTUP=~/.pythonstartup
 
-# Fix boot version due to a bug in 2.4.x
-
-export BOOT_VERSION=2.2.0
-
-# Speed up boot start time
-export BOOT_JVM_OPTIONS="-client 
--XX:+TieredCompilation 
--XX:TieredStopAtLevel=1 
--Xmx3g
--XX:+UseConcMarkSweepGC 
--XX:+CMSClassUnloadingEnabled 
--Xverify:none"
-
