@@ -65,6 +65,8 @@ alias l='ls -CF'
 alias emacsnw='emacsclient -nw'
 alias emacs='emacsclient -c'
 
+alias git=hub
+
 export LEIN_SNAPSHOTS_IN_RELEASE=y
 
 # Per machine config
