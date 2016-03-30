@@ -58,6 +58,7 @@
 		
     ;; Themes
     cyberpunk-theme
+		meacupla-theme
 
     ;; Web
     scss-mode
@@ -80,6 +81,7 @@
     ido-ubiquitous
     smex
     magit
+		magit-gh-pulls
     ))
 
 (add-to-list 'load-path "~/.emacs.d/submodules/cider")
@@ -117,6 +119,8 @@
 (load "grunt-setup.el")
 
 (load "workflows.el")
+
+(load "magit-setup.el")
 
 ;;;;;
 ;; Machine Generated
