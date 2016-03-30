@@ -31,4 +31,4 @@
 	eol = lf
 	fileMode = false
 [push]
-	default = matching
+	default = current
