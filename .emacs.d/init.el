@@ -35,10 +35,9 @@
     ;; Clojure
     clojure-mode
     clojure-mode-extra-font-locking
-		paredit
-    kibit-mode
-    slamhound
-    
+    paredit
+    typed-clojure-mode
+    clojure-quick-repls
 
     edn
     yasnippet
@@ -58,11 +57,12 @@
 		
     ;; Themes
     cyberpunk-theme
-		meacupla-theme
+    meacupla-theme
 
     ;; Web
     scss-mode
     markdown-mode
+
     ;; HTML pseudo-paredit
     tagedit
     
@@ -76,20 +76,35 @@
 		
     ;; Misc
     flycheck-pos-tip
+    inflections
+		hydra
     undo-tree
     ack-and-a-half
     ido-ubiquitous
     smex
-    magit
-		magit-gh-pulls
+
+		;; Git 
+    gh
     ))
 
-(add-to-list 'load-path "~/.emacs.d/submodules/cider")
+(add-to-list 'load-path "~/.emacs.d/submodules/cider/")
+(add-to-list 'load-path "~/.emacs.d/submodules/magit/lisp")
+(add-to-list 'load-path "~/.emacs.d/submodules/magit-gh-pulls")
+(add-to-list 'load-path "~/.emacs.d/submodules/slamhound")
+(add-to-list 'load-path "~/.emacs.d/submodules/squiggly-clojure/elisp/typed-clojure")
+(add-to-list 'load-path "~/.emacs.d/submodules/squiggly-clojure/elisp/flycheck-clojure")
+(add-to-list 'load-path "~/.emacs.d/submodules/clj-refactor")
 (require 'cider)
 
 (dolist (p packages)
   (when (not (package-installed-p p))
         (package-install p)))
+
+(require 'magit)
+(require 'magit-gh-pulls)
+(require 'slamhound)
+(require 'flycheck-clojure)
+(require 'clj-refactor)
 
 ;;;;;
 ;; Config
@@ -97,9 +112,6 @@
 
 (setenv "PATH" (concat (getenv "PATH") ":/home/thomas/bin"))
 (setq exec-path (append exec-path '("/home/thomas/bin")))
-
-(add-to-list 'load-path "~/.emacs.d/submodules/clj-refactor")
-(require 'clj-refactor)
 
 (add-to-list 'load-path "~/.emacs.d/config")
 

@@ -128,3 +128,9 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (define-key evil-normal-state-map "K" 'cider-doc)
 
+;;;;;
+;; Flycheck
+;;;;;
+
+(eval-after-load 'flycheck '(flycheck-clojure-setup))
+(add-hook 'after-init-hook #'global-flycheck-mode)
