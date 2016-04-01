@@ -9,6 +9,8 @@
 ;; Cider
 ;;;;;
 
+(set 'cider-repl-display-help-banner nil)
+
 ;; provides minibuffer documentation for the code you're typing into the repl
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
@@ -28,8 +30,8 @@
 ;; Use clojure mode for other extensions
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.cljx.*$" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.cljc.*$" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljc.*$" . clojurec-mode))
+(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojurescript-mode))
 (add-to-list 'auto-mode-alist '("\\.boot.*$" . clojure-mode))
 
 
@@ -58,6 +60,12 @@
 		      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
 
 ;;;;;
+;; Cider keys
+;;;;;
+
+(define-key cider-repl-mode-map (kbd "C-c C-z") 'cider-switch-to-last-clojure-buffer)
+
+;;;;;
 ;; clj-refactor
 ;;;;;
 
@@ -68,33 +76,6 @@
 
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'cider-repl-mode-hook 'cider-mode)
-
-;;;;;
-;; Kibit
-;;;;;
-
-;;; Stolen verbatim from the README
-
-;; Teach compile the syntax of the kibit output
-(require 'compile)
-(add-to-list 'compilation-error-regexp-alist-alist
-         '(kibit "At \\([^:]+\\):\\([[:digit:]]+\\):" 1 2 nil 0))
-(add-to-list 'compilation-error-regexp-alist 'kibit)
-
-;; A convenient command to run "lein kibit" in the project to which
-;; the current emacs buffer belongs to.
-(defun kibit ()
-  "Run kibit on the current project.
-Display the results in a hyperlinked *compilation* buffer."
-  (interactive)
-  (compile "lein kibit"))
-
-(defun kibit-current-file ()
-  "Run kibit on the current file.
-Display the results in a hyperlinked *compilation* buffer."
-  (interactive)
-  (compile (concat "lein kibit " buffer-file-name)))
-
 
 ;;;;;
 ;; Compilation tasks
@@ -128,9 +109,3 @@ Display the results in a hyperlinked *compilation* buffer."
 
 (define-key evil-normal-state-map "K" 'cider-doc)
 
-;;;;;
-;; Flycheck
-;;;;;
-
-(eval-after-load 'flycheck '(flycheck-clojure-setup))
-(add-hook 'after-init-hook #'global-flycheck-mode)

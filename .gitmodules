@@ -91,3 +91,6 @@
 [submodule ".emacs.d/submodules/squiggly-clojure"]
 	path = .emacs.d/submodules/squiggly-clojure
 	url = https://github.com/clojure-emacs/squiggly-clojure
+[submodule ".emacs.d/submodules/--force"]
+	path = .emacs.d/submodules/--force
+	url = https://github.com/brunchboy/kibit-helper.git

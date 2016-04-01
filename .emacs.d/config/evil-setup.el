@@ -86,6 +86,9 @@
  "b" 'eval-buffer
  "a" 'easy-ack
 
+ ;;;;; Kibit
+ ";" 'kibit-accept-proposed-change
+
  ;;;;; Ghetto tasklist pluging
  "t" 'tasklist-ack ; Defined in global.el
  "q" (lambda () (interactive)

@@ -10,7 +10,8 @@
 (add-to-list 'package-archives
 	     '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+						 '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
 	     '("org" . "http://orgmode.org/elpa/") t)
 
@@ -36,9 +37,7 @@
     clojure-mode
     clojure-mode-extra-font-locking
     paredit
-    typed-clojure-mode
-    clojure-quick-repls
-
+		
     edn
     yasnippet
     multiple-cursors
@@ -85,15 +84,16 @@
 
 		;; Git 
     gh
+		git-commit
     ))
 
 (add-to-list 'load-path "~/.emacs.d/submodules/cider/")
-(add-to-list 'load-path "~/.emacs.d/submodules/magit/lisp")
+(add-to-list 'load-path "~/.emacs.d/submodules/magit")
 (add-to-list 'load-path "~/.emacs.d/submodules/magit-gh-pulls")
 (add-to-list 'load-path "~/.emacs.d/submodules/slamhound")
-(add-to-list 'load-path "~/.emacs.d/submodules/squiggly-clojure/elisp/typed-clojure")
-(add-to-list 'load-path "~/.emacs.d/submodules/squiggly-clojure/elisp/flycheck-clojure")
 (add-to-list 'load-path "~/.emacs.d/submodules/clj-refactor")
+(add-to-list 'load-path "~/.emacs.d/submodules/kibit-helper")
+
 (require 'cider)
 
 (dolist (p packages)
@@ -101,10 +101,8 @@
         (package-install p)))
 
 (require 'magit)
-(require 'magit-gh-pulls)
-(require 'slamhound)
-(require 'flycheck-clojure)
 (require 'clj-refactor)
+(require 'kibit-helper)
 
 ;;;;;
 ;; Config
