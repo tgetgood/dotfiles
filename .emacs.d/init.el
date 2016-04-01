@@ -88,8 +88,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/submodules/cider/")
 (add-to-list 'load-path "~/.emacs.d/submodules/magit/lisp")
-; (add-to-list 'load-path "~/.emacs.d/submodules/magit-gh-pulls")
-(add-to-list 'load-path "~/.emacs.d/submodules/slamhound")
 (add-to-list 'load-path "~/.emacs.d/submodules/clj-refactor")
 (add-to-list 'load-path "~/.emacs.d/submodules/kibit-helper")
 
@@ -128,8 +126,6 @@
 (load "grunt-setup.el")
 
 (load "workflows.el")
-
-(load "magit-setup.el")
 
 ;;;;;
 ;; Machine Generated

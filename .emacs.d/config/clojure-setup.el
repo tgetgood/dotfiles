@@ -63,7 +63,7 @@
 ;; Cider keys
 ;;;;;
 
-(define-key cider-repl-mode-map (kbd "C-c C-z") 'cider-switch-to-last-clojure-buffer)
+(define-key cider-repl-mode-map (kbd "C-c C-a") 'cider-switch-to-last-clojure-buffer)
 
 ;;;;;
 ;; clj-refactor

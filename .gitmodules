@@ -94,3 +94,6 @@
 [submodule ".emacs.d/submodules/--force"]
 	path = .emacs.d/submodules/--force
 	url = https://github.com/brunchboy/kibit-helper.git
+[submodule ".emacs.d/submodules/magit-hub"]
+	path = .emacs.d/submodules/magit-hub
+	url = https://github.com/ionrock/magit-hub.git
