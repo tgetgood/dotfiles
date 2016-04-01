@@ -81,20 +81,21 @@
 ;; REVIEW: does the required prefix/suffix add anything? Is
 ;; use/mention a big deal here?
 
-(defvar my-warning-keywords
-	"\\(FIXME\\|TODO\\|HACK\\|OPTIMIZE\\|REVIEW\\)")
+(defvar my-warn-modes
+	'(clojure-mode-hook
+		emacs-lisp-mode-hook
+		clojurescript-mode-hook
+		clojurec-mode-hook
+		))
 
-(defvar my-warning-highlights
-	`((,(concat "\\<" my-warning-keywords ":")
-		 1 font-lock-warning-face t)
-		(,(concat "\\<" "@"  my-warning-keywords)
-		 1 font-lock-warning-face t)))
-
-(add-hook 'buffer-list-update-hook
- (lambda ()
-	 (progn
-		 (font-lock-add-keywords nil my-warning-highlights)
-		 (font-lock-fontify-buffer))))
+(dolist (mode my-warn-modes)
+	(add-hook mode
+						(lambda ()
+							(font-lock-add-keywords nil
+																			'(("\\<\\(FIXME\\|TODO\\|HACK\\|OPTIMIZE\\|REVIEW\\):"
+																				 1 'font-lock-warning-face prepend)
+																				("\\<@\\(FIXME\\|TODO\\|HACK\\|OPTIMIZE\\|REVIEW\\)"
+																				 1 'font-lock-warning-face prepend))))))
 
 
 ;; TODO: work out the prefix/suffix stuff
