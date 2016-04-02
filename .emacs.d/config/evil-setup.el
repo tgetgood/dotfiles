@@ -73,6 +73,12 @@
 	"r" 'cider-eval-region
 	"E" 'cider-load-buffer
 
+ ;;;;; Kibit
+ ";" 'kibit-accept-proposed-change
+
+ ;;;; clj refactor
+ "c" 'cljr-clean-ns
+ 
 	;;;;; compilation error list
  "[" 'previous-error
  "]" 'next-error
@@ -85,9 +91,6 @@
 
  "b" 'eval-buffer
  "a" 'easy-ack
-
- ;;;;; Kibit
- ";" 'kibit-accept-proposed-change
 
  ;;;;; Ghetto tasklist pluging
  "t" 'tasklist-ack ; Defined in global.el
