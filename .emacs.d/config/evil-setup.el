@@ -93,6 +93,10 @@
  "b" 'eval-buffer
  "a" 'easy-ack
 
+ ;;;;; Magit
+ "s" 'magit-status
+ "f" 'magit-fetch-all
+
  ;;;;; Ghetto tasklist pluging
  "t" 'tasklist-ack ; Defined in global.el
  "q" (lambda () (interactive)
