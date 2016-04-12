@@ -12,14 +12,21 @@
 (set 'cider-repl-display-help-banner nil)
 
 ;; provides minibuffer documentation for the code you're typing into the repl
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-mode-hook #'eldoc-mode)
 
 ;; go right to the REPL buffer when it's finished connecting
-(setq cider-repl-pop-to-buffer-on-connect t)
+(setq cider-repl-pop-to-buffer-on-connect nil)
 
 ;; When there's a cider error, show its buffer and switch to it
 (setq cider-show-error-buffer t)
 (setq cider-auto-select-error-buffer t)
+(setq cider-auto-jump-to-error t)
+
+;; Fast docs
+(setq cider-prompt-for-symbol nil)
+
+;; More font lock
+(setq cider-font-lock-dynamically '(macro core function var))
 
 ;; Where to store the cider history.
 (setq cider-repl-history-file (concat user-emacs-directory "transient/cider-history"))
@@ -33,7 +40,6 @@
 (add-to-list 'auto-mode-alist '("\\.cljc.*$" . clojurec-mode))
 (add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojurescript-mode))
 (add-to-list 'auto-mode-alist '("\\.boot.*$" . clojure-mode))
-
 
 (defun cider-start-http-server ()
 	(interactive)
@@ -76,6 +82,10 @@
 
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'cider-repl-mode-hook 'cider-mode)
+
+(setq cljr-warn-on-eval nil)
+(setq cljr-magic-requires nil)
+
 
 ;;;;;
 ;; Compilation tasks

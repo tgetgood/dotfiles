@@ -74,7 +74,8 @@
 	"E" 'cider-load-buffer
 
  ;;;;; Kibit
- ";" 'kibit-accept-proposed-change
+ "k" 'kibit-accept-proposed-change
+ "K" 'kibit-current-file
 
  ;;;; clj refactor
  "c" 'cljr-clean-ns
