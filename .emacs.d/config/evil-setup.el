@@ -90,12 +90,13 @@
 						 (evil-indent (region-beginning) (region-end))
 					   (evil-indent-line (point) (1+ (point)))))
 
- "b" 'eval-buffer
+ "e" 'eval-buffer
  "a" 'easy-ack
 
  ;;;;; Magit
  "s" 'magit-status
- "f" 'magit-fetch-all
+ "b" 'magit-blame
+ "B" 'magit-blame-mode
 
  ;;;;; Ghetto tasklist pluging
  "t" 'tasklist-ack ; Defined in global.el
