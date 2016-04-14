@@ -5,6 +5,6 @@
        '[cider/cider-nrepl "0.11.0"])
 
 (swap! boot.repl/*default-middleware* conj
-       'refactor-nrepl.middleware/wrap-refactor
-       'cider.nrepl/cider-middleware)
+			 'cider.nrepl/cider-middleware
+       'refactor-nrepl.middleware/wrap-refactor)
 
