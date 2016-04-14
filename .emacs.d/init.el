@@ -6,14 +6,9 @@
 (require 'package)
 
 (add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
-	     '("tromey" . "http://tromey.com/elpa/") t)
-(add-to-list 'package-archives
-
-						 '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-	     '("org" . "http://orgmode.org/elpa/") t)
+						 '("org" . "http://orgmode.org/elpa/") t)
 
 
 ;; Lkoad and activate emacs packages. Do this first so that the
@@ -36,6 +31,9 @@
     ;; Clojure
     clojure-mode
     clojure-mode-extra-font-locking
+		cider
+		clj-refactor
+		kibit-helper
     paredit
 		
     edn
@@ -84,22 +82,12 @@
 
 		;; Git 
     gh
+		magit
     ))
-
-(add-to-list 'load-path "~/.emacs.d/submodules/cider/")
-(add-to-list 'load-path "~/.emacs.d/submodules/magit/lisp")
-(add-to-list 'load-path "~/.emacs.d/submodules/clj-refactor")
-(add-to-list 'load-path "~/.emacs.d/submodules/kibit-helper")
-
-(require 'cider)
 
 (dolist (p packages)
   (when (not (package-installed-p p))
         (package-install p)))
-
-(require 'magit)
-(require 'clj-refactor)
-(require 'kibit-helper)
 
 ;;;;;
 ;; Config

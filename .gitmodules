@@ -70,24 +70,9 @@
 [submodule ".vim/bundle/ack"]
 	path = .vim/bundle/ack
 	url = https://github.com/vim-scripts/paredit.vim.git
-[submodule ".emacs.d/submodules/cider"]
-	path = .emacs.d/submodules/cider
-	url = https://github.com/clojure-emacs/cider.git
-[submodule ".emacs.d/submodules/clj-refactor"]
-	path = .emacs.d/submodules/clj-refactor
-	url = https://github.com/clojure-emacs/clj-refactor.el.git
-[submodule ".emacs.d/submodules/magit"]
-	path = .emacs.d/submodules/magit
-	url = https://github.com/magit/magit.git
-[submodule ".emacs.d/submodules/magit-gh-pulls"]
-	path = .emacs.d/submodules/magit-gh-pulls
-	url = https://github.com/sigma/magit-gh-pulls.git
 [submodule ".emacs.d/submodules/slamhound"]
 	path = .emacs.d/submodules/slamhound
 	url = https://github.com/technomancy/slamhound.git
-[submodule ".emacs.d/submodules/kibit-helper"]
-	path = .emacs.d/submodules/kibit-helper
-	url = https://github.com/brunchboy/kibit-helper.git
 [submodule ".emacs.d/submodules/squiggly-clojure"]
 	path = .emacs.d/submodules/squiggly-clojure
 	url = https://github.com/clojure-emacs/squiggly-clojure
