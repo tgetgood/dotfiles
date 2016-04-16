@@ -9,6 +9,8 @@
 ;; Cider
 ;;;;;
 
+(require 'cider)
+
 (set 'cider-repl-display-help-banner nil)
 
 ;; provides minibuffer documentation for the code you're typing into the repl
