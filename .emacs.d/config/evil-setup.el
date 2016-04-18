@@ -79,6 +79,7 @@
 
  ;;;; clj refactor
  "c" 'cljr-clean-ns
+ "m" 'cljr-add-missing-libspec
  
 	;;;;; compilation error list
  "[" 'previous-error

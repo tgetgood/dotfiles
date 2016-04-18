@@ -91,11 +91,12 @@
 (dolist (mode my-warn-modes)
 	(add-hook mode
 						(lambda ()
-							(font-lock-add-keywords nil
-																			'(("\\<\\(FIXME\\|TODO\\|HACK\\|OPTIMIZE\\|REVIEW\\):"
-																				 1 'font-lock-warning-face prepend)
-																				("\\<@\\(FIXME\\|TODO\\|HACK\\|OPTIMIZE\\|REVIEW\\)"
-																				 1 'font-lock-warning-face prepend))))))
+							(font-lock-add-keywords
+							 nil
+							 '(("\\<\\(FIXME\\|TODO\\|HACK\\|OPTIMIZE\\|REVIEW\\):"
+									1 'font-lock-warning-face prepend)
+								 ("\\<@\\(FIXME\\|TODO\\|HACK\\|OPTIMIZE\\|REVIEW\\)"
+									1 'font-lock-warning-face prepend))))))
 
 
 ;; TODO: work out the prefix/suffix stuff
