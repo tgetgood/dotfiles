@@ -35,23 +35,23 @@
 		clj-refactor
 		kibit-helper
     paredit
-		
+
     edn
     yasnippet
     multiple-cursors
-		
+
     ;; cljs
     cljsbuild-mode
-    
+
     ;; Haskell
     haskell-mode
     scion
-		
+
     ;;Evil
     evil
     evil-leader
     evil-smartparens
-		
+
     ;; Themes
     cyberpunk-theme
     meacupla-theme
@@ -62,7 +62,7 @@
 
     ;; HTML pseudo-paredit
     tagedit
-    
+
     ;; Completion
     company
     bash-completion
@@ -70,7 +70,7 @@
     ;; Comms
     wanderlust
     jabber
-		
+
     ;; Misc
     flycheck-pos-tip
     inflections
@@ -80,7 +80,7 @@
     ido-ubiquitous
     smex
 
-		;; Git 
+		;; Git
     gh
 		magit
     ))
@@ -145,7 +145,8 @@
 ;; Thematic info
 ;;;;;
 
-(load-theme 'cyberpunk t)		
+(load-theme 'cyberpunk t)
+; (load-theme 'meacupla t)
 
 ;;;;; This needs to override the theme settings. Which in turn need to
 ;;;;; come after the custom stuff.
@@ -157,4 +158,4 @@
 	(add-hook 'server-visit-hook
 						(lambda ()
 							(load "gui.el"))))
-	
+
