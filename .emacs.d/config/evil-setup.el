@@ -92,7 +92,7 @@
 						 (evil-indent-line (point) (1+ (point)))))
 
  "e" 'eval-buffer
- "a" 'easy-ack
+ "a" 'ag-project-regexp
 
  ;; Magit
  "s" 'magit-status
@@ -100,10 +100,9 @@
  "B" 'magit-blame-mode
 
  ;; Ghetto tasklist pluging
- "t" 'tasklist-ack ; Defined in global.el
- "q" (lambda () (interactive)
-			 (progn (switch-to-buffer-other-window "*Ack-and-a-half*")
-							(quit-window)))
+ "t" 'tasklist-ag ; Defined in global.el
+ "q" 'ag-kill-buffers
+
  ;; Everyday stuff
  "w" 'whitespace-cleanup
 

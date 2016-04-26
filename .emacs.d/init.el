@@ -76,7 +76,7 @@
     inflections
 		hydra
     undo-tree
-    ack-and-a-half
+		ag
     ido-ubiquitous
     smex
 

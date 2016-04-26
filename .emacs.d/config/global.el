@@ -102,20 +102,9 @@
 ;; TODO: work out the prefix/suffix stuff
 ;; TODO: Read a project's .gitignore and search all git files.
 ;; FIXME: Redundant keyword declaration
-(defun tasklist-ack ()
+(defun tasklist-ag ()
 	(interactive)
-	(ack-and-a-half "(FIXME|TODO|HACK|OPTIMIZE|REVIEW)" t
-									(ido-read-directory-name "Directory to search: "
-																					 (ack-and-a-half-guess-project-root))))
-
-(require 'ack-and-a-half)
-
-(defun easy-ack (re dir)
-	(interactive
-	 (list (read-string "Search: " (thing-at-point 'symbol))
-				 (ido-read-directory-name "Dir to search: "
-																	(ack-and-a-half-guess-project-root))))
-	(ack-and-a-half re t dir))
+	(ag-project-regexp "(FIXME|TODO|HACK|OPTIMIZE|REVIEW)"))
 
 ;;;;;
 ;; Auto completion
