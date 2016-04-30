@@ -63,6 +63,16 @@
 
 (define-key evil-normal-state-map (kbd "M-.") nil)
 
+(define-key evil-normal-state-map (kbd "*")
+	(lambda (arg)
+		(interactive "P")
+		(evil-search-word-forward arg (symbol-at-point))))
+
+(define-key evil-normal-state-map (kbd "#")
+	(lambda (arg)
+		(interactive "P")
+		(evil-search-word-backward arg (symbol-at-point))))
+
 ;;;;;
 ;; leader keybindings
 ;;;;;
