@@ -7,6 +7,7 @@
 		row
 		for-all
 		this-as
+		accumulate
 		))
 
 (defvar my-put-2
