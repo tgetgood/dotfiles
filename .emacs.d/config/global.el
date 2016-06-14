@@ -74,6 +74,13 @@
 																		(transpose-windows 1)))
 
 ;;;;;
+;; Ag
+;;;;;
+
+(setq ag-reuse-buffers 't)
+(setq ag-reuse-window 't)
+
+;;;;;
 ;; Global keywords (...?)
 ;;;;;
 
