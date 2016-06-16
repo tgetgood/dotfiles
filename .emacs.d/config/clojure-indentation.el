@@ -5,9 +5,11 @@
 (defvar my-put-1
 	'(
 		row
+		trow
 		for-all
 		this-as
 		accumulate
+		async
 		))
 
 (defvar my-put-2
