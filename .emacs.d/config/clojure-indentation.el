@@ -4,35 +4,35 @@
 
 (defvar my-put-1
 	'(
-		row
-		trow
-		for-all
-		this-as
 		accumulate
 		async
+		for-all
+		row
+		this-as
+		trow
 		))
 
 (defvar my-put-2
 	'(
-		respond-to
 		authorized?
+		respond-to
 ))
 
 (defvar om-fn-symbols
 	'(
-		init-state
-		will-mount
-		did-mount
-		should-update
-		will-receive-props
-		will-update
-		did-update
-		render
-		render-state
-		display-name
-		will-unmount
 		build
 		build-all
+		did-mount
+		did-update
+		display-name
+		init-state
+		render
+		render-state
+		should-update
+		will-mount
+		will-receive-props
+		will-unmount
+		will-update
 		))
 
 (defvar my-dom-tags
@@ -147,19 +147,19 @@
     
     ;; svg
     circle
+    defs
     ellipse
     g
     line
+    linearGradient
     path
+    polygon
     polyline
+    radialGradient
     rect
+    stop
     svg
     text
-    defs
-    linearGradient
-    polygon
-    radialGradient
-    stop
     tspan))
 
 

@@ -106,8 +106,14 @@
 
  ;; Magit
  "s" 'magit-status
+ "y" 'magit-show-refs-popup
  "b" 'magit-blame
  "B" 'magit-blame-mode
+
+ "1" 'smerge-keep-current
+ "2" 'smerge-keep-other
+ "}" 'smerge-next
+ "{" 'smerge-prev
 
  ;; Ghetto tasklist pluging
  "t" 'tasklist-ag ; Defined in global.el
