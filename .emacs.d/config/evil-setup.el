@@ -110,10 +110,11 @@
  "b" 'magit-blame
  "B" 'magit-blame-mode
 
+ ;; Smerge bindings
  "1" 'smerge-keep-current
  "2" 'smerge-keep-other
- "}" 'smerge-next
- "{" 'smerge-prev
+ "`" 'smerge-next
+ "~" 'smerge-prev
 
  ;; Ghetto tasklist pluging
  "t" 'tasklist-ag ; Defined in global.el

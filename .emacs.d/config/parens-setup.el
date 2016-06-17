@@ -81,8 +81,8 @@ which case it's a no-op."
 (define-key evil-normal-state-map (kbd "g h") (smart-slurp paredit-backward-slurp-sexp))
 (define-key evil-normal-state-map (kbd "g H") 'paredit-backward-barf-sexp)
 (define-key evil-normal-state-map (kbd "g k k") 'paredit-splice-sexp)
-(define-key evil-normal-state-map (kbd "g k h") 'paredit-splice-sexp-killing-backward)
-(define-key evil-normal-state-map (kbd "g k l") 'paredit-splice-sexp-killing-forward)
+(define-key evil-normal-state-map (kbd "g k h") 'cljr-splice-sexp-killing-backward)
+(define-key evil-normal-state-map (kbd "g k l") 'cljr-splice-sexp-killing-forward)
 (define-key evil-normal-state-map (kbd "g j") 'paredit-join-sexps) 
 (define-key evil-normal-state-map (kbd "g s") 'paredit-split-sexp)
 
@@ -108,7 +108,7 @@ which case it's a no-op."
 (define-key evil-visual-state-map (kbd "g \"") 'wrap-double-quote)
 
 	
-;;;;; Overriding evil-smartparens....
+;;;;; Overriding evil-smartparens.
 ;; TODO: There's got to be a better way to do this...
 
 

@@ -182,8 +182,17 @@
 						 (not (looking-back (regexp-quote "#?") 2 nil)))
 						(else t))))
 
-(add-hook 'clojure-mode-hook
-					(lambda ()
-						(add-to-list
-						 'paredit-space-for-delimiter-predicates
-						 'paredit-space-for-reader-conditional)))
+(defun add-indents ()
+	(add-to-list
+	 'paredit-space-for-delimiter-predicates
+	 'paredit-space-for-reader-conditional))
+
+(defvar clojure-modes
+	'(clojure-mode-hook
+		clojurescript-mode-hook
+		clojurec-mode-hook
+		clojurex-mode-hook))
+
+(dolist (hook clojure-modes)
+	(add-hook hook add-indents))
+
