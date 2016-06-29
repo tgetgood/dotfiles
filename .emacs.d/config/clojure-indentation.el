@@ -7,7 +7,9 @@
 		accumulate
 		async
 		for-all
+		magic-add-security
 		row
+		row-opts
 		this-as
 		trow
 		))
