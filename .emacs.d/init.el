@@ -93,6 +93,8 @@
 ;; Config
 ;;;;;
 
+(require 'org)
+
 (setenv "PATH" (concat (getenv "PATH") ":/home/thomas/bin"))
 (setq exec-path (append exec-path '("/home/thomas/bin")))
 
@@ -115,6 +117,7 @@
 
 (load "workflows.el")
 
+(load "org.el")
 ;;;;;
 ;; Machine Generated
 ;;;;;
@@ -133,6 +136,9 @@
  '(ido-case-fold t)
  '(ido-enable-flex-matching t)
  '(magit-bury-buffer-function (quote magit-mode-quit-window))
+ '(org-modules
+	 (quote
+		(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(sp-autoskip-closing-pair t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -146,7 +152,7 @@
 ;;;;;
 
 (load-theme 'cyberpunk t)
-; (load-theme 'meacupla t)
+;(load-theme 'meacupla t)
 
 ;;;;; This needs to override the theme settings. Which in turn need to
 ;;;;; come after the custom stuff.

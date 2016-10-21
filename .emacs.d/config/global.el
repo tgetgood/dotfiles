@@ -13,6 +13,8 @@
 (show-paren-mode)
 (setq-default tab-width 2)
 (global-auto-revert-mode 1)
+(setq-default fill-column 80)
+(global-visual-line-mode)
 
 ;;;; Auto-indent
 

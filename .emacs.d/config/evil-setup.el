@@ -116,6 +116,9 @@
  "`" 'smerge-next
  "~" 'smerge-prev
 
+ "g" 'org-agenda
+ "l" 'org-store-link
+
  ;; Ghetto tasklist pluging
  "t" 'tasklist-ag ; Defined in global.el
  "q" 'ag-kill-buffers
