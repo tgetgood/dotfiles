@@ -101,6 +101,8 @@ which case it's a no-op."
 (define-key evil-visual-state-map (kbd "g {") 'paredit-wrap-curly)
 (define-key evil-visual-state-map (kbd "g \"") 'wrap-double-quote)
 
+(define-key paredit-mode-map (kbd "M-J") nil)
+
 	
 ;;;;; Overriding evil-smartparens.
 ;; TODO: There's got to be a better way to do this...
