@@ -15,3 +15,5 @@
 
 (setq org-log-done t)
 (setq org-log-repeat 'time)
+
+(add-hook 'org-mode-hook 'visual-line-mode)
