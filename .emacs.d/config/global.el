@@ -50,6 +50,11 @@
 (global-set-key (kbd "M-k")    'windmove-up)
 (global-set-key (kbd "M-j")  'windmove-down)
 
+(global-set-key (kbd "M-H") 'buf-move-left)
+(global-set-key (kbd "M-L") 'buf-move-right)
+(global-set-key (kbd "M-J") 'buf-move-down)
+(global-set-key (kbd "M-K") 'buf-move-up)
+
 ;; C-x 4 b ... you're kidding me...
 ;; (global-set-key (kbd "<f12> b") 'switch-to-buffer-other-window)
 
@@ -68,11 +73,6 @@
          (set-window-buffer (funcall selector) this-win)
          (select-window (funcall selector)))
        (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
-
-(global-set-key (kbd "<f12> s h") (lambda () (interactive)
-																		(transpose-windows -1)))
-(global-set-key (kbd "<f12> s l") (lambda () (interactive)
-																		(transpose-windows 1)))
 
 ;;;;;
 ;; Ag
