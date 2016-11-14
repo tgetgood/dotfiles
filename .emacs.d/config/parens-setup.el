@@ -96,13 +96,6 @@ which case it's a no-op."
 
 (define-key evil-normal-state-map (kbd "g :") 'clojure-toggle-keyword-string)
 
-(define-key evil-normal-state-map (kbd "M-h") 'paredit-backward)
-(define-key evil-normal-state-map (kbd "M-l") 'paredit-forward)
-(define-key evil-normal-state-map (kbd "M-k") 'paredit-backward-up)
-(define-key evil-normal-state-map (kbd "M-K") 'paredit-forward-up)
-(define-key evil-normal-state-map (kbd "M-j") 'paredit-forward-down)
-(define-key evil-normal-state-map (kbd "M-J") 'paredit-backward-down)
-
 (define-key evil-visual-state-map (kbd "g (") 'paredit-wrap-round)	
 (define-key evil-visual-state-map (kbd "g [") 'paredit-wrap-square)	
 (define-key evil-visual-state-map (kbd "g {") 'paredit-wrap-curly)

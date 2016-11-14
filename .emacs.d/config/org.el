@@ -17,3 +17,5 @@
 (setq org-log-repeat 'time)
 
 (add-hook 'org-mode-hook 'visual-line-mode)
+
+(define-key org-mode-map (kbd "M-h") nil)

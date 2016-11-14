@@ -13,7 +13,7 @@
 	 ;;((eq overriding-terminal-local-map evil-read-key-map) (keyboard-quit) (kbd ""))
 	 (t (kbd "C-g"))))
 
-(define-key key-translation-map (kbd "<f12> <f12>") [escape])
+(define-key key-translation-map (kbd "<f12>") [escape])
 
 (global-evil-leader-mode)
 (evil-mode 1)
