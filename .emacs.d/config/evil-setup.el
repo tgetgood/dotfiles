@@ -13,7 +13,7 @@
 	 ;;((eq overriding-terminal-local-map evil-read-key-map) (keyboard-quit) (kbd ""))
 	 (t (kbd "C-g"))))
 
-(define-key key-translation-map (kbd "<f12>") [escape])
+(define-key key-translation-map (kbd "<f12>") 'esc-non-normal)
 
 (global-evil-leader-mode)
 (evil-mode 1)
@@ -127,7 +127,6 @@
  ;; Everyday stuff
  "w" 'whitespace-cleanup
  "v" 'visual-line-mode
-
  )
 
 (evil-ex-define-cmd "E[xplore]" (lambda () (interactive) (dired ".")))
