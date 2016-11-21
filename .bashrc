@@ -77,6 +77,7 @@ export PATH=$PATH:~/bin:/usr/local/node/bin:/opt/LightTable
 export CDPATH=.:$CDPATH
 export PAGER=less
 export EDITOR=vim
+export BROWSER=google-chrome-stable
 export PROMPT_COMMAND= # Handy against some forms of juvenile mischief.
 
 # TODO: This should be covered in .Xresources. Check.
