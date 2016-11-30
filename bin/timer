@@ -1,6 +1,41 @@
 #!/usr/bin/env bash
 
+LOG=/var/tmp/custom-timers
+CF=/var/tmp/custom-timers/.SEQ
+
+test -d $LOG || mkdir $LOG
+test -f $CF || echo 0 > $CF
+
 N=$1; shift
 
-(sleep $N && zenity --info --title="Time's Up" --text="${*:-BING}") &
+# Ghetto getopts
+if [ "$N" = "-l" ]
+	 then
+			 for x in $(ls $LOG | sort)
+			 do
+					  cat "$LOG/$x"
+			 done
+			 exit 0
+elif [ "$N" = "-r" ]
+		 then
+				 rm "$LOG/$1"
+				 exit 0
+fi
+
+OUT="${*:-BING}"
+
+ID=`cat $CF`
+echo $((ID+1)) > $CF
+
+cat <<EOF > "$LOG/$ID"
+Job $ID: `date +%d\ %b\ %H:%M:%S` + $N: Message: $OUT
+EOF
+
+popup () {
+		zenity --info --title="Time's Up" --text="$*" 2&>/dev/null
+		rm "$LOG/$ID"
+}
+
+(sleep $N && test -f "$LOG/$ID" && popup $OUT) &
+
 echo "timer set for $N"
