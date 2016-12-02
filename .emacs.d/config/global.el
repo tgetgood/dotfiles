@@ -24,6 +24,14 @@
 ;; Line numbers with a space at the end.
 (global-linum-mode 1)
 
+(define-global-minor-mode almost-global-linum-mode linum-mode
+	(lambda ()
+		(when (not (memq major-mode
+										 '(org-mode)))
+			(linum-mode))))
+
+(almost-global-linum-mode 1)
+
 ;; Is there really not a simpler way to do this?
 (setq linum-format
 			(lambda (line)
