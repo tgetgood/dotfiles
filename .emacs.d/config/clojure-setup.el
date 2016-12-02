@@ -79,7 +79,7 @@
 
 (setq cljr-warn-on-eval nil)
 (setq cljr-magic-requires nil)
-
+(setq cljr-favor-prefix-notation nil)
 
 ;;;;;
 ;; Compilation tasks
