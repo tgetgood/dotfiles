@@ -73,7 +73,7 @@ export LEIN_SNAPSHOTS_IN_RELEASE=y
 [ -r ~/.bash_local ] && . ~/.bash_local
 
 # Custom ENV init
-export PATH=$PATH:~/bin:/usr/local/node/bin:/opt/LightTable
+export PATH=~/bin:$PATH:/usr/local/node/bin
 export CDPATH=.:$CDPATH
 export PAGER=less
 export EDITOR=vim
