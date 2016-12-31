@@ -15,6 +15,6 @@ syndaemon -R -K -i 1 -d &
 
 start-pulseaudio-x11
 
-export PATH=$PATH:~/bin
+source ~/.bashrc
 
 ssh-agent awesome
