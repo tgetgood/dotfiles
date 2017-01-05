@@ -16,5 +16,6 @@
 
 (setq initial-frame-alist
 			'((width . 200) (height . 80)))
+
 (setq default-frame-alist
 			'((width . 200) (height . 80)))
