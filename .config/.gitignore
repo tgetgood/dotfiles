@@ -1,0 +1,14 @@
+# This is a whitelist file
+
+* 
+
+#
+
+!.gitignore
+
+!awesome/
+!awesome/rc.lua
+
+!systemd/
+!systemd/user/
+!systemd/user/*

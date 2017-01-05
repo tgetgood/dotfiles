@@ -1,0 +1,10 @@
+[Unit]
+Description = Starts instance of Datomic
+
+[Service]
+Type = simple
+ExecStart = /opt/datomic/bin/transactor /opt/datomic/config/dev-transactor.properties
+Restart = always
+
+[Install]
+WantedBy = multi-user.target
