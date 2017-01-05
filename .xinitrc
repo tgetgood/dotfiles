@@ -15,6 +15,6 @@ syndaemon -R -K -i 1 -d &
 
 start-pulseaudio-x11
 
-source ~/.bashrc
+source $HOME/.bashrc
 
-ssh-agent awesome
+awesome

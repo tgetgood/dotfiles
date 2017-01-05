@@ -142,14 +142,14 @@
 		(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
 	 (quote
-		(buffer-move cider wanderlust tagedit smex scss-mode scion popup meacupla-theme markdown-mode magit kibit-mode kibit-helper jabber ido-ubiquitous haskell-mode gh flycheck-pos-tip evil-smartparens evil-paredit evil-leader cyberpunk-theme company clojure-mode-extra-font-locking cljsbuild-mode clj-refactor bash-completion ag ack-and-a-half)))
+		(exec-path-from-shell buffer-move cider wanderlust tagedit smex scss-mode scion popup meacupla-theme markdown-mode magit kibit-mode kibit-helper jabber ido-ubiquitous haskell-mode gh flycheck-pos-tip evil-smartparens evil-paredit evil-leader cyberpunk-theme company clojure-mode-extra-font-locking cljsbuild-mode clj-refactor bash-completion ag ack-and-a-half)))
  '(sp-autoskip-closing-pair t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(italic ((t (:slant normal :weight normal :height 90 :width normal :foundry "DejaVu" :family "Sans Mono")))))
+ '(italic ((t (:slant normal :weight normal :height 80 :width normal :foundry "DejaVu" :family "Sans Mono")))))
 
 ;;;;;
 ;; Thematic info
@@ -163,9 +163,6 @@
 ;;;;;
 ;;;;; TODO: Can this be rearranged more sensibly?
 
-(if (window-system)
-	(load "gui.el")
-	(add-hook 'server-visit-hook
-						(lambda ()
-							(load "gui.el"))))
+(add-to-list 'after-make-frame-functions (lambda (_) (load "gui.el")))
+
 

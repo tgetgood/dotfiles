@@ -2,9 +2,6 @@
 # more and more comfortable using the default settings. I should think
 # more deeply about what this means...
 
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
 # Add system bash completion. Sometimes this doesn't happen over ssh.
 # And on some systems (notably certain versions of RedHat) there is one-shot
 # script.
@@ -57,14 +54,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-
-alias emacsnw='emacsclient -nw'
-alias emacs='emacsclient -c'
-
 alias git=hub
 
 export LEIN_SNAPSHOTS_IN_RELEASE=y
@@ -78,6 +67,7 @@ export CDPATH=.:$CDPATH
 export PAGER=less
 export EDITOR=vim
 export BROWSER=google-chrome-stable
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export PROMPT_COMMAND= # Handy against some forms of juvenile mischief.
 
 # TODO: This should be covered in .Xresources. Check.
