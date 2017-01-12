@@ -2,20 +2,6 @@
 # more and more comfortable using the default settings. I should think
 # more deeply about what this means...
 
-# Add system bash completion. Sometimes this doesn't happen over ssh.
-# And on some systems (notably certain versions of RedHat) there is one-shot
-# script.
-if test -r /etc/bash_completion 
-then
-	. /etc/bash_completion 
-elif test -d /etc/bash_completion.d 
-then
-	for f in /etc/bash_completion.d/*
-	do 
-		. $f 2&>/dev/null
-	done
-fi
-
 # Damned bell...
 xset -b
 
