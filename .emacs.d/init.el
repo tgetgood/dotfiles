@@ -130,6 +130,8 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
 	 ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
+ '(browse-url-browser-function (quote browse-url-chrome))
+ '(browse-url-generic-program nil)
  '(custom-safe-themes
 	 (quote
 		("f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default)))
