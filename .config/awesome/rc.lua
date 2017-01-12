@@ -57,7 +57,7 @@ local layouts =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile.left,
-		awful.layout.suit.tile.top,
+		awful.layout.suit.tile.bottom,
     awful.layout.suit.max.fullscreen,
 }
 -- }}}
@@ -326,10 +326,8 @@ globalkeys = awful.util.table.join(
 		awful.key({ modkey},	"Up", 	function() awful.util.spawn("amixer -c 0 -- sset Master 2+") end),
 
 		-- Lock Screen
-		awful.key({ "Mod1", "Control"},	"l", function() awful.util.spawn("slimlock") end),
-
-		-- Suspend
-		awful.key({ modkey, "Control" }, "s", function() awful.util.spawn("systemctl suspend") end)
+		awful.key({ modkey, "Control"},	"l", function() awful.util.spawn("slimlock") end),
+		awful.key({ modkey, "Control"},	"s", function() awful.util.spawn("sleep-now") end) 
 )
 
 clientkeys = awful.util.table.join(
@@ -339,6 +337,12 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
+    awful.key({ modkey,           }, "n",
+        function (c)
+            -- The client currently has the input focus, so it cannot be
+            -- minimized, since minimized clients can't have the focus.
+            c.minimized = true
+        end),
     awful.key({ modkey,           }, "m",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
