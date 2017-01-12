@@ -48,8 +48,7 @@ export LEIN_SNAPSHOTS_IN_RELEASE=y
 [ -r ~/.bash_local ] && . ~/.bash_local
 
 # Custom ENV init
-export PATH=~/bin:$PATH:/usr/local/node/bin
-export CDPATH=.:$CDPATH
+export PATH=~/bin:$PATH
 export PAGER=less
 export EDITOR=vim
 export BROWSER=google-chrome-stable
