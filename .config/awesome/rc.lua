@@ -327,7 +327,11 @@ globalkeys = awful.util.table.join(
 
 		-- Lock Screen
 		awful.key({ modkey, "Control"},	"l", function() awful.util.spawn("slimlock") end),
-		awful.key({ modkey, "Control"},	"s", function() awful.util.spawn("sleep-now") end) 
+		awful.key({ modkey, "Control"},	"s", function() awful.util.spawn("sleep-now") end),
+
+		-- Program Shortcuts
+		awful.key({ modkey }, "g", function() awful.util.spawn("google-chrome-stable") end),
+		awful.key({ modkey }, "e", function () awful.util.spawn("emacsclient -c") end )
 )
 
 clientkeys = awful.util.table.join(
