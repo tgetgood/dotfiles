@@ -7,6 +7,7 @@
 !.gitignore
 
 !awesome/
+!awesome/themes/**/*
 !awesome/rc.lua
 
 !systemd/
