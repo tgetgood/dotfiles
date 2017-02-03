@@ -6,7 +6,7 @@
 (scroll-bar-mode -1)
 
 (set-default-font "DejaVu Sans Mono-8")
-(set-face-attribute 'default nil :height 80)
+(set-face-attribute 'default nil :height 90)
 
 (set-face-attribute 'mode-line nil :box nil)
 (set-face-attribute 'mode-line-inactive nil :box nil)
