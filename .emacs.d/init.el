@@ -80,6 +80,7 @@
     ido-ubiquitous
     smex
 		buffer-move
+		lua-mode
 
 		;; Git
     gh
