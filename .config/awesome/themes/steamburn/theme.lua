@@ -16,7 +16,7 @@ local theme                                     = {}
 theme.zenburn_dir          = require("awful.util").get_themes_dir() .. "zenburn"
 theme.dir             = os.getenv("HOME") .. "/.config/awesome/themes/steamburn"
 theme.wallpaper        = awful.util.get_themes_dir() .. "default/background.png"
-theme.font                                      = "Misc Tamsyn 10.5"
+theme.font                                      = "Misc Tamsyn 9"
 theme.fg_normal                                 = "#e2ccb0"
 theme.fg_focus                                  = "#d88166"
 theme.fg_urgent                                 = "#CC9393"
@@ -87,7 +87,7 @@ mytextclock.font = theme.font
 lain.widgets.calendar({
     attach_to = { mytextclock },
     notification_preset = {
-        font = "Misc Tamsyn 11",
+        font = "Misc Tamsyn 9",
         fg   = theme.fg_normal,
         bg   = theme.bg_normal
     }
@@ -133,9 +133,15 @@ theme.mpd = lain.widgets.mpd({
 })
 
 -- CPU
-local cpu = lain.widgets.sysload({
+local cpu = lain.widgets.cpu({
+			timeout = 5,
     settings = function()
-        widget:set_markup(markup.font(theme.font, markup(gray, " Cpu ") .. load_1 .. " "))
+			 local usages = 0
+			 for i = 1, #cpu_now do
+					usages = usages + cpu_now[i].usage
+				end
+        widget:set_markup(markup.font(theme.font, markup(gray, " Cpu ") ..
+																				 usages .. " "))
     end
 })
 
@@ -150,7 +156,7 @@ local mem = lain.widgets.mem({
 theme.fs = lain.widgets.fs({
     options = "--exclude-type=tmpfs",
     partition = "/home",
-    notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Misc Tamsyn 10.5" },
+    notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Misc Tamsyn 9" },
 })
 
 -- Battery
@@ -173,7 +179,8 @@ local net = lain.widgets.net({
 
 -- ALSA volume
 theme.volume = lain.widgets.alsa({
-    settings = function()
+			timeout = 1,
+			settings = function()
         header = " Vol "
         vlevel  = volume_now.level
 
@@ -197,7 +204,6 @@ local first = wibox.widget.textbox(markup.font("Misc Tamsyn 4", " "))
 local spr   = wibox.widget.textbox(' ')
 
 local function update_txt_layoutbox(s)
-	 awful.tag.setnmaster(0, s)
     -- Writes a string representation of the current layout in a textbox widget
     local txt_l = theme["layout_txt_" .. awful.layout.getname(awful.layout.get(s))] or ""
     s.mytxtlayoutbox:set_text(txt_l)
@@ -223,11 +229,6 @@ function theme.at_screen_connect(s)
     s.mytxtlayoutbox = wibox.widget.textbox(theme["layout_txt_" .. awful.layout.getname(awful.layout.get(s))])
     awful.tag.attached_connect_signal(s, "property::selected", function () update_txt_layoutbox(s) end)
     awful.tag.attached_connect_signal(s, "property::layout", function () update_txt_layoutbox(s) end)
-    s.mytxtlayoutbox:buttons(awful.util.table.join(
-                           awful.button({}, 1, function() awful.layout.inc(layouts, 1) end),
-                           awful.button({}, 3, function() awful.layout.inc(layouts, -1) end),
-                           awful.button({}, 4, function() awful.layout.inc(layouts, 1) end),
-                           awful.button({}, 5, function() awful.layout.inc(layouts, -1) end)))
 
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
