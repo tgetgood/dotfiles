@@ -148,7 +148,8 @@ local cpu = lain.widgets.cpu({
 -- MEM
 local mem = lain.widgets.mem({
     settings = function()
-        widget:set_markup(markup.font(theme.font, markup(gray, " Mem ") .. mem_now.used .. " "))
+        widget:set_markup(markup.font(theme.font, markup(gray, " Mem ") .. mem_now.used ..
+																				 " (" .. mem_now.swapused .. ") "))
     end
 })
 
