@@ -17,4 +17,4 @@ start-pulseaudio-x11
 
 source $HOME/.bashrc
 
-awesome
+awesome --no-argb
