@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+error () {
+	echo "$1 is being used, cannot remove"
+	exit 1
+}
+
+for x in $*
+	do
+		pacman -Qo "$x" && error "$x" || sudo rm "$x";
+	done
