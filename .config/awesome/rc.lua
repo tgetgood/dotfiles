@@ -347,7 +347,9 @@ globalkeys = awful.util.table.join(
 		awful.key({ modkey }, "g", function() awful.spawn(browser) end,
 			        {description = "open browser window", group = "launcher"}),
 		awful.key({ modkey }, "e", function () awful.spawn(editor) end,
-		          {description = "open editor window", group = "launcher"})
+		          {description = "open editor window", group = "launcher"}),
+		awful.key({ modkey, "Shift" }, "s", function() awful.spawn("xmodmap ~/.Xmodmap") end,
+		          {description = "Activate custom keybindings", group = "launcher"})
 )
 
 -- @DOC_CLIENT_KEYBINDINGS@
