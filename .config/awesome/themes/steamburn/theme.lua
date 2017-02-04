@@ -84,6 +84,7 @@ local mytextclock = wibox.widget.textclock(" %a, %d %b %H:%M ")
 mytextclock.font = theme.font
 
 -- Calendar
+--[[
 lain.widgets.calendar({
     attach_to = { mytextclock },
     notification_preset = {
@@ -92,6 +93,7 @@ lain.widgets.calendar({
         bg   = theme.bg_normal
     }
 })
+--]]
 
 --[[ Mail IMAP check
 -- commented because it needs to be set before use
@@ -114,7 +116,7 @@ local mail = lain.widgets.imap({
 })
 --]]
 
--- MPD
+--[[ MPD
 theme.mpd = lain.widgets.mpd({
     settings = function()
         artist = mpd_now.artist .. " "
@@ -131,6 +133,7 @@ theme.mpd = lain.widgets.mpd({
         widget:set_markup(markup.font(theme.font, markup(gray, artist) .. title))
     end
 })
+--]]
 
 -- CPU
 local cpu = lain.widgets.cpu({
@@ -180,7 +183,6 @@ local net = lain.widgets.net({
 
 -- ALSA volume
 theme.volume = lain.widgets.alsa({
-			timeout = 1,
 			settings = function()
         header = " Vol "
         vlevel  = volume_now.level
