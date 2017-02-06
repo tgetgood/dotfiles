@@ -165,10 +165,11 @@ theme.fs = lain.widgets.fs({
 
 -- Battery
 local bat = lain.widgets.bat({
+		notify = "off",
     settings = function()
         bat_perc = bat_now.perc
 				local bat_sign
-				if bat_now.ac_status == 1 then
+				 if bat_now.ac_status == 1 then
 					 bat_sign = "+"
 				else
 					 bat_sign = "-"
