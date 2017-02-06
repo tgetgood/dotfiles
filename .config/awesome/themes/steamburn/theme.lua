@@ -167,8 +167,16 @@ theme.fs = lain.widgets.fs({
 local bat = lain.widgets.bat({
     settings = function()
         bat_perc = bat_now.perc
-        if bat_now.ac_status == 1 then bat_perc = "Plug" end
-        widget:set_markup(markup.font(theme.font, markup(gray, " Bat ") .. bat_perc .. " "))
+				local bat_sign
+				if bat_now.ac_status == 1 then
+					 bat_sign = "+"
+				else
+					 bat_sign = "-"
+				end
+        widget:set_markup(markup.font(theme.font, markup(gray, " Bat ")
+																				 .. bat_perc .. " "
+																				 .. "(" .. bat_sign
+																				 .. bat_now.time .. ") "))
     end
 })
 
