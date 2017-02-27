@@ -20,3 +20,8 @@
 (add-hook 'org-mode-hook (lambda () (set-input-method "TeX")))
 
 (define-key org-mode-map (kbd "M-h") nil)
+
+(add-to-list 'org-drawers "NOTE")
+(add-to-list 'org-drawers "FINISHED")
+
+(setq org-hide-leading-stars t)
