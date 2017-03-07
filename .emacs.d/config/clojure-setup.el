@@ -113,3 +113,11 @@
 
 (define-key evil-normal-state-map "K" 'cider-doc)
 
+;;;;;
+;; Figwheel - Cider Setup
+;;;;;
+
+(setq cider-cljs-lein-repl
+      "(do (require 'figwheel-sidecar.repl-api)
+           (figwheel-sidecar.repl-api/start-figwheel!)
+           (figwheel-sidecar.repl-api/cljs-repl))")
