@@ -46,11 +46,23 @@
 
 (defun cider-refresh ()
 	(interactive)
-	(cider-interactive-eval (format "(bop.utils/refresh-repl)")))
+	(cider-interactive-eval
+	 (format "(require 'clojure.tools.namespace.repl)
+(clojure.tools.namespace.repl/refresh)")))
+
+(defun cider-refresh-on-save ()
+	(lambda ()
+		(add-hook 'after-save-hook
+							(lambda ()
+								(if (and (boundp 'cider-mode) cider-mode)
+										(cider-refresh))))))
+
+(add-hook 'clojure-mode-hook 'cider-refresh-on-save)
+(add-hook 'clojurec-mode-hook 'cider-refresh-on-save)
 
 (defun cider-user-ns ()
 	(interactive)
-	(cider-repl-set-ns "boot.user"))
+	(cider-repl-set-ns "user"))
 
 (eval-after-load 'cider
 	'(progn
