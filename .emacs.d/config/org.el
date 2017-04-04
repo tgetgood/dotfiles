@@ -25,3 +25,5 @@
 (add-to-list 'org-drawers "FINISHED")
 
 (setq org-hide-leading-stars t)
+
+(setq org-cycle-include-plain-lists 'integrate)
