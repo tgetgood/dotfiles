@@ -62,6 +62,7 @@
 
 (defun cider-user-ns ()
 	(interactive)
+	;; TODO: cljs.user in cljs repl
 	(cider-repl-set-ns "user"))
 
 (eval-after-load 'cider
