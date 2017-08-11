@@ -3,8 +3,8 @@ Description = Rebind keys on wake up
 After=suspend.target
 
 [Service]
-Environment=DISPLAY=:0.0
-ExecStart=-/home/thomas/bin/x 
+Environment=DISPLAY=":0.0"
+ExecStart=-/usr/bin/xmodmap /home/thomas/.Xmodmap
 
 [Install]
 WantedBy=suspend.target
