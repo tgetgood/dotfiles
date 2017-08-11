@@ -10,9 +10,6 @@ then
 		/usr/bin/env xrdb $HOME/.Xresources
 fi
 
-#disable touchpad while typing
-syndaemon -R -K -i 1 -d -t &
-
 start-pulseaudio-x11
 
 source $HOME/.bashrc
