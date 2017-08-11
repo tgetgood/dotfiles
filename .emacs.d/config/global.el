@@ -2,6 +2,10 @@
 ;; Truly global editor config
 ;;;;;
 
+;; Always clean whitespace before saving.
+;; REVIEW: Will this break anything? I'm not programming in whitespace...
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
 
@@ -47,7 +51,7 @@
 ;; TODO: create JS setup file.
 (setq js-indent-level 2)
 
-;; TODO: scss file? web file? 
+;; TODO: scss file? web file?
 (setq scss-compile-at-save nil)
 
 ;;;;;
@@ -71,16 +75,16 @@
 ;;;;;
 
 (defun transpose-windows (arg)
-   "Transpose the buffers shown in two windows."
-   (interactive "p")
-   (let ((selector (if (>= arg 0) 'next-window 'previous-window)))
-     (while (/= arg 0)
-       (let ((this-win (window-buffer))
-             (next-win (window-buffer (funcall selector))))
-         (set-window-buffer (selected-window) next-win)
-         (set-window-buffer (funcall selector) this-win)
-         (select-window (funcall selector)))
-       (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
+	 "Transpose the buffers shown in two windows."
+	 (interactive "p")
+	 (let ((selector (if (>= arg 0) 'next-window 'previous-window)))
+		 (while (/= arg 0)
+			 (let ((this-win (window-buffer))
+						 (next-win (window-buffer (funcall selector))))
+				 (set-window-buffer (selected-window) next-win)
+				 (set-window-buffer (funcall selector) this-win)
+				 (select-window (funcall selector)))
+			 (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
 
 ;;;;;
 ;; Ag
@@ -136,13 +140,13 @@
 
 ;; Shell-mode (bash)
 
-(autoload 'bash-completion-dynamic-complete 
-  "bash-completion"
-  "BASH completion hook")
+(autoload 'bash-completion-dynamic-complete
+	"bash-completion"
+	"BASH completion hook")
 (add-hook 'shell-dynamic-complete-functions
-  'bash-completion-dynamic-complete)
+	'bash-completion-dynamic-complete)
 (add-hook 'shell-command-complete-functions
-  'bash-completion-dynamic-complete)
+	'bash-completion-dynamic-complete)
 
 (require 'bash-completion)
 (bash-completion-setup)
@@ -207,7 +211,7 @@
  ;; Mouse yank commands yank at point instead of at click.
  mouse-yank-at-point t)
 
-;; Paste like a terminal 
+;; Paste like a terminal
 (global-set-key (kbd "C-S-v") 'x-clipboard-yank)
 
 ;;;;;
@@ -216,9 +220,9 @@
 
 ;;; comments
 (defun toggle-comment-on-line ()
-  "comment or uncomment current line"
-  (interactive)
-  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+	"comment or uncomment current line"
+	(interactive)
+	(comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
 (global-set-key (kbd "M-;") 'comment-or-uncomment-region)
@@ -239,12 +243,11 @@
 
 (defun ask-before-closing ()
 	"Prompt before closing."
-  (interactive)
-  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
-      (if (< emacs-major-version 22)
-	  (save-buffers-kill-terminal)
+	(interactive)
+	(if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
+			(if (< emacs-major-version 22)
+		(save-buffers-kill-terminal)
 	(save-buffers-kill-emacs))
-    (message "Canceled exit")))
+		(message "Canceled exit")))
 
 (global-set-key (kbd "C-x C-c") 'ask-before-closing)
-
