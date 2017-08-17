@@ -6,7 +6,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+						 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
 						 '("org" . "http://orgmode.org/elpa/") t)
 
@@ -20,76 +20,76 @@
 ;; This informs Emacs about the latest versions of all packages, and
 ;; makes them available for download.
 (when (not package-archive-contents)
-  (package-refresh-contents))
+	(package-refresh-contents))
 
 
 ;; Everything *should* be in here. There's probably stuff installed
 ;; via package-list-packages... Use C-h v package-activated-list to
 ;; see what's installed. Too bad that lists dependencies as well.
 (defvar packages
-  '(
-    ;; Clojure
-    clojure-mode
-    clojure-mode-extra-font-locking
+	'(
+		;; Clojure
+		clojure-mode
+		clojure-mode-extra-font-locking
 		cider
 		clj-refactor
 		kibit-helper
-    paredit
+		paredit
 
-    edn
-    yasnippet
-    multiple-cursors
+		edn
+		yasnippet
+		multiple-cursors
 
-    ;; cljs
-    cljsbuild-mode
+		;; cljs
+		cljsbuild-mode
 
-    ;; Haskell
-    haskell-mode
-    scion
+		;; Haskell
+		haskell-mode
+		scion
 
-    ;;Evil
-    evil
-    evil-leader
-    evil-smartparens
+		;;Evil
+		evil
+		evil-leader
+		evil-smartparens
 
-    ;; Themes
-    cyberpunk-theme
-    meacupla-theme
+		;; Themes
+		cyberpunk-theme
+		meacupla-theme
 
-    ;; Web
-    scss-mode
-    markdown-mode
+		;; Web
+		scss-mode
+		markdown-mode
 
-    ;; HTML pseudo-paredit
-    tagedit
+		;; HTML pseudo-paredit
+		tagedit
 
-    ;; Completion
-    company
-    bash-completion
+		;; Completion
+		company
+		bash-completion
 
-    ;; Comms
-    wanderlust
-    jabber
+		;; Comms
+		wanderlust
+		jabber
 
-    ;; Misc
-    flycheck-pos-tip
-    inflections
+		;; Misc
+		flycheck-pos-tip
+		inflections
 		hydra
-    undo-tree
+		undo-tree
 		ag
-    ido-ubiquitous
-    smex
+		ido-ubiquitous
+		smex
 		buffer-move
 		lua-mode
 
 		;; Git
-    gh
+		gh
 		magit
-    ))
+		))
 
 (dolist (p packages)
-  (when (not (package-installed-p p))
-        (package-install p)))
+	(when (not (package-installed-p p))
+				(package-install p)))
 
 ;;;;;
 ;; Config
@@ -167,5 +167,3 @@
 ;;;;; TODO: Can this be rearranged more sensibly?
 
 (add-to-list 'after-make-frame-functions (lambda (_) (load "gui.el")))
-
-
