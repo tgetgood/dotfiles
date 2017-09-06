@@ -15,9 +15,9 @@
 
 (add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
 (defun conditionally-enable-paredit-mode ()
-  "enable paredit-mode during eval-expression"
-  (if (eq this-command 'eval-expression)
-      (paredit-mode 1)))
+	"enable paredit-mode during eval-expression"
+	(if (eq this-command 'eval-expression)
+			(paredit-mode 1)))
 
 ;;;;; Let's try and use paredit + evil-smartparens. This will be fun
 
@@ -31,6 +31,17 @@
 
 (sp-pair "'" nil :actions :rem)
 (sp-pair "\"" nil :actions :rem)
+
+(defun catchy-p-dq (&optional n)
+	(interactive "P")
+	(condition-case nil
+			(paredit-doublequote)
+		(error (progn
+						 (insert ?\")
+						 (insert ?\")
+						 (backward-char)))))
+
+(define-key paredit-mode-map (kbd "\"") 'catchy-p-dq)
 
 ;; Helper to wrap sexps more intuitively
 
@@ -84,7 +95,7 @@ which case it's a no-op."
 (define-key evil-normal-state-map (kbd "g k K") 'paredit-splice-sexp)
 (define-key evil-normal-state-map (kbd "g k h") 'cljr-splice-sexp-killing-backward)
 (define-key evil-normal-state-map (kbd "g k l") 'cljr-splice-sexp-killing-forward)
-(define-key evil-normal-state-map (kbd "g j") 'paredit-join-sexps) 
+(define-key evil-normal-state-map (kbd "g j") 'paredit-join-sexps)
 (define-key evil-normal-state-map (kbd "g s") 'paredit-split-sexp)
 
 (define-key evil-normal-state-map (kbd "g c") 'sp-convolute-sexp)
@@ -96,55 +107,55 @@ which case it's a no-op."
 
 (define-key evil-normal-state-map (kbd "g :") 'clojure-toggle-keyword-string)
 
-(define-key evil-visual-state-map (kbd "g (") 'paredit-wrap-round)	
-(define-key evil-visual-state-map (kbd "g [") 'paredit-wrap-square)	
+(define-key evil-visual-state-map (kbd "g (") 'paredit-wrap-round)
+(define-key evil-visual-state-map (kbd "g [") 'paredit-wrap-square)
 (define-key evil-visual-state-map (kbd "g {") 'paredit-wrap-curly)
 (define-key evil-visual-state-map (kbd "g \"") 'wrap-double-quote)
 
 (define-key paredit-mode-map (kbd "M-J") nil)
 
-	
+
 ;;;;; Overriding evil-smartparens.
 ;; TODO: There's got to be a better way to do this...
 
 
 (evil-define-operator evil-sp-delete (beg end type register yank-handler)
-  "Call `evil-delete' with a balanced region"
-  (interactive "<R><x><y>")
-  (if (or (evil-sp--override)
-          (= beg end)
-          (and (eq type 'block)
-               (evil-sp--block-is-balanced beg end)))
-      (evil-delete beg end type register yank-handler)
-    (condition-case nil
-        (let ((new-beg (evil-sp--new-beginning beg end))
-              (new-end (evil-sp--new-ending beg end)))
-          (if (and (= new-end end)
-                   (= new-beg beg))
-              (evil-delete beg end type register yank-handler)
-            (evil-delete new-beg new-end 'inclusive register yank-handler)))
-      (error (let* ((beg (evil-sp--new-beginning beg end :shrink))
-                    (end (evil-sp--new-ending beg end)))
-               (evil-delete beg end type register yank-handler))))))
+	"Call `evil-delete' with a balanced region"
+	(interactive "<R><x><y>")
+	(if (or (evil-sp--override)
+					(= beg end)
+					(and (eq type 'block)
+							 (evil-sp--block-is-balanced beg end)))
+			(evil-delete beg end type register yank-handler)
+		(condition-case nil
+				(let ((new-beg (evil-sp--new-beginning beg end))
+							(new-end (evil-sp--new-ending beg end)))
+					(if (and (= new-end end)
+									 (= new-beg beg))
+							(evil-delete beg end type register yank-handler)
+						(evil-delete new-beg new-end 'inclusive register yank-handler)))
+			(error (let* ((beg (evil-sp--new-beginning beg end :shrink))
+										(end (evil-sp--new-ending beg end)))
+							 (evil-delete beg end type register yank-handler))))))
 
 (evil-define-operator evil-sp-change (beg end type register yank-handler)
-  "Call `evil-change' with a balanced region"
-  (interactive "<R><x><y>")
-  ;; #20 don't delete the space after a word
-  (when (save-excursion (goto-char end) (looking-back " " (- (point) 5)))
-    (setq end (1- end)))
-  (if (or (evil-sp--override)
-          (= beg end)
-          (and (eq type 'block)
-               (evil-sp--block-is-balanced beg end)))
-      (evil-change beg end type register yank-handler)
-    (condition-case nil
-        (let ((new-beg (evil-sp--new-beginning beg end))
-              (new-end (evil-sp--new-ending beg end)))
-          (if (and (= new-end end)
-                   (= new-beg beg))
-              (evil-change beg end type register yank-handler)
-            (evil-change new-beg new-end 'inclusive register yank-handler)))
-      (error (let* ((beg (evil-sp--new-beginning beg end :shrink))
-                    (end (evil-sp--new-ending beg end)))
-               (evil-change beg end type register yank-handler))))))
+	"Call `evil-change' with a balanced region"
+	(interactive "<R><x><y>")
+	;; #20 don't delete the space after a word
+	(when (save-excursion (goto-char end) (looking-back " " (- (point) 5)))
+		(setq end (1- end)))
+	(if (or (evil-sp--override)
+					(= beg end)
+					(and (eq type 'block)
+							 (evil-sp--block-is-balanced beg end)))
+			(evil-change beg end type register yank-handler)
+		(condition-case nil
+				(let ((new-beg (evil-sp--new-beginning beg end))
+							(new-end (evil-sp--new-ending beg end)))
+					(if (and (= new-end end)
+									 (= new-beg beg))
+							(evil-change beg end type register yank-handler)
+						(evil-change new-beg new-end 'inclusive register yank-handler)))
+			(error (let* ((beg (evil-sp--new-beginning beg end :shrink))
+										(end (evil-sp--new-ending beg end)))
+							 (evil-change beg end type register yank-handler))))))

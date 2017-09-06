@@ -57,10 +57,10 @@
 ;;;;;
 ;; Easy window navigation
 ;;;;;
-(global-set-key (kbd "M-h")  'windmove-left)
+(global-set-key (kbd "M-h") 'windmove-left)
 (global-set-key (kbd "M-l") 'windmove-right)
-(global-set-key (kbd "M-k")    'windmove-up)
-(global-set-key (kbd "M-j")  'windmove-down)
+(global-set-key (kbd "M-k") 'windmove-up)
+(global-set-key (kbd "M-j") 'windmove-down)
 
 (global-set-key (kbd "M-H") 'buf-move-left)
 (global-set-key (kbd "M-L") 'buf-move-right)
@@ -246,8 +246,8 @@
 	(interactive)
 	(if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
 			(if (< emacs-major-version 22)
-		(save-buffers-kill-terminal)
-	(save-buffers-kill-emacs))
+					(save-buffers-kill-terminal)
+				(save-buffers-kill-emacs))
 		(message "Canceled exit")))
 
 (global-set-key (kbd "C-x C-c") 'ask-before-closing)
