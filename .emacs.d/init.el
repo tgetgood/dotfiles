@@ -63,6 +63,9 @@
 		;; HTML pseudo-paredit
 		tagedit
 
+		;; LaTeX
+		auctex
+		auctex-latexmk
 		;; Completion
 		company
 		bash-completion
@@ -120,6 +123,9 @@
 (load "workflows.el")
 
 (load "org.el")
+
+(load "latex.el")
+
 ;;;;;
 ;; Machine Generated
 ;;;;;
