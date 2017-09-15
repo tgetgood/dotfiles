@@ -84,8 +84,8 @@
 
 (require 'clj-refactor)
 (add-hook 'clojure-mode-hook (lambda ()
-                               (clj-refactor-mode 1)
-                               (cljr-add-keybindings-with-prefix "C-c C-v")))
+															 (clj-refactor-mode 1)
+															 (cljr-add-keybindings-with-prefix "C-c C-v")))
 
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'cider-repl-mode-hook 'cider-mode)
@@ -116,7 +116,7 @@
 	(interactive)
 	(cider-interactive-eval
 	 "(require 'clojure.tools.namespace.repl)
-    (clojure.tools.namespace.repl/refresh)"))
+		(clojure.tools.namespace.repl/refresh)"))
 
 (define-key clojure-mode-map (kbd "C-c r") 'cider-ns-refresh)
 
@@ -131,6 +131,6 @@
 ;;;;;
 
 (setq cider-cljs-lein-repl
-      "(do (require 'figwheel-sidecar.repl-api)
-           (figwheel-sidecar.repl-api/start-figwheel!)
-           (figwheel-sidecar.repl-api/cljs-repl))")
+			"(do (require '[figwheel-sidecar.repl-api :as fig])
+					 (fig/start-figwheel!)
+					 (fig/cljs-repl))")
