@@ -124,7 +124,7 @@
 
 (load "org.el")
 
-(load "latex.el")
+(load "latex-custom-config.el")
 
 ;;;;;
 ;; Machine Generated
