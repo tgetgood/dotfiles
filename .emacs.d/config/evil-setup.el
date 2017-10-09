@@ -13,7 +13,13 @@
 	 ;;((eq overriding-terminal-local-map evil-read-key-map) (keyboard-quit) (kbd ""))
 	 (t (kbd "C-g"))))
 
+(defun my-esc (prompt)
+	(progn
+		(save-buffer)
+		(esc-non-normal prompt)))
+
 (define-key key-translation-map (kbd "<f12>") 'esc-non-normal)
+;; (define-key key-translation-map (kbd "<f12>") 'my-esc)
 
 (global-evil-leader-mode)
 (evil-mode 1)
