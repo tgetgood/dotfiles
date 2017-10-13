@@ -51,6 +51,9 @@
 ;; TODO: create JS setup file.
 (setq js-indent-level 2)
 
+(add-hook 'js-mode-hook
+					(lambda () (setq indent-tabs-mode nil)))
+
 ;; TODO: scss file? web file?
 (setq scss-compile-at-save nil)
 
