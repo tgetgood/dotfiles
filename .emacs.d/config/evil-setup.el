@@ -21,16 +21,6 @@
 
 (define-key key-translation-map (kbd "<f12>") (esc-non-normal nil))
 
-(define-key evil-normal-state-map (kbd "g a")
-	(lambda ()
-		(interactive)
-		(define-key key-translation-map (kbd "<f12>") (esc-non-normal nil))))
-
-(define-key evil-normal-state-map (kbd "g A")
-	(lambda ()
-		(interactive)
-		(define-key key-translation-map (kbd "<f12>") (esc-non-normal 't))))
-
 (global-evil-leader-mode)
 (evil-mode 1)
 
@@ -88,6 +78,18 @@
 	(lambda (arg)
 		(interactive "P")
 		(evil-search-word-backward arg (symbol-at-point))))
+
+;; Aggressive save toggle
+
+(define-key evil-normal-state-map (kbd "g a")
+	(lambda ()
+		(interactive)
+		(define-key key-translation-map (kbd "<f12>") (esc-non-normal nil))))
+
+(define-key evil-normal-state-map (kbd "g A")
+	(lambda ()
+		(interactive)
+		(define-key key-translation-map (kbd "<f12>") (esc-non-normal 't))))
 
 ;;;;;
 ;; leader keybindings
