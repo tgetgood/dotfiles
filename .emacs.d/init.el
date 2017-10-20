@@ -11,7 +11,7 @@
 						 '("org" . "http://orgmode.org/elpa/") t)
 
 
-;; Lkoad and activate emacs packages. Do this first so that the
+;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
 ;; This also sets the load path.
 (package-initialize)
@@ -21,78 +21,6 @@
 ;; makes them available for download.
 (when (not package-archive-contents)
 	(package-refresh-contents))
-
-
-;; Everything *should* be in here. There's probably stuff installed
-;; via package-list-packages... Use C-h v package-activated-list to
-;; see what's installed. Too bad that lists dependencies as well.
-(defvar packages
-	'(
-		;; Clojure
-		clojure-mode
-		clojure-mode-extra-font-locking
-		cider
-		clj-refactor
-		kibit-helper
-		paredit
-
-		edn
-		yasnippet
-		multiple-cursors
-
-		;; cljs
-		cljsbuild-mode
-
-		;; Haskell
-		haskell-mode
-		scion
-
-		;;Evil
-		evil
-		evil-leader
-		evil-smartparens
-
-		;; Themes
-		cyberpunk-theme
-		meacupla-theme
-
-		;; Web
-		scss-mode
-		markdown-mode
-
-		;; HTML pseudo-paredit
-		tagedit
-
-		;; LaTeX
-		auctex
-		auctex-latexmk
-		;; Completion
-		company
-		bash-completion
-
-		;; Comms
-		wanderlust
-		jabber
-
-		;; Misc
-		flycheck-pos-tip
-		inflections
-		hydra
-		undo-tree
-		ag
-		ido-ubiquitous
-		smex
-		buffer-move
-		lua-mode
-
-		;; Git
-		gh
-		magit
-		))
-
-(dolist (p packages)
-	(when (not (package-installed-p p))
-				(package-install p)))
 
 ;;;;;
 ;; Config
