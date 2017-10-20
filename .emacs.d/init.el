@@ -51,6 +51,8 @@
 
 (load "latex-custom-config.el")
 
+(load "javascript-config.el")
+
 ;;;;;
 ;; Machine Generated
 ;;;;;
