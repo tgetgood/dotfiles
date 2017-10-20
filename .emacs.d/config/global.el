@@ -227,6 +227,13 @@
 	(interactive)
 	(comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 
+(defun magic-comment-line ()
+	(interactive)
+	(progn
+		(beginning-of-line)
+		(paredit-semicolon)
+		(insert ";")))
+
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
 (global-set-key (kbd "M-;") 'comment-or-uncomment-region)
 
@@ -263,3 +270,7 @@
 	(define-key company-active-map (kbd "<return>") nil)
 	(define-key company-active-map (kbd "RET") nil)
 	(define-key company-active-map (kbd "M-RET") #'company-complete-selection))
+
+;;;;; Undoings
+
+(global-set-key (kbd "M-c") nil)
