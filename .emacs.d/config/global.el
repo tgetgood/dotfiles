@@ -254,3 +254,12 @@
 		(message "Canceled exit")))
 
 (global-set-key (kbd "C-x C-c") 'ask-before-closing)
+
+;;;;; Company
+
+;; Autocomplete on enter causes more pain than it warrants.
+;; M-RET seems like a good choice to go with M-down
+(with-eval-after-load 'company
+	(define-key company-active-map (kbd "<return>") nil)
+	(define-key company-active-map (kbd "RET") nil)
+	(define-key company-active-map (kbd "M-RET") #'company-complete-selection))
