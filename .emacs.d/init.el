@@ -41,9 +41,6 @@
 
 (load "clojure-setup.el")
 
-;; Indentation exceptions for clojure.
-(load "clojure-indentation.el")
-
 (load "compilation-setup.el")
 
 (load "grunt-setup.el")

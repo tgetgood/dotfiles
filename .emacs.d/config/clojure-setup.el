@@ -134,3 +134,16 @@
 			"(do (require '[figwheel-sidecar.repl-api :as fig])
 					 (fig/start-figwheel!)
 					 (fig/cljs-repl))")
+
+(defun paredit-space-for-reader-conditional (endp delim)
+	"Do not insert a space between #? and ("
+	(or endp
+			(cond ((eq (char-syntax delim) ?\()
+						 (not (looking-back (regexp-quote "#?") 2 nil)))
+						(else t))))
+
+(add-hook 'clojurec-mode-hook
+					(lambda ()
+						(add-to-list
+						 'paredit-space-for-delimiter-predicates
+						 'paredit-space-for-reader-conditional)))
