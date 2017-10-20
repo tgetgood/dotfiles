@@ -18,7 +18,6 @@
 
 (add-hook 'js2-mode-hook
 					(lambda ()
-						(define-key)
 						(define-key js2-mode-map (kbd "C-c M-s-j") 'nodejs-repl)
 						(define-key js2-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
 						(define-key js2-mode-map (kbd "C-c C-j") 'nodejs-repl-send-line)
