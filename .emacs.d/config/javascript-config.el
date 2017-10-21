@@ -19,11 +19,19 @@
 							(if (featurep 'js2-highlight-vars)
 									(js2-highlight-vars-mode)))))
 
+(defun load-file-in-new-node-repl ()
+	(interactive)
+	(let ((buff (buffer-file-name)))
+		(progn
+			(if (get-buffer "*nodejs*")
+					(progn
+						(nodejs-repl-quit-or-cancel)
+						(nodejs-repl-quit-or-cancel)))
+			(nodejs-repl)
+			(nodejs-repl-load-file buff))))
+
 (add-hook 'js2-mode-hook
 					(lambda ()
 						(define-key js2-mode-map (kbd "C-c M-j") 'nodejs-repl)
-						(define-key js2-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
-						(define-key js2-mode-map (kbd "C-c C-j") 'nodejs-repl-send-line)
-						(define-key js2-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
-						(define-key js2-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
+						(define-key js2-mode-map (kbd "C-c C-k") 'load-file-in-new-node-repl)
 						(define-key js2-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))

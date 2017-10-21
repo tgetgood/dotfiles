@@ -41,6 +41,8 @@
 		cider-test-report-mode
 		cider-repl-mode
 
+		nodejs-repl-mode
+
 		haskell-error-mode
 		haskell-interactive-mode
 
