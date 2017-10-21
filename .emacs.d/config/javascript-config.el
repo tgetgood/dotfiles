@@ -28,10 +28,14 @@
 						(nodejs-repl-quit-or-cancel)
 						(nodejs-repl-quit-or-cancel)))
 			(nodejs-repl)
-			(nodejs-repl-load-file buff))))
+			(nodejs-repl-load-file buff)
+			(insert "\n")
+			(end-of-buffer))))
 
 (add-hook 'js2-mode-hook
 					(lambda ()
+						(define-key nodejs-repl-mode-map (kbd "TAB")
+							'nodejs-repl-complete-from-process)
 						(define-key js2-mode-map (kbd "C-c M-j") 'nodejs-repl)
 						(define-key js2-mode-map (kbd "C-c C-k") 'load-file-in-new-node-repl)
 						(define-key js2-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
