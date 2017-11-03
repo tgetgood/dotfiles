@@ -1,5 +1,4 @@
 (require 'nodejs-repl)
-(require 'js2-highlight-vars)
 
 (setq js2-skip-preprocessor-directives t)
 (setq js2-strict-missing-semi-warning nil)
@@ -15,9 +14,7 @@
 (add-hook 'js2-mode-hook
 					(lambda ()
 						(progn
-							(flycheck-mode 1)
-							(if (featurep 'js2-highlight-vars)
-									(js2-highlight-vars-mode)))))
+							(flycheck-mode 1))))
 
 (defun load-file-in-new-node-repl ()
 	(interactive)
@@ -39,3 +36,8 @@
 						(define-key js2-mode-map (kbd "C-c M-j") 'nodejs-repl)
 						(define-key js2-mode-map (kbd "C-c C-k") 'load-file-in-new-node-repl)
 						(define-key js2-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
+
+(defun set-eslint-standard ()
+	"Set flycheck to use standard for linting"
+	(interactive)
+	(setq flycheck-javascript-eslint-executable "standard --verbose"))
