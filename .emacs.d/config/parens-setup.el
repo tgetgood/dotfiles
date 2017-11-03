@@ -113,6 +113,7 @@ which case it's a no-op."
 (define-key evil-visual-state-map (kbd "g \"") 'wrap-double-quote)
 
 (define-key paredit-mode-map (kbd "M-J") nil)
+(define-key paredit-mode-map (kbd "M-r") nil)
 
 
 ;;;;; Overriding evil-smartparens.
