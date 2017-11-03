@@ -227,13 +227,6 @@
 	(interactive)
 	(comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 
-(defun magic-comment-line ()
-	(interactive)
-	(progn
-		(beginning-of-line)
-		(paredit-semicolon)
-		(insert ";")))
-
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
 (global-set-key (kbd "M-;") 'comment-or-uncomment-region)
 
