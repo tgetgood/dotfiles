@@ -19,6 +19,8 @@
 (global-auto-revert-mode 1)
 (setq-default fill-column 80)
 
+;; Don't force autocompletion
+(setq company-require-match nil)
 ;;;; Auto-indent
 
 (electric-indent-mode -1)
