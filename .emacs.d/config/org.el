@@ -8,6 +8,11 @@
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
+;; Just add up hours in clock table. No days, weeks, months, ...
+(setq org-time-clocksum-format
+			(quote (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+
+
 ;; TODO config
 (setq-default org-highest-priority ?A)
 (setq-default org-lowest-priority ?E)
