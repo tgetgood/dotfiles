@@ -121,12 +121,6 @@
 (define-key clojure-mode-map (kbd "C-c r") 'cider-ns-refresh)
 
 ;;;;;
-;; Evil customisations
-;;;;;
-
-(define-key evil-normal-state-map "K" 'cider-doc)
-
-;;;;;
 ;; Figwheel - Cider Setup
 ;;;;;
 

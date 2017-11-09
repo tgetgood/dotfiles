@@ -150,3 +150,6 @@
  )
 
 (evil-ex-define-cmd "E[xplore]" (lambda () (interactive) (dired ".")))
+
+(evil-define-key 'normal emacs-lisp-mode-map "K" 'describe-function)
+(evil-define-key 'normal cider-mode-map "K" 'cider-doc)

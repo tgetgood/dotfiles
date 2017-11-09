@@ -269,3 +269,4 @@
 ;;;;; Undoings
 
 (global-set-key (kbd "M-c") nil)
+(global-set-key (kbd "C-x C-b") nil)
