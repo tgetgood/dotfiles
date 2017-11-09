@@ -97,6 +97,17 @@
 ;; leader keybindings
 ;;;;;
 
+(defvar my-static-killable-window-names
+	'("*Help*" "*ag search*" "*cider-doc*"))
+
+(defun my-killable-window-buffers ()
+	(append my-static-killable-window-names
+					(let (v '())
+						(dolist (buff (buffer-list) v)
+							(if (string-prefix-p "*magit" (buffer-name buff))
+									(setq v (cons buff v))))
+						v)))
+
 (evil-leader/set-key
 
 	;; Clojure bindings
@@ -142,7 +153,10 @@
 
  ;; Ghetto tasklist pluging
  "t" 'tasklist-ag ; Defined in global.el
- "q" 'ag-kill-buffers
+ "q" (lambda ()
+			 (interactive)
+			 (dolist (buff (my-killable-window-buffers))
+				 (quit-windows-on buff nil)))
 
  ;; Everyday stuff
  "w" 'whitespace-cleanup
