@@ -63,7 +63,6 @@
 		magit-status-mode
 		magit-wazzup-mode
 		magit-wip-save-mode
-
 		))
 
 (dolist (m my-emacs-modes)
@@ -97,16 +96,19 @@
 ;; leader keybindings
 ;;;;;
 
-(defvar my-static-killable-window-names
-	'("*Help*" "*ag search*" "*cider-doc*"))
+(defvar my-annoying-window-list
+	(list "*Help*" "*ag search*" "*cider-doc*" "*Backtrace*"))
 
-(defun my-killable-window-buffers ()
-	(append my-static-killable-window-names
-					(let (v '())
-						(dolist (buff (buffer-list) v)
-							(if (string-prefix-p "*magit" (buffer-name buff))
-									(setq v (cons buff v))))
-						v)))
+(defun kill-the-annoying-popups ()
+	(interactive)
+	(dolist (buff (buffer-list))
+		(let ((name (buffer-name buff)))
+			(if (and (buffer-live-p buff)
+							 (or
+								(member name my-annoying-window-list)
+								(string-prefix-p "*magit" name)))
+					(progn
+						(quit-windows-on buff nil))))))
 
 (evil-leader/set-key
 
@@ -153,10 +155,7 @@
 
  ;; Ghetto tasklist pluging
  "t" 'tasklist-ag ; Defined in global.el
- "q" (lambda ()
-			 (interactive)
-			 (dolist (buff (my-killable-window-buffers))
-				 (quit-windows-on buff nil)))
+ "q" 'kill-the-annoying-popups
 
  ;; Everyday stuff
  "w" 'whitespace-cleanup
