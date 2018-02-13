@@ -6,6 +6,6 @@
 
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-(define-key anaconda-mode-map (kbd "TAB") 'company-anaconda)
+(define-key python-mode-map (kbd "TAB") 'company-anaconda)
 
 (elpy-enable)
