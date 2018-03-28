@@ -11,11 +11,6 @@
 
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
 
-(add-hook 'js2-mode-hook
-					(lambda ()
-						(progn
-							(flycheck-mode 1))))
-
 (defun load-file-in-new-node-repl ()
 	(interactive)
 	(let ((buff (buffer-file-name)))
