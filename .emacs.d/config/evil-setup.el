@@ -97,7 +97,8 @@
 ;;;;;
 
 (defvar my-annoying-window-list
-	(list "*Help*" "*ag search*" "*cider-doc*" "*Backtrace*"))
+	(list "*Help*" "*ag search*" "*cider-doc*" "*Backtrace*" "*Python Doc*"))
+
 
 (defun kill-the-annoying-popups ()
 	(interactive)
@@ -135,7 +136,6 @@
 						 (evil-indent-line (point) (1+ (point)))))
 
  "e" 'eval-buffer
- "a" 'ag-project-regexp
 
  ;; Magit
  "s" 'magit-status
@@ -153,6 +153,7 @@
  "g" 'org-agenda
  "l" 'org-store-link
 
+ "a" 'ag-project-regexp
  ;; Ghetto tasklist pluging
  "t" 'tasklist-ag ; Defined in global.el
  "q" 'kill-the-annoying-popups
@@ -166,3 +167,4 @@
 
 (evil-define-key 'normal emacs-lisp-mode-map "K" 'describe-function)
 (evil-define-key 'normal clojure-mode-map "K" 'cider-doc)
+(evil-define-key 'normal elpy-mode-map "K" 'elpy-doc)
