@@ -1,3 +1,5 @@
+(require 'org)
+
 ;; Don't clobber windows
 (setq org-agenda-window-setup 'current-window)
 
@@ -26,8 +28,12 @@
 
 (define-key org-mode-map (kbd "M-h") nil)
 
+(defvar org-drawers '())
+
 (add-to-list 'org-drawers "NOTE")
 (add-to-list 'org-drawers "FINISHED")
+
+(setq org-duration-format '((special . h:mm)))
 
 (setq org-hide-leading-stars t)
 
