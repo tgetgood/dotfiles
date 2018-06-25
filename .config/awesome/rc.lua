@@ -346,6 +346,8 @@ globalkeys = awful.util.table.join(
 		-- Program Shortcuts
 		awful.key({ modkey }, "g", function() awful.spawn(browser) end,
 							{description = "open browser window", group = "launcher"}),
+		awful.key({ modkey, "Shift"}, "g", function() awful.spawn("chromium") end,
+							{description = "open browser window", group = "launcher"}),
 		awful.key({ modkey }, "e", function () awful.spawn(editor) end,
 							{description = "open editor window", group = "launcher"}),
 		awful.key({ modkey, "Shift" }, "s", function() awful.spawn("xmodmap ~/.Xmodmap") end,
