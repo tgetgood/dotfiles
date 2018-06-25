@@ -60,6 +60,9 @@
 (add-hook 'clojure-mode-hook 'cider-refresh-on-save)
 (add-hook 'clojurec-mode-hook 'cider-refresh-on-save)
 
+(add-hook 'clojure-mode-hook 'cider-mode)
+(add-hook 'cider-repl-mode-hook 'cider-mode)
+
 (defun cider-user-ns ()
 	(interactive)
 	;; TODO: cljs.user in cljs repl
@@ -82,17 +85,14 @@
 ;; clj-refactor
 ;;;;;
 
-(require 'clj-refactor)
-(add-hook 'clojure-mode-hook (lambda ()
-															 (clj-refactor-mode 1)
-															 (cljr-add-keybindings-with-prefix "C-c C-v")))
+;; (require 'clj-refactor)
+;; (add-hook 'clojure-mode-hook (lambda ()
+;;															 (clj-refactor-mode 1)
+;;															 (cljr-add-keybindings-with-prefix "C-c C-v")))
 
-(add-hook 'clojure-mode-hook 'cider-mode)
-(add-hook 'cider-repl-mode-hook 'cider-mode)
-
-(setq cljr-warn-on-eval nil)
-(setq cljr-magic-requires nil)
-(setq cljr-favor-prefix-notation nil)
+;; (setq cljr-warn-on-eval nil)
+;; (setq cljr-magic-requires nil)
+;; (setq cljr-favor-prefix-notation nil)
 
 ;;;;;
 ;; Compilation tasks
