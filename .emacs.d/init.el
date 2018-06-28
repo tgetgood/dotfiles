@@ -6,10 +6,11 @@
 (require 'package)
 
 (add-to-list 'package-archives
-						 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+						 '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives
-						 '("org" . "http://orgmode.org/elpa/") t)
-
+						 '("org" . "https://orgmode.org/elpa/"))
+(add-to-list 'package-archives
+						 '("marmalade" . "https://marmalade-repo.org/packages/"))
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
@@ -80,7 +81,7 @@
 		(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
 	 (quote
-		(yaml-mode company-anaconda py-autopep8 anaconda-mode elpy jedi js2-mode js2-refactor json-mode nodejs-repl xref-js2 latex-extra aggressive-indent 0blayout alchemist elixir-mode dired-single lua-mode exec-path-from-shell buffer-move wanderlust tagedit smex scss-mode scion popup meacupla-theme markdown-mode magit kibit-mode kibit-helper jabber ido-ubiquitous haskell-mode gh flycheck-pos-tip evil-smartparens evil-paredit evil-leader cyberpunk-theme company clojure-mode-extra-font-locking cljsbuild-mode clj-refactor bash-completion ag ack-and-a-half)))
+		(ido-select-window yaml-mode company-anaconda py-autopep8 anaconda-mode elpy jedi js2-mode js2-refactor json-mode nodejs-repl xref-js2 latex-extra aggressive-indent 0blayout alchemist elixir-mode dired-single lua-mode exec-path-from-shell buffer-move wanderlust tagedit smex scss-mode scion popup meacupla-theme markdown-mode magit kibit-mode kibit-helper jabber ido-ubiquitous haskell-mode gh flycheck-pos-tip evil-smartparens evil-paredit evil-leader cyberpunk-theme company clojure-mode-extra-font-locking cljsbuild-mode clj-refactor bash-completion ag ack-and-a-half)))
  '(sp-autoskip-closing-pair t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
