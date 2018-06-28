@@ -5,8 +5,9 @@
 (setq js2-include-node-externs t)
 ;; (setq js2-missing-semi-one-line-override nil)
 
-(remove-alist 'auto-mode-alist "\\.jsm?\\'")
-(remove-alist 'auto-mode-alist "\\.json\\'")
+;; (assq-delete-all "\\.jsm?\\'" auto-mode-alist)
+;; (assq-delete-all auto-mode-alist)
+;; (delq (cons "\\.json\\'" (javascript-mode)) auto-mode-alist)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
