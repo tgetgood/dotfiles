@@ -179,6 +179,9 @@
 ;; for selecting buffer and file names
 (ido-ubiquitous-mode 1)
 
+;; Override default dumb window switch
+(global-set-key (kbd "C-x o") 'ido-select-window)
+
 ;; Override default buffer view
 ;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 (global-set-key (kbd "C-x C-b") 'ibuffer)
