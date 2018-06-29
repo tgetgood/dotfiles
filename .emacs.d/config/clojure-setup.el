@@ -85,14 +85,20 @@
 ;; clj-refactor
 ;;;;;
 
-;; (require 'clj-refactor)
-;; (add-hook 'clojure-mode-hook (lambda ()
-;;															 (clj-refactor-mode 1)
-;;															 (cljr-add-keybindings-with-prefix "C-c C-v")))
+(require 'clj-refactor)
+(add-hook 'clojure-mode-hook (lambda ()
+															 (clj-refactor-mode 1)
+															 (cljr-add-keybindings-with-prefix "C-c C-v")))
 
-;; (setq cljr-warn-on-eval nil)
-;; (setq cljr-magic-requires nil)
-;; (setq cljr-favor-prefix-notation nil)
+(setq cljr-warn-on-eval nil)
+(setq cljr-magic-requires nil)
+(setq cljr-favor-prefix-notation nil)
+
+(setq cider-jack-in-nrepl-middlewares
+			(delete "refactor-nrepl.middleware/wrap-refactor" cider-jack-in-nrepl-middlewares))
+
+(setq cider-jack-in-lein-plugins
+			(delete '("refactor-nrepl" "2.3.1") cider-jack-in-lein-plugins))
 
 ;;;;;
 ;; Compilation tasks
