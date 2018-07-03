@@ -56,6 +56,8 @@
 
 (load "python-setup.el")
 
+(load "gui.el")
+
 
 ;; Machine Generated
 
@@ -102,4 +104,9 @@
 ;;;;;
 ;;;;; TODO: Can this be rearranged more sensibly?
 
-(add-to-list 'after-make-frame-functions (lambda (_) (load "gui.el")))
+(add-to-list 'after-make-frame-functions (lambda (_) (clean-ui)))
+
+(defun reset-theme ()
+	(interactive)
+	(load-theme 'cyberpunk t)
+	(clean-ui))
