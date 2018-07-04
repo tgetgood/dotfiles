@@ -73,7 +73,7 @@
  '(browse-url-generic-program nil)
  '(custom-safe-themes
 	 (quote
-		("f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default)))
+		("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default)))
  '(fci-rule-color "#383838")
  '(ido-case-fold t)
  '(ido-enable-flex-matching t)
@@ -83,7 +83,7 @@
 		(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
 	 (quote
-		(ido-select-window yaml-mode company-anaconda py-autopep8 anaconda-mode elpy jedi js2-mode js2-refactor json-mode nodejs-repl xref-js2 latex-extra aggressive-indent 0blayout alchemist elixir-mode dired-single lua-mode exec-path-from-shell buffer-move wanderlust tagedit smex scss-mode scion popup meacupla-theme markdown-mode magit kibit-mode kibit-helper jabber ido-ubiquitous haskell-mode gh flycheck-pos-tip evil-smartparens evil-paredit evil-leader cyberpunk-theme company clojure-mode-extra-font-locking cljsbuild-mode clj-refactor bash-completion ag ack-and-a-half)))
+		(ido-select-window yaml-mode company-anaconda py-autopep8 anaconda-mode elpy jedi js2-mode js2-refactor json-mode nodejs-repl xref-js2 latex-extra aggressive-indent 0blayout alchemist elixir-mode dired-single lua-mode exec-path-from-shell buffer-move wanderlust tagedit smex scss-mode scion popup meacupla-theme markdown-mode magit kibit-mode kibit-helper jabber ido-ubiquitous haskell-mode gh flycheck-pos-tip evil-smartparens evil-paredit evil-leader cyberpunk-theme company clojure-mode-extra-font-locking cljsbuild-mode bash-completion ag ack-and-a-half)))
  '(sp-autoskip-closing-pair t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -106,7 +106,12 @@
 
 (add-to-list 'after-make-frame-functions (lambda (_) (clean-ui)))
 
-(defun reset-theme ()
+(defun dark ()
 	(interactive)
 	(load-theme 'cyberpunk t)
+	(clean-ui))
+
+(defun light ()
+	(interactive)
+	(load-theme 'leuven t)
 	(clean-ui))
