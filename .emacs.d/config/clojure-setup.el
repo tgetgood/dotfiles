@@ -94,12 +94,6 @@
 (setq cljr-magic-requires nil)
 (setq cljr-favor-prefix-notation nil)
 
-(setq cider-jack-in-nrepl-middlewares
-			(delete "refactor-nrepl.middleware/wrap-refactor" cider-jack-in-nrepl-middlewares))
-
-(setq cider-jack-in-lein-plugins
-			(delete '("refactor-nrepl" "2.3.1") cider-jack-in-lein-plugins))
-
 ;;;;;
 ;; Compilation tasks
 ;;;;;

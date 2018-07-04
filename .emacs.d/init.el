@@ -34,6 +34,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/config")
 
+(add-to-list 'load-path "~/.emacs.d/elpa/cider")
+(add-to-list 'load-path "~/.emacs.d/elpa/clj-refactor")
+
 (load "global.el")
 
 (load "evil-setup.el")
