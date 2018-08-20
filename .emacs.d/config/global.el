@@ -187,7 +187,10 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (require 'undo-tree)
-(global-undo-tree-mode t)
+(global-undo-tree-mode 't)
+
+(global-set-key (kbd "C-_") nil)
+(define-key undo-tree-map (kbd "C-_") nil)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
