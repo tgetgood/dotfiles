@@ -121,13 +121,13 @@
 
 ;; Reset repl
 
-(defun cider-ns-refresh ()
+(defun my-cider-ns-refresh ()
 	(interactive)
 	(cider-interactive-eval
 	 "(require 'clojure.tools.namespace.repl)
 		(clojure.tools.namespace.repl/refresh)"))
 
-(define-key clojure-mode-map (kbd "C-c r") 'cider-ns-refresh)
+(define-key clojure-mode-map (kbd "C-c r") 'my-cider-ns-refresh)
 
 ;;;;;
 ;; Figwheel - Cider Setup
