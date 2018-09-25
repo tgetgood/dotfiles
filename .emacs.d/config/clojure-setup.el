@@ -70,11 +70,14 @@
 	;; TODO: cljs.user in cljs repl
 	(cider-repl-set-ns "user"))
 
+;; Dev dependencies that I don't want to have to remember.
+
+(add-to-list 'cider-jack-in-dependencies
+						 '("org.clojure/tools.namespace" "0.2.11"))
+
 (eval-after-load 'cider
 	'(progn
-		 (define-key clojure-mode-map (kbd "C-M-r") 'cider-refresh)
-		 (define-key cider-mode-map (kbd "C-M-r") 'cider-refresh)
-		 (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
+		 (define-key cider-mode-map (kbd "C-M-r") 'cider-ns-refresh)
 		 (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)
 
 		 ;; Undoings
