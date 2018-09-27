@@ -38,6 +38,15 @@
 
 (setq cider-show-error-buffer nil)
 
+;; Always prefer figwheel-main
+
+(setq cider-default-cljs-repl 'figwheel-main)
+
+;; figwheel-main version set globally. Not ideal, but convenient...
+(add-to-list
+ 'cider-jack-in-cljs-dependencies
+ '("com.bhauman/figwheel-main" "0.1.9"))
+
 ;; Use clojure mode for other extensions
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
@@ -79,6 +88,7 @@
 	'(progn
 		 (define-key cider-mode-map (kbd "C-M-r") 'cider-ns-refresh)
 		 (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)
+		 (define-key cider-repl-mode-map (kbd "C-c C-z") 'cider-repl-switch-to-other)
 
 		 ;; Undoings
 		 (define-key cider-repl-mode-map (kbd "TAB") 'completion-at-point)
