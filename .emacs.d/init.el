@@ -71,6 +71,7 @@
 	 ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
  '(browse-url-browser-function (quote browse-url-default-browser))
  '(browse-url-generic-program nil)
+ '(cider-offer-to-open-cljs-app-in-browser nil)
  '(custom-safe-themes
 	 (quote
 		("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default)))
