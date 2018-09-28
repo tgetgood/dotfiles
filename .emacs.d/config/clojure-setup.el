@@ -88,9 +88,10 @@
 	'(progn
 		 (define-key cider-mode-map (kbd "C-M-r") 'cider-ns-refresh)
 		 (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)
-		 (define-key cider-repl-mode-map (kbd "C-c C-z") 'cider-repl-switch-to-other)
+		 (define-key cider-repl-mode-map (kbd "C-c C-n") 'cider-repl-switch-to-other)
 
 		 ;; Undoings
+		 (define-key cider-mode-map (kbd "C-c M-r") nil)
 		 (define-key cider-repl-mode-map (kbd "TAB") 'completion-at-point)
 		 ))
 
