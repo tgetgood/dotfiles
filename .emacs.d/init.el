@@ -42,6 +42,8 @@
 
 (load "clojure-setup.el")
 
+(load "rust-setup.el")
+
 (load "compilation-setup.el")
 
 (load "grunt-setup.el")
@@ -84,7 +86,7 @@
 		(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
 	 (quote
-		(cider clj-refactor ido-select-window yaml-mode company-anaconda py-autopep8 anaconda-mode elpy jedi js2-mode js2-refactor json-mode nodejs-repl xref-js2 latex-extra aggressive-indent 0blayout alchemist elixir-mode dired-single lua-mode exec-path-from-shell buffer-move wanderlust tagedit smex scss-mode scion popup meacupla-theme markdown-mode magit kibit-mode kibit-helper jabber ido-ubiquitous haskell-mode gh flycheck-pos-tip evil-smartparens evil-paredit evil-leader cyberpunk-theme company clojure-mode-extra-font-locking cljsbuild-mode bash-completion ag ack-and-a-half)))
+		(racer cargo rust-mode cider clj-refactor ido-select-window yaml-mode company-anaconda py-autopep8 anaconda-mode elpy jedi js2-mode js2-refactor json-mode nodejs-repl xref-js2 latex-extra aggressive-indent 0blayout alchemist elixir-mode dired-single lua-mode exec-path-from-shell buffer-move wanderlust tagedit smex scss-mode scion popup meacupla-theme markdown-mode magit kibit-mode kibit-helper jabber ido-ubiquitous haskell-mode gh flycheck-pos-tip evil-smartparens evil-paredit evil-leader cyberpunk-theme company clojure-mode-extra-font-locking cljsbuild-mode bash-completion ag ack-and-a-half)))
  '(sp-autoskip-closing-pair t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
