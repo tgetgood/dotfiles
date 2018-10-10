@@ -107,6 +107,7 @@
 			(if (and (buffer-live-p buff)
 							 (or
 								(member name my-annoying-window-list)
+								(string-prefix-p "*" name)
 								(string-prefix-p "magit: " name)))
 					(progn
 						(quit-windows-on buff nil))))))
