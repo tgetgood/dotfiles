@@ -54,6 +54,7 @@ export EDITOR=vim
 export BROWSER=google-chrome-stable
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export PROMPT_COMMAND= # Handy against some forms of juvenile mischief.
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # TODO: This should be covered in .Xresources. Check.
 export TERM=xterm-256color
