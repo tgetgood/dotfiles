@@ -46,10 +46,6 @@
 
 (load "compilation-setup.el")
 
-(load "grunt-setup.el")
-
-(load "workflows.el")
-
 (load "org.el")
 
 (load "latex-custom-config.el")

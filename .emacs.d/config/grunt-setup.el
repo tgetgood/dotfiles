@@ -1,5 +1,0 @@
-(defun grunt-watch ()
-	(interactive)
-	(compile "grunt watch" t)
-	(switch-to-buffer-other-window "*compilation*")
-	(rename-buffer "*grunt-watch-compile*"))
