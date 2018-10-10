@@ -161,3 +161,9 @@
 						(add-to-list
 						 'paredit-space-for-delimiter-predicates
 						 'paredit-space-for-reader-conditional)))
+
+(evil-leader/set-key-for-mode 'clojure-mode
+	"c" 'cljr-clean-ns
+	"m" 'cljr-add-missing-libspec
+	"r" 'cider-eval-region
+	"E" 'cider-load-buffer)

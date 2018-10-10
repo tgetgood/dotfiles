@@ -112,19 +112,16 @@
 					(progn
 						(quit-windows-on buff nil))))))
 
+(evil-leader/set-key-for-mode 'elisp-mode
+ "e" 'eval-buffer	)
+
+(evil-leader/set-key-for-mode 'smerge-mode
+ "1" 'smerge-keep-current
+ "2" 'smerge-keep-other
+ "`" 'smerge-next
+ "~" 'smerge-prev)
+
 (evil-leader/set-key
-
-	;; Clojure bindings
-	"r" 'cider-eval-region
-	"E" 'cider-load-buffer
-
-	;; Kibit
- "k" 'kibit-accept-proposed-change
- "K" 'kibit-current-file
-
- ;; clj refactor
- "c" 'cljr-clean-ns
- "m" 'cljr-add-missing-libspec
 
  ;; compilation error list
  "[" 'previous-error
@@ -136,23 +133,11 @@
 						 (evil-indent (region-beginning) (region-end))
 						 (evil-indent-line (point) (1+ (point)))))
 
- "e" 'eval-buffer
-
  ;; Magit
  "s" 'magit-status
  "y" 'magit-show-refs-popup
  "b" 'magit-blame
  "B" 'magit-blame-mode
-
- ;; Smerge bindings
- "1" 'smerge-keep-current
- "2" 'smerge-keep-other
- "`" 'smerge-next
- "~" 'smerge-prev
-
- ;; org
- "g" 'org-agenda
- "l" 'org-store-link
 
  "a" 'ag-project-regexp
  ;; Ghetto tasklist pluging

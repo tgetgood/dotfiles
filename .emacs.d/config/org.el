@@ -46,3 +46,7 @@
 (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
 
 (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
+
+(evil-leader/set-key-for-mode 'org-mode
+ "g" 'org-agenda
+ "l" 'org-store-link)
