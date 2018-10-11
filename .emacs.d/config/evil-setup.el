@@ -96,17 +96,12 @@
 ;; leader keybindings
 ;;;;;
 
-(defvar my-annoying-window-list
-	(list "*Help*" "*ag search*" "*cider-doc*" "*Backtrace*" "*Python Doc*"))
-
-
 (defun kill-the-annoying-popups ()
 	(interactive)
 	(dolist (buff (buffer-list))
 		(let ((name (buffer-name buff)))
 			(if (and (buffer-live-p buff)
 							 (or
-								(member name my-annoying-window-list)
 								(string-prefix-p "*" name)
 								(string-prefix-p "magit: " name)))
 					(progn
