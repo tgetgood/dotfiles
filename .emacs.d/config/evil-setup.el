@@ -107,7 +107,7 @@
 					(progn
 						(quit-windows-on buff nil))))))
 
-(evil-leader/set-key-for-mode 'elisp-mode
+(evil-leader/set-key-for-mode 'emacs-lisp-mode
  "e" 'eval-buffer	)
 
 (evil-leader/set-key-for-mode 'smerge-mode
