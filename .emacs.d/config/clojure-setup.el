@@ -167,3 +167,15 @@
 	"m" 'cljr-add-missing-libspec
 	"r" 'cider-eval-region
 	"E" 'cider-load-buffer)
+
+(evil-leader/set-key-for-mode 'clojurescript-mode
+	"c" 'cljr-clean-ns
+	"m" 'cljr-add-missing-libspec
+	"r" 'cider-eval-region
+	"E" 'cider-load-buffer)
+
+(evil-leader/set-key-for-mode 'clojurec-mode
+	"c" 'cljr-clean-ns
+	"m" 'cljr-add-missing-libspec
+	"r" 'cider-eval-region
+	"E" 'cider-load-buffer)
