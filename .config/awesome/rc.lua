@@ -52,7 +52,7 @@ local function run_once(cmd)
 end
 
 run_once("systemctl --user start emacs")
-run_once("unclutter --root")
+run_once("unclutter -root")
 -- }}}
 
 -- {{{ Variable definitions
