@@ -12,6 +12,11 @@
 
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
 
+(setq js-indent-level 2)
+
+(add-hook 'js2-mode-hook
+					(lambda () (setq indent-tabs-mode nil)))
+
 (defun load-file-in-new-node-repl ()
 	(interactive)
 	(let ((buff (buffer-file-name)))

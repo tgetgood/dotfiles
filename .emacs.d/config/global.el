@@ -30,6 +30,7 @@
 ;; Line numbers with a space at the end.
 (global-linum-mode 1)
 
+;; Org grinds to a painful crawl if you try to number its lines
 (define-global-minor-mode almost-global-linum-mode linum-mode
 	(lambda ()
 		(when (not (memq major-mode
@@ -43,18 +44,13 @@
 			(lambda (line)
 				(propertize
 				 (format
-					(let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
+					(let ((w (length (number-to-string
+														(count-lines (point-min) (point-max))))))
 						(concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
 
 ;;;;;
 ;; Stuff that should have separate files
 ;;;;;
-
-;; TODO: create JS setup file.
-(setq js-indent-level 2)
-
-(add-hook 'js-mode-hook
-					(lambda () (setq indent-tabs-mode nil)))
 
 ;; TODO: scss file? web file?
 (setq scss-compile-at-save nil)
@@ -185,12 +181,6 @@
 ;; Override default buffer view
 ;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-
-(require 'undo-tree)
-(global-undo-tree-mode 't)
-
-(global-set-key (kbd "C-_") nil)
-(define-key undo-tree-map (kbd "C-_") nil)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)

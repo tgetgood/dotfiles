@@ -31,8 +31,9 @@
 (setq cider-font-lock-dynamically '(macro core function var))
 
 ;; Where to store the cider history.
-(setq cider-repl-history-file (concat user-emacs-directory "transient/cider-history"))
-
+(setq cider-repl-history-file
+			(concat user-emacs-directory "transient/cider-history"))
+v
 ;; Wrap when navigating history.
 (setq cider-repl-wrap-history t)
 
