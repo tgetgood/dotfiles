@@ -115,10 +115,20 @@
 						 'paredit-space-for-delimiter-predicates
 						 'paredit-space-for-reader-conditional)))
 
-(evil-leader/set-key-for-mode 'clj-refactor-mode
-	"c" 'cljr-clean-ns
-	"m" 'cljr-add-missing-libspec)
-
 (evil-leader/set-key-for-mode 'clojure-mode
+	"c" 'cljr-clean-ns
+	"m" 'cljr-add-missing-libspec
+	"r" 'cider-eval-region
+	"e" 'cider-load-buffer)
+
+(evil-leader/set-key-for-mode 'clojurescript-mode
+	"c" 'cljr-clean-ns
+	"m" 'cljr-add-missing-libspec
+	"r" 'cider-eval-region
+	"e" 'cider-load-buffer)
+
+(evil-leader/set-key-for-mode 'clojurec-mode
+	"c" 'cljr-clean-ns
+	"m" 'cljr-add-missing-libspec
 	"r" 'cider-eval-region
 	"e" 'cider-load-buffer)

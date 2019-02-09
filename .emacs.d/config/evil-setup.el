@@ -84,13 +84,12 @@
 (evil-leader/set-key-for-mode 'emacs-lisp-mode
  "e" 'eval-buffer	)
 
-(evil-leader/set-key-for-mode 'smerge-mode
+(evil-leader/set-key
+ ;; SMerge
  "1" 'smerge-keep-current
  "2" 'smerge-keep-other
  "`" 'smerge-next
- "~" 'smerge-prev)
-
-(evil-leader/set-key
+ "~" 'smerge-prev
 
  ;; compilation error list
  "[" 'previous-error
@@ -115,8 +114,7 @@
 
  ;; Everyday stuff
  "w" 'whitespace-cleanup
- "v" 'visual-line-mode
- )
+ "v" 'visual-line-mode)
 
 (evil-ex-define-cmd "E[xplore]" (lambda () (interactive) (dired ".")))
 
