@@ -2,27 +2,15 @@
 
 ;;; C-g as general purpose escape key sequence.
 ;;;
-(defmacro esc-non-normal (save)
-	`(lambda (prompt)
-		"Functionality for escaping generally.  Includes exiting Evil insert state and C-g binding. "
-		(cond
-		 ;; If we're in one of the Evil states that defines [escape] key, return [escape] so as
-		 ;; Key Lookup will use it.
-		 ((or (evil-insert-state-p) (evil-replace-state-p) (evil-visual-state-p))
-			(progn
-				(if ,save (save-buffer))
-				[escape]))
-		 ;; This is the best way I could infer for now to have C-c work during
-		 ;; evil-read-key.
-		 ;; Note: As long as I return [escape] in normal-state, I don't need this.
-		 ;; ((eq overriding-terminal-local-map evil-read-key-map) (keyboard-quit)
-		 ;; (kbd ""))
-		 (t (kbd "C-g")))))
+(defun esc-non-normal (prompt)
+	(if (or (evil-insert-state-p) (evil-replace-state-p) (evil-visual-state-p))
+			[escape]
+		(kbd "C-g")))
 
-(define-key key-translation-map (kbd "<f12>") (esc-non-normal nil))
+(define-key key-translation-map (kbd "<f12>") 'esc-non-normal)
 
-(global-evil-leader-mode)
 (evil-mode 1)
+(global-evil-leader-mode)
 
 ;; Handy helper to figure out buffer mode names for below list.
 (defun buffer-mode (buffer-or-string)
@@ -35,8 +23,7 @@
 ;;;;;
 
 (defvar my-emacs-modes
-	'(
-		cider-docview-mode
+	'(cider-docview-mode
 		cider-stacktrace-mode
 		cider-test-report-mode
 		cider-repl-mode
@@ -62,8 +49,7 @@
 		magit-reflog-mode
 		magit-status-mode
 		magit-wazzup-mode
-		magit-wip-save-mode
-		))
+		magit-wip-save-mode))
 
 (dolist (m my-emacs-modes)
 	(add-to-list 'evil-emacs-state-modes m))
@@ -79,18 +65,6 @@
 	(lambda (arg)
 		(interactive "P")
 		(evil-search-word-backward arg (symbol-at-point))))
-
-;; Aggressive save toggle
-
-(define-key evil-normal-state-map (kbd "g a")
-	(lambda ()
-		(interactive)
-		(define-key key-translation-map (kbd "<f12>") (esc-non-normal nil))))
-
-(define-key evil-normal-state-map (kbd "g A")
-	(lambda ()
-		(interactive)
-		(define-key key-translation-map (kbd "<f12>") (esc-non-normal 't))))
 
 ;;;;;
 ;; leader keybindings
