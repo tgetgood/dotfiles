@@ -1,5 +1,4 @@
-;; This is useful for working with camel-case tokens, like names of
-;; Java classes (e.g. JavaClassName)
+;; This is useful for working with CamelCase tokens, like names of Java classes
 (add-hook 'clojure-mode-hook 'subword-mode)
 
 ;; A little more syntax highlighting
@@ -33,7 +32,7 @@
 ;; Where to store the cider history.
 (setq cider-repl-history-file
 			(concat user-emacs-directory "transient/cider-history"))
-v
+
 ;; Wrap when navigating history.
 (setq cider-repl-wrap-history t)
 
@@ -56,22 +55,6 @@ v
 (add-to-list 'auto-mode-alist '("\\.cljc$" . clojurec-mode))
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojurescript-mode))
 
-(defun cider-refresh ()
-	(interactive)
-	(cider-interactive-eval
-	 (format "(require 'clojure.tools.namespace.repl)
-(clojure.tools.namespace.repl/refresh)")))
-
-(defun cider-refresh-on-save ()
-	(lambda ()
-		(add-hook 'after-save-hook
-							(lambda ()
-								(if (and (boundp 'cider-mode) cider-mode)
-										(cider-refresh))))))
-
-(add-hook 'clojure-mode-hook 'cider-refresh-on-save)
-(add-hook 'clojurec-mode-hook 'cider-refresh-on-save)
-
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'cider-repl-mode-hook 'cider-mode)
 
@@ -93,14 +76,14 @@ v
 
 		 ;; Undoings
 		 (define-key cider-mode-map (kbd "C-c M-r") nil)
-		 (define-key cider-repl-mode-map (kbd "TAB") 'completion-at-point)
-		 ))
+		 (define-key cider-repl-mode-map (kbd "TAB") 'completion-at-point)))
 
 ;;;;;
 ;; Cider keys
 ;;;;;
 
-(define-key cider-repl-mode-map (kbd "C-c C-a") 'cider-switch-to-last-clojure-buffer)
+(define-key cider-repl-mode-map (kbd "C-c C-a")
+	'cider-switch-to-last-clojure-buffer)
 
 ;;;;;
 ;; clj-refactor
@@ -119,37 +102,6 @@ v
 ;; Compilation tasks
 ;;;;;
 
-(defun lein-run ()
-	(interactive)
-	(compile "lein trampoline run" t)
-	(switch-to-buffer-other-window "*compilation*")
-	(rename-buffer "*lein-run*"))
-
-;; (set-variable 'cljsbuild-compile-command "lein trampoline cljsbuild auto dev")
-
-(defun cljsbuild ()
-	(interactive)
-	(cljsbuild-start "lein trampoline cljsbuild auto dev"))
-
-;; Reset repl
-
-(defun my-cider-ns-refresh ()
-	(interactive)
-	(cider-interactive-eval
-	 "(require 'clojure.tools.namespace.repl)
-		(clojure.tools.namespace.repl/refresh)"))
-
-(define-key clojure-mode-map (kbd "C-c r") 'my-cider-ns-refresh)
-
-;;;;;
-;; Figwheel - Cider Setup
-;;;;;
-
-(setq cider-cljs-lein-repl
-			"(do (require '[figwheel-sidecar.repl-api :as fig])
-					 (fig/start-figwheel!)
-					 (fig/cljs-repl))")
-
 (defun paredit-space-for-reader-conditional (endp delim)
 	"Do not insert a space between #? and ("
 	(or endp
@@ -163,8 +115,10 @@ v
 						 'paredit-space-for-delimiter-predicates
 						 'paredit-space-for-reader-conditional)))
 
-(evil-leader/set-key-for-mode 'clojure-mode
+(evil-leader/set-key-for-mode 'clj-refactor-mode
 	"c" 'cljr-clean-ns
-	"m" 'cljr-add-missing-libspec
+	"m" 'cljr-add-missing-libspec)
+
+(evil-leader/set-key-for-mode 'clojure-mode
 	"r" 'cider-eval-region
-	"E" 'cider-load-buffer)
+	"e" 'cider-load-buffer)
