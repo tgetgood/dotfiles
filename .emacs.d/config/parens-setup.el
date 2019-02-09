@@ -13,17 +13,17 @@
 
 ;; And the minibuffer
 
-(add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
 (defun conditionally-enable-paredit-mode ()
 	"enable paredit-mode during eval-expression"
 	(if (eq this-command 'eval-expression)
 			(paredit-mode 1)))
 
+(add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
+
 ;;;;; Let's try and use paredit + evil-smartparens. This will be fun
 
 (add-hook 'paredit-mode-hook 'smartparens-strict-mode)
 (add-hook 'smartparens-enabled-hook 'evil-smartparens-mode)
-
 
 (add-hook 'smartparens-disabled-hook (lambda () (evil-smartparens-mode 0)))
 
