@@ -4,7 +4,7 @@
 (defvar paren-hooks '( clojure-mode-hook
 											 cider-repl-mode-hook
 											 cider-repl-mode-hook
-											 schema-mode-hook
+											 scheme-mode-hook
 											 lisp-mode-hook
 											 emacs-lisp-mode-hook))
 
