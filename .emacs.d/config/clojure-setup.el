@@ -73,6 +73,7 @@
 		 (define-key cider-mode-map (kbd "C-M-r") 'cider-ns-refresh)
 		 (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)
 		 (define-key cider-repl-mode-map (kbd "C-c C-n") 'cider-repl-switch-to-other)
+		 (define-key cider-mode-map (kbd "C-c C-o") 'cider-repl-clear-buffer)
 
 		 ;; Undoings
 		 (define-key cider-mode-map (kbd "C-c M-r") nil)
