@@ -75,6 +75,7 @@
 	(dolist (buff (buffer-list))
 		(let ((name (buffer-name buff)))
 			(if (and (buffer-live-p buff)
+							 (not (string-prefix-p "*cider-repl" name))
 							 (or
 								(string-prefix-p "*" name)
 								(string-prefix-p "magit: " name)))
