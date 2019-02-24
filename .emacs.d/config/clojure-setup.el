@@ -1,5 +1,10 @@
 ;; This is useful for working with CamelCase tokens, like names of Java classes
 (add-hook 'clojure-mode-hook 'subword-mode)
+(add-hook 'clojure-mode-hook
+					(lambda ()
+						(progn
+							(auto-fill-mode 1)
+							(set (make-local-variable 'comment-auto-fill-only-comments) t))))
 
 ;; A little more syntax highlighting
 (require 'clojure-mode-extra-font-locking)
