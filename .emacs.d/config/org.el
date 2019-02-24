@@ -24,6 +24,7 @@
 (setq org-log-repeat 'time)
 
 (add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'auto-fill-mode)
 (add-hook 'org-mode-hook (lambda () (set-input-method "TeX")))
 
 (define-key org-mode-map (kbd "M-h") nil)
