@@ -125,7 +125,7 @@
 ;; FIXME: Redundant keyword declaration
 (defun tasklist-ag ()
 	(interactive)
-	(ag-project-regexp "(FIXME|TODO|HACK|OPTIMIZE|REVIEW)"))
+	(ag-project-regexp "@?(FIXME|TODO|HACK|OPTIMIZE|REVIEW):"))
 
 ;;;;;
 ;; Auto completion
