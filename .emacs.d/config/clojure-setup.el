@@ -1,5 +1,7 @@
 ;; This is useful for working with CamelCase tokens, like names of Java classes
-(add-hook 'clojure-mode-hook 'subword-mode)
+;; This is actually pretty annoying.
+;; (add-hook 'clojure-mode-hook 'subword-mode)
+
 (add-hook 'clojure-mode-hook
 					(lambda ()
 						(progn
