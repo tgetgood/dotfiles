@@ -82,7 +82,48 @@
 		(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
 	 (quote
-		(racer cargo rust-mode cider clj-refactor ido-select-window yaml-mode company-anaconda py-autopep8 anaconda-mode elpy jedi js2-mode js2-refactor json-mode nodejs-repl xref-js2 latex-extra 0blayout dired-single lua-mode buffer-move wanderlust tagedit smex scss-mode scion popup meacupla-theme markdown-mode magit kibit-mode ido-ubiquitous evil-smartparens evil-paredit evil-leader cyberpunk-theme company clojure-mode-extra-font-locking bash-completion ag)))
+		(0blayout
+		 ag
+		 anaconda-mode
+		 autodisass-llvm-bitcode
+		 bash-completion
+		 buffer-move
+		 cargo
+		 cider
+		 clj-refactor
+		 clojure-mode-extra-font-locking
+		 company
+		 company-anaconda
+		 cyberpunk-theme
+		 dired-single
+		 elpy
+		 evil-leader
+		 evil-paredit
+		 evil-smartparens
+		 ido-select-window
+		 ido-ubiquitous
+		 jedi
+		 js2-mode
+		 js2-refactor
+		 json-mode
+		 kibit-mode
+		 latex-extra
+		 lua-mode
+		 magit
+		 markdown-mode
+		 meacupla-theme
+		 nodejs-repl
+		 popup
+		 py-autopep8
+		 racer
+		 rust-mode
+		 scion
+		 scss-mode
+		 smex
+		 tagedit
+		 wanderlust
+		 xref-js2
+		 yaml-mode)))
  '(sp-autoskip-closing-pair t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
