@@ -86,6 +86,11 @@
 (evil-leader/set-key-for-mode 'emacs-lisp-mode
  "e" 'eval-buffer	)
 
+(evil-leader/set-key-for-mode 'clojure-mode
+	"p" (lambda ()
+				(interactive)
+				(cider-eval-print-last-sexp 't)))
+
 (evil-leader/set-key
  ;; SMerge
  "1" 'smerge-keep-current
