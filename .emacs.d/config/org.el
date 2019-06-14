@@ -25,7 +25,10 @@
 
 (add-hook 'org-mode-hook 'visual-line-mode)
 (add-hook 'org-mode-hook 'auto-fill-mode)
-(add-hook 'org-mode-hook (lambda () (set-input-method "TeX")))
+(add-hook 'org-mode-hook (lambda ()
+													 (progn
+														 (add-hook 'before-save-hook 'whitespace-cleanup nil t)
+														 (set-input-method "TeX"))))
 
 (define-key org-mode-map (kbd "M-h") nil)
 

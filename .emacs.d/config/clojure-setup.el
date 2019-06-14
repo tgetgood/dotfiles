@@ -6,7 +6,9 @@
 					(lambda ()
 						(progn
 							(auto-fill-mode 1)
+							(add-hook 'before-save-hook 'whitespace-cleanup nil t)
 							(set (make-local-variable 'comment-auto-fill-only-comments) t))))
+
 
 ;; A little more syntax highlighting
 (require 'clojure-mode-extra-font-locking)

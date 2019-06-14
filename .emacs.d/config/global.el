@@ -2,10 +2,6 @@
 ;; Truly global editor config
 ;;;;;
 
-;; Always clean whitespace before saving.
-;; REVIEW: Will this break anything? I'm not programming in whitespace...
-(add-hook 'before-save-hook 'whitespace-cleanup)
-
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
 

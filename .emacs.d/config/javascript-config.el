@@ -15,6 +15,7 @@
 (setq js-indent-level 2)
 
 (add-hook 'js2-mode-hook
+					(add-hook 'before-save-hook 'whitespace-cleanup nil t)
 					(lambda () (setq indent-tabs-mode nil)))
 
 (defun load-file-in-new-node-repl ()
