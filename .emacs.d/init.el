@@ -56,6 +56,8 @@
 
 (load "python-setup.el")
 
+(load "java-setup.el")
+
 (load "gui.el")
 
 
