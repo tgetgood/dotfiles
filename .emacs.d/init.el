@@ -142,6 +142,7 @@
 ;;;;;
 
 (load-theme 'cyberpunk t)
+;; (load-theme 'leuven t)
 
 ;;;;; This needs to override the theme settings. Which in turn need to
 ;;;;; come after the custom stuff.
