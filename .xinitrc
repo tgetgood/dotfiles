@@ -10,7 +10,7 @@ then
 		/usr/bin/env xrdb $HOME/.Xresources
 fi
 
-start-pulseaudio-x11
+# start-pulseaudio-x11
 
 source $HOME/.bashrc
 
