@@ -101,10 +101,16 @@
 		 company-anaconda
 		 cyberpunk-theme
 		 dired-single
+		 docker
+		 docker-cli
+		 docker-compose-mode
+		 docker-tramp
+		 dockerfile-mode
 		 elpy
 		 evil-leader
 		 evil-paredit
 		 evil-smartparens
+		 gradle-mode
 		 ido-select-window
 		 ido-ubiquitous
 		 jedi
@@ -117,6 +123,7 @@
 		 magit
 		 markdown-mode
 		 meacupla-theme
+		 meghanada
 		 nodejs-repl
 		 popup
 		 py-autopep8
