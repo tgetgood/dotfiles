@@ -99,6 +99,7 @@
 		 clojure-mode-extra-font-locking
 		 company
 		 company-anaconda
+		 company-terraform
 		 cyberpunk-theme
 		 dired-single
 		 docker
@@ -134,6 +135,7 @@
 		 scss-mode
 		 smex
 		 tagedit
+		 terraform-mode
 		 wanderlust
 		 xref-js2
 		 yaml-mode
