@@ -35,6 +35,8 @@
 
 		dired-mode
 
+		shell-mode
+
 		magit-auto-revert-mode
 		magit-blame-mode
 		magit-branch-manager-mode
