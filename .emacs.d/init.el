@@ -112,6 +112,7 @@
 		 evil-paredit
 		 evil-smartparens
 		 gradle-mode
+		 groovy-mode
 		 ido-select-window
 		 ido-ubiquitous
 		 jedi
