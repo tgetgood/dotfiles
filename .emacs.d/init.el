@@ -153,9 +153,6 @@
 ;; Thematic info
 ;;;;;
 
-(load-theme 'cyberpunk t)
-;; (load-theme 'leuven t)
-
 ;;;;; This needs to override the theme settings. Which in turn need to
 ;;;;; come after the custom stuff.
 ;;;;;
@@ -172,3 +169,6 @@
 	(interactive)
 	(load-theme 'leuven t)
 	(clean-ui))
+
+(load-theme 'cyberpunk t)
+;; (load-theme 'leuven t)
