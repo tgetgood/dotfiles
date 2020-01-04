@@ -23,4 +23,5 @@
 (evil-leader/set-key-for-mode 'rust-mode
 	"c" 'cargo-process-check
 	"b" 'cargo-process-build
-	"r" 'cargo-process-run)
+	"r" 'cargo-process-run
+	"t" 'cargo-process-test)
