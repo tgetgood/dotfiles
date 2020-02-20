@@ -5,6 +5,9 @@
 
 (setq rust-format-on-save t)
 
+(setq racer-rust-src-path
+			"~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
+
 (defun cargo-process-add (crate)
 	"Adds crate to current cargo project."
 	(interactive "sCrate: ")
@@ -20,4 +23,5 @@
 (evil-leader/set-key-for-mode 'rust-mode
 	"c" 'cargo-process-check
 	"b" 'cargo-process-build
-	"r" 'cargo-process-run)
+	"r" 'cargo-process-run
+	"t" 'cargo-process-test)
