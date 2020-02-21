@@ -30,7 +30,7 @@
 ;; Disable some of smartparens
 
 (sp-pair "'" nil :actions :rem)
-(sp-pair "\"" nil :actions :rem)
+;; (sp-pair "\"" nil :actions :rem)
 
 (defun catchy-p-dq (&optional n)
 	(interactive "P")
