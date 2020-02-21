@@ -50,10 +50,12 @@
 
 (setq cider-default-cljs-repl 'figwheel-main)
 
+(setq cider-figwheel-main-default-options "dev")
+
 ;; figwheel-main version set globally. Not ideal, but convenient...
 (add-to-list
  'cider-jack-in-cljs-dependencies
- '("com.bhauman/figwheel-main" "0.2.0"))
+ '("com.bhauman/figwheel-main" "0.2.3"))
 
 ;; Use clojure mode for other extensions
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
@@ -70,11 +72,6 @@
 	(interactive)
 	;; TODO: cljs.user in cljs repl
 	(cider-repl-set-ns "user"))
-
-;; Dev dependencies that I don't want to have to remember.
-
-(add-to-list 'cider-jack-in-dependencies
-						 '("org.clojure/tools.namespace" "0.2.11"))
 
 (eval-after-load 'cider
 	'(progn
