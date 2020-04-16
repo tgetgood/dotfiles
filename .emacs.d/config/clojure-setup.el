@@ -57,6 +57,11 @@
  'cider-jack-in-cljs-dependencies
  '("com.bhauman/figwheel-main" "0.2.3"))
 
+;; REVIEW: Fix nrepl version
+(add-to-list
+ 'cider-jack-in-dependencies
+ '("nrepl" "0.7.0"))
+
 ;; Use clojure mode for other extensions
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
@@ -78,11 +83,7 @@
 		 (define-key cider-mode-map (kbd "C-M-r") 'cider-ns-refresh)
 		 (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)
 		 (define-key cider-repl-mode-map (kbd "C-c C-n") 'cider-repl-switch-to-other)
-		 (define-key cider-mode-map (kbd "C-c C-o") 'cider-repl-clear-buffer)
-
-		 ;; Undoings
-		 (define-key cider-mode-map (kbd "C-c M-r") nil)
-		 (define-key cider-repl-mode-map (kbd "TAB") 'completion-at-point)))
+		 (define-key cider-mode-map (kbd "C-c C-o") 'cider-repl-clear-buffer)))
 
 ;;;;;
 ;; Cider keys
@@ -91,6 +92,8 @@
 (define-key cider-repl-mode-map (kbd "C-c C-a")
 	'cider-switch-to-last-clojure-buffer)
 
+
+(define-key cider-repl-mode-map (kbd "TAB") 'completion-at-point)
 ;;;;;
 ;; clj-refactor
 ;;;;;
@@ -103,6 +106,7 @@
 (setq cljr-warn-on-eval nil)
 (setq cljr-magic-requires nil)
 (setq cljr-favor-prefix-notation nil)
+(setq cljr-eagerly-build-asts-on-startup nil)
 
 ;;;;;
 ;; Compilation tasks
