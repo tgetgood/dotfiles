@@ -3,6 +3,12 @@
 (add-hook 'racer-mode-hook 'eldoc-mode)
 (add-hook 'cargo-process-mode-hook 'visual-line-mode)
 
+(add-hook 'rust-mode-hook 'smartparens-mode)
+(add-hook 'rust-mode-hook 'smartparens-strict-mode)
+
+(sp-local-pair '(rust-mode) "'" "'" :actions nil)
+(sp-local-pair '(rust-mode) "`" "`" :actions nil)
+
 (setq rust-format-on-save t)
 
 (setq racer-rust-src-path
@@ -19,6 +25,8 @@
 	(cargo-process--start "Install" (concat "cargo install " crate)))
 
 (evil-define-key 'normal racer-mode-map "K" 'racer-describe)
+
+
 
 (evil-leader/set-key-for-mode 'rust-mode
 	"c" 'cargo-process-check

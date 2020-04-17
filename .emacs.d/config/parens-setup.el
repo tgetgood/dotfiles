@@ -29,8 +29,7 @@
 
 ;; Disable some of smartparens
 
-(sp-pair "'" nil :actions :rem)
-;; (sp-pair "\"" nil :actions :rem)
+(sp-pair "'" "'" :actions nil)
 
 (defun catchy-p-dq (&optional n)
 	(interactive "P")
