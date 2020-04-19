@@ -3,11 +3,6 @@
 (add-hook 'racer-mode-hook 'eldoc-mode)
 (add-hook 'cargo-process-mode-hook 'visual-line-mode)
 
-(add-hook 'rust-mode-hook 'smartparens-mode)
-(add-hook 'rust-mode-hook 'smartparens-strict-mode)
-
-(sp-local-pair '(rust-mode) "'" "'" :actions nil)
-(sp-local-pair '(rust-mode) "`" "`" :actions nil)
 
 (setq rust-format-on-save t)
 
