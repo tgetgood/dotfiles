@@ -58,9 +58,9 @@
  '("com.bhauman/figwheel-main" "0.2.3"))
 
 ;; REVIEW: Fix nrepl version
-(add-to-list
- 'cider-jack-in-dependencies
- '("nrepl" "0.7.0"))
+(setf
+ (cdr (assoc "nrepl" cider-jack-in-dependencies))
+ '("0.7.0"))
 
 ;; Use clojure mode for other extensions
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
