@@ -25,7 +25,7 @@
         autosetupmerge = true
 [user]
         name = Thomas Getgood
-        email = thomas.getgood@gmail.com
+        email = thomas@macroexpanse.com
 [core]
 	excludesfile = /home/thomas/.gitignore
 	autocrlf = input
