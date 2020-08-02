@@ -3,7 +3,6 @@
 (add-hook 'racer-mode-hook 'eldoc-mode)
 (add-hook 'cargo-process-mode-hook 'visual-line-mode)
 
-
 (setq rust-format-on-save t)
 
 (setq racer-rust-src-path
@@ -19,12 +18,13 @@
 	(interactive "sCrate: ")
 	(cargo-process--start "Install" (concat "cargo install " crate)))
 
-(evil-define-key 'normal racer-mode-map "K" 'racer-describe)
-
-
+(evil-define-key 'normal rust-mode-map "K" 'racer-describe)
 
 (evil-leader/set-key-for-mode 'rust-mode
 	"c" 'cargo-process-check
 	"b" 'cargo-process-build
 	"r" 'cargo-process-run
-	"t" 'cargo-process-test)
+	"t" 'cargo-process-test
+
+	"n" 'eglot-rename)
+

@@ -116,6 +116,8 @@
  "b" 'magit-blame
  "B" 'magit-blame-mode
 
+ "f" 'flymake-mode
+
  "a" 'ag-project-regexp
  ;; Ghetto tasklist pluging
  "t" 'tasklist-ag ; Defined in global.el

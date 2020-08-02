@@ -60,6 +60,9 @@
 
 (load "gui.el")
 
+(add-to-list 'load-path "~/.emacs.d/downloaded")
+
+(load "glsl-mode.el")
 
 ;; Machine Generated
 
