@@ -52,16 +52,6 @@
 
 (setq cider-figwheel-main-default-options "dev")
 
-;; figwheel-main version set globally. Not ideal, but convenient...
-(add-to-list
- 'cider-jack-in-cljs-dependencies
- '("com.bhauman/figwheel-main" "0.2.3"))
-
-;; REVIEW: Fix nrepl version
-(setf
- (cdr (assoc "nrepl" cider-jack-in-dependencies))
- '("0.7.0"))
-
 ;; Use clojure mode for other extensions
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
