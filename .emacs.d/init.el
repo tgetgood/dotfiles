@@ -5,12 +5,11 @@
 ;; Package repositories
 (require 'package)
 
-(add-to-list 'package-archives
-						 '("melpa-stable" . "https://stable.melpa.org/packages/"))
-(add-to-list 'package-archives
-						 '("org" . "https://orgmode.org/elpa/"))
-(add-to-list 'package-archives
-						 '("marmalade" . "https://marmalade-repo.org/packages/"))
+(setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
+												 ("org" . "https://orgmode.org/elpa/")
+												 ("marmalade" . "https://marmalade-repo.org/packages/")
+												 ("melpa" . "http://melpa.org/packages/")
+												 ("gnu" . "http://elpa.gnu.org/packages/")))
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
@@ -110,10 +109,12 @@
 		 docker-compose-mode
 		 docker-tramp
 		 dockerfile-mode
+		 eglot
 		 elpy
 		 evil-leader
 		 evil-paredit
 		 evil-smartparens
+		 flycheck-rust
 		 gradle-mode
 		 groovy-mode
 		 ido-select-window
@@ -124,6 +125,7 @@
 		 json-mode
 		 kibit-mode
 		 latex-extra
+		 lsp-mode
 		 lua-mode
 		 magit
 		 markdown-mode
@@ -135,11 +137,13 @@
 		 racer
 		 reason-mode
 		 rust-mode
+		 rustic
 		 scion
 		 scss-mode
 		 smex
 		 tagedit
 		 terraform-mode
+		 use-package
 		 wanderlust
 		 xref-js2
 		 yaml-mode
@@ -150,6 +154,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(flymake-error ((nil (:foreground "#ef0000" :underline nil :weight bold))))
+ '(flymake-note ((nil (:distant-foreground "black" :box nil :underline (:color "#555555" :style wave)))))
+ '(flymake-warning ((nil (:foreground "#FBDE2D" :underline nil :weight bold))))
  '(italic ((t (:slant normal :weight normal :height 80 :width normal :foundry "DejaVu" :family "Sans Mono")))))
 
 ;;;;;

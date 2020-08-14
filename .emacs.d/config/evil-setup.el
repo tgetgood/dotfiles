@@ -78,7 +78,8 @@
 		(let ((name (buffer-name buff)))
 			(if (and (buffer-live-p buff)
 							 (not (or (string-prefix-p "*cider-repl" name)
-												(string-prefix-p "*cider-scratch" name)))
+												(string-prefix-p "*cider-scratch" name)
+												(string-prefix-p "*rustic-compilation" name)))
 							 (or
 								(string-prefix-p "*" name)
 								(string-prefix-p "magit: " name)))
