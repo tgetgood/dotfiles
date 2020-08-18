@@ -6,10 +6,11 @@
 (require 'package)
 
 (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
-												 ("org" . "https://orgmode.org/elpa/")
-												 ("marmalade" . "https://marmalade-repo.org/packages/")
-												 ("melpa" . "http://melpa.org/packages/")
-												 ("gnu" . "http://elpa.gnu.org/packages/")))
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                        ; ("melpa" . "http://melpa.org/packages/")
+                        ; ("gnu" . "http://elpa.gnu.org/packages/")
+                         ))
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
@@ -20,7 +21,7 @@
 ;; This informs Emacs about the latest versions of all packages, and
 ;; makes them available for download.
 (when (not package-archive-contents)
-	(package-refresh-contents))
+  (package-refresh-contents))
 
 ;;;;;
 ;; Config
@@ -73,22 +74,19 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
 	 ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
- '(browse-url-browser-function (quote browse-url-default-browser))
+ '(browse-url-browser-function 'browse-url-default-browser)
  '(browse-url-generic-program nil)
  '(cider-offer-to-open-cljs-app-in-browser nil)
  '(custom-safe-themes
-	 (quote
-		("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default)))
+	 '("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default))
  '(fci-rule-color "#383838")
  '(ido-case-fold t)
  '(ido-enable-flex-matching t)
- '(magit-bury-buffer-function (quote magit-mode-quit-window))
+ '(magit-bury-buffer-function 'magit-mode-quit-window)
  '(org-modules
-	 (quote
-		(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
+	 '(ol-bbdb ol-bibtex ol-docview ol-gnus org-habit org-id org-tempo ol-w3m))
  '(package-selected-packages
-	 (quote
-		(
+	 '(
 		 0blayout
 		 ag
 		 anaconda-mode
@@ -97,6 +95,8 @@
 		 buffer-move
 		 cargo
 		 cider
+		 cl-generic
+		 cl-lib
 		 clj-refactor
 		 clojure-mode-extra-font-locking
 		 company
@@ -117,8 +117,8 @@
 		 flycheck-rust
 		 gradle-mode
 		 groovy-mode
+		 ido-completing-read+
 		 ido-select-window
-		 ido-ubiquitous
 		 jedi
 		 js2-mode
 		 js2-refactor
@@ -136,7 +136,6 @@
 		 py-autopep8
 		 racer
 		 reason-mode
-		 rust-mode
 		 rustic
 		 scion
 		 scss-mode
@@ -147,7 +146,7 @@
 		 wanderlust
 		 xref-js2
 		 yaml-mode
-		 )))
+		 ))
  '(sp-autoskip-closing-pair t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -157,7 +156,10 @@
  '(flymake-error ((nil (:foreground "#ef0000" :underline nil :weight bold))))
  '(flymake-note ((nil (:distant-foreground "black" :box nil :underline (:color "#555555" :style wave)))))
  '(flymake-warning ((nil (:foreground "#FBDE2D" :underline nil :weight bold))))
- '(italic ((t (:slant normal :weight normal :height 80 :width normal :foundry "DejaVu" :family "Sans Mono")))))
+ '(italic ((t (:slant normal :weight normal :height 80 :width normal :foundry "DejaVu" :family "Sans Mono"))))
+ '(mode-line ((t (:background "#333333" :foreground "#4c83ff"))))
+ '(mode-line-highlight ((t nil)))
+ '(mode-line-inactive ((t (:background "#1A1A1A" :foreground "#4D4D4D")))))
 
 ;;;;;
 ;; Thematic info
@@ -171,14 +173,14 @@
 (add-to-list 'after-make-frame-functions (lambda (_) (clean-ui)))
 
 (defun dark ()
-	(interactive)
-	(load-theme 'cyberpunk t)
-	(clean-ui))
+  (interactive)
+  (load-theme 'cyberpunk t)
+  (clean-ui))
 
 (defun light ()
-	(interactive)
-	(load-theme 'leuven t)
-	(clean-ui))
+  (interactive)
+  (load-theme 'leuven t)
+  (clean-ui))
 
 (load-theme 'cyberpunk t)
 ;; (load-theme 'leuven t)

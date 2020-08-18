@@ -2,12 +2,12 @@
 ;;;;; A.K.A.: Turn off all the doodads.
 
 (defun clean-ui ()
+	(interactive)
 	(progn
 		(fringe-mode 0)
 		(tool-bar-mode -1)
 		(scroll-bar-mode -1)
 
-		(set-default-font "DejaVu Sans Mono-9")
 		(set-face-attribute 'default nil :height 90)
 
 		(set-face-attribute 'mode-line nil :box nil)
