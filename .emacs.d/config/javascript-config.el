@@ -43,3 +43,9 @@
 	"Set flycheck to use standard for linting"
 	(interactive)
 	(setq flycheck-javascript-eslint-executable "standard --verbose"))
+
+;;;;; Vue.js
+
+(add-to-list 'auto-mode-list '("\\.vue\\'" . vue-mode))
+
+

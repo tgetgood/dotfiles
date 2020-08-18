@@ -143,6 +143,8 @@
 		 tagedit
 		 terraform-mode
 		 use-package
+		 vue-html-mode
+		 vue-mode
 		 wanderlust
 		 xref-js2
 		 yaml-mode
@@ -157,6 +159,7 @@
  '(flymake-note ((nil (:distant-foreground "black" :box nil :underline (:color "#555555" :style wave)))))
  '(flymake-warning ((nil (:foreground "#FBDE2D" :underline nil :weight bold))))
  '(italic ((t (:slant normal :weight normal :height 80 :width normal :foundry "DejaVu" :family "Sans Mono"))))
+ '(mmm-default-submode-face ((t nil)))
  '(mode-line ((t (:background "#333333" :foreground "#4c83ff"))))
  '(mode-line-highlight ((t nil)))
  '(mode-line-inactive ((t (:background "#1A1A1A" :foreground "#4D4D4D")))))
