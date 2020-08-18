@@ -4,7 +4,7 @@
 (use-package rustic)
 
 (setq rustic-lsp-client 'eglot)
-;; (setq rustic-lsp-server 'rls)
+(setq rustic-lsp-server 'rls)
 
 (setq lsp-rust-analyzer-server-command '("~/.cargo/bin/rust-analyzer"))
 
@@ -18,6 +18,7 @@
 (add-hook 'cargo-process-mode-hook 'visual-line-mode)
 
 (remove-hook 'rustic-mode-hook 'flycheck-mode)
+(remove-hook 'rustic-mode-hook 'flymake-mode)
 
 (setq racer-rust-src-path
 			"~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
