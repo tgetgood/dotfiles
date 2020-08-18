@@ -6,11 +6,11 @@
 (require 'package)
 
 (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
-                        ; ("melpa" . "http://melpa.org/packages/")
-                        ; ("gnu" . "http://elpa.gnu.org/packages/")
-                         ))
+												 ("org" . "https://orgmode.org/elpa/")
+												 ("marmalade" . "https://marmalade-repo.org/packages/")
+												 ;; ("melpa" . "http://melpa.org/packages/")
+												 ;; ("gnu" . "http://elpa.gnu.org/packages/")
+												 ))
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
@@ -21,7 +21,7 @@
 ;; This informs Emacs about the latest versions of all packages, and
 ;; makes them available for download.
 (when (not package-archive-contents)
-  (package-refresh-contents))
+	(package-refresh-contents))
 
 ;;;;;
 ;; Config
@@ -173,14 +173,14 @@
 (add-to-list 'after-make-frame-functions (lambda (_) (clean-ui)))
 
 (defun dark ()
-  (interactive)
-  (load-theme 'cyberpunk t)
-  (clean-ui))
+	(interactive)
+	(load-theme 'cyberpunk t)
+	(clean-ui))
 
 (defun light ()
-  (interactive)
-  (load-theme 'leuven t)
-  (clean-ui))
+	(interactive)
+	(load-theme 'leuven t)
+	(clean-ui))
 
 (load-theme 'cyberpunk t)
 ;; (load-theme 'leuven t)
