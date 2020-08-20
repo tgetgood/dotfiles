@@ -48,6 +48,6 @@
 
 ;;;;; Vue.js
 
-(add-to-list 'auto-mode-list '("\\.vue\\'" . vue-mode))
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
 
 
