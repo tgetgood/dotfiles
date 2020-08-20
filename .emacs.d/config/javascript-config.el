@@ -1,5 +1,7 @@
 (require 'nodejs-repl)
 
+(setq-default indent-tabs-mode nil)
+
 (setq js2-skip-preprocessor-directives t)
 (setq js2-strict-missing-semi-warning nil)
 (setq js2-include-node-externs t)
