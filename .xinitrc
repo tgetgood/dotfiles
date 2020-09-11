@@ -14,4 +14,4 @@ fi
 
 source $HOME/.bashrc
 
-awesome 
+dbus-launch awesome
