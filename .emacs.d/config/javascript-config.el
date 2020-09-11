@@ -1,5 +1,8 @@
 (require 'nodejs-repl)
 
+;; CSS doesn't get its own file.
+(setq css-indent-offset 2)
+
 (setq-default indent-tabs-mode nil)
 
 (setq js2-skip-preprocessor-directives t)
