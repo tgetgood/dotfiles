@@ -40,8 +40,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias git=hub
-
 export LEIN_SNAPSHOTS_IN_RELEASE=y
 
 # Per machine config
@@ -55,9 +53,6 @@ export BROWSER=firefox
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export PROMPT_COMMAND= # Handy against some forms of juvenile mischief.
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-
-# TODO: This should be covered in .Xresources. Check.
-export TERM=xterm-256color
 
 # Tell the python interpreter what to load on startup
 [ -r ~/.pythonstartup ] && export PYTHONSTARTUP=~/.pythonstartup
