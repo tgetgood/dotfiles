@@ -2,7 +2,7 @@
 
 if test ${#*} -ne 1
 then
-	KEY=~/.ssh/`hostname`
+	KEY="$HOME/.ssh/$HOSTNAME"
   # echo "Usage: auth KEYNAME"
   # exit 1
 else
