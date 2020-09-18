@@ -2,6 +2,9 @@
 # more and more comfortable using the default settings. I should think
 # more deeply about what this means...
 
+# System setting. Automatically imports completion from /usr/share/bash-completion
+[ -r /etc/bash.bashrc ] && . /etc/bash.bashrc
+
 # Damned bell...
 xset -b
 
