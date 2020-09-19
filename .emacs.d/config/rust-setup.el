@@ -1,8 +1,14 @@
-(require 'rust-mode)
-(require 'rustic)
+(use-package autodisass-llvm-bitcode)
+(use-package eglot)
 
-(use-package rustic)
+(defvar old-archives package-achives)
 
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")))
+
+(use-package rustic
+						 :ensure t
+						 :after (eglot autodisass-llvm-bitcode)
+						 :config 
 (setq rustic-lsp-client 'eglot)
 (setq rustic-lsp-server 'rls)
 
@@ -20,20 +26,6 @@
 (remove-hook 'rustic-mode-hook 'flycheck-mode)
 (remove-hook 'rustic-mode-hook 'flymake-mode)
 
-(setq racer-rust-src-path
-			"~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
-
-(defun cargo-process-add (crate)
-	"Adds crate to current cargo project."
-	(interactive "sCrate: ")
-	(cargo-process--start "Add" (concat "cargo add " crate)))
-
-(defun cargo-process-install (crate)
-	"Installs the cargo crate in the current toolchain."
-	(interactive "sCrate: ")
-	(cargo-process--start "Install" (concat "cargo install " crate)))
-
-;; (evil-define-key 'normal rust-mode-map "K" 'racer-describe)
 
 (evil-leader/set-key-for-mode 'rustic-mode
 	"c" 'rustic-cargo-check
@@ -44,4 +36,7 @@
 	"f" 'rustic-cargo-fmt
 
 	"n" 'eglot-rename)
+)
+
+(setq package-archives old-archives)
 
