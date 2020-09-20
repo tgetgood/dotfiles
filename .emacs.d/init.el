@@ -53,7 +53,7 @@
 
 (use-package cl-lib)
 
-;; I don't think I'm actually using this anywhere
+;; REVIEW: I don't think I'm actually using this anywhere
 ;; (use-package popup)
 
 (use-package cyberpunk-theme)
@@ -201,9 +201,9 @@
 
 (load "org.el")
 
-(load "parens-setup.el")
+;; (load "parens-setup.el")
 
-(load "clojure-setup.el")
+;; (load "clojure-setup.el")
 
 (load "rust-setup.el")
 
