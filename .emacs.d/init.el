@@ -199,7 +199,7 @@
 ;; Config
 ;;;;;
 
-(require 'org)
+(load "org.el")
 
 (load "parens-setup.el")
 
@@ -209,8 +209,6 @@
 
 ;; TODO: What does this do?
 (load "compilation-setup.el")
-
-(load "org.el")
 
 (load "javascript-config.el")
 
