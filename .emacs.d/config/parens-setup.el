@@ -1,12 +1,14 @@
 (require 'smartparens-config)
-(require 'paredit)
 
-(defvar paren-hooks '( clojure-mode-hook
+(defvar paren-hooks '(clojure-mode-hook
 											 cider-repl-mode-hook
 											 cider-repl-mode-hook
 											 scheme-mode-hook
 											 lisp-mode-hook
 											 emacs-lisp-mode-hook))
+
+(use-package paredit)
+
 
 (dolist (h paren-hooks)
 	(add-hook h 'enable-paredit-mode))

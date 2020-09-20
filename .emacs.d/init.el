@@ -2,12 +2,25 @@
 ;; Packages
 ;;;;
 
+(setenv "PATH" (concat (getenv "PATH") ":/home/thomas/bin"))
+(setq exec-path (append exec-path '("/home/thomas/bin")))
+
+(add-to-list 'load-path "~/.emacs.d/config")
+
 ;; Package repositories
 (require 'package)
 (package-initialize)
 
-; (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")))
-
+;;;;;
+;; This requires some explanation for future me:
+;;
+;; rustic only exists on unstable melpa, but I don't want to install anything
+;; else from there. At the same time, I don't want to refresh the package
+;; contents more than once per loading emacs.
+;;
+;; So, I refresh all archives, remove melpa unstable, and then add it back
+;; temporarily in "rust-setup.el" just to install rustic. Ugh
+;;;;;
 (setq package-archives
 			'(("melpa-stable" . "https://stable.melpa.org/packages/")
 			 ("org" . "https://orgmode.org/elpa/")
@@ -15,7 +28,8 @@
  			 ("melpa" . "http://melpa.org/packages/")
 		   ("gnu" . "http://elpa.gnu.org/packages/")))
 
-(package-refresh-contents)
+(when (not package-archive-contents)
+	(package-refresh-contents))
 
 (setq package-archives 
 			'(("melpa-stable" . "https://stable.melpa.org/packages/")
@@ -28,17 +42,21 @@
 
 (setq use-package-always-ensure t)
 
-(eval-when-compile 
-	(require 'use-package))
-(require 'bind-key)
+;; This isn't optimised for bytecode. We'll see if that ever matters.
+(require 'use-package)
 	
-(use-package auto-update-package
+(use-package auto-package-update
   :config
   (auto-package-update-maybe))
 
 (use-package cl-generic)
 
 (use-package cl-lib)
+
+;; I don't think I'm actually using this anywhere
+;; (use-package popup)
+
+(use-package cyberpunk-theme)
 
 ;; Modes, settings, and key bindings that apply to emacs core. 
 ;; Plus random stuff that I don't know where else to put...
@@ -60,7 +78,7 @@
   :bind (:map company-active-map
               ("RET" . nil)
               ("M-RET" . company-complete-selection))
-  :hook (after-init global-company-mode))
+  :hook (after-init . global-company-mode))
 
 (use-package smex
   :bind (("M-x" . smex))
@@ -96,43 +114,32 @@
             'bash-completion-dynamic-complete))
 
 
-(use-package magit)
+(use-package magit
+  :after (evil-leader)
+  :config
+  (evil-leader/set-key
+    "s" 'magit-status
+    "y" 'magit-show-refs-popup
+    "b" 'magit-blame
+    "B" 'magit-blame-mode))
 
 
 
 ;; js stuff
-
-(use-package scss-mode
-  :config
-  (setq scss-compile-at-save nil))
-
-    vue-html-mode
-    vue-mode
-    xref-js2
-    js2-mode
-    js2-refactor
-    json-mode
-    nodejs-repl
 
 ;; Clojure stuff
 
     cider
     clj-refactor
     clojure-mode-extra-font-locking
-;; Python stuff
-;; None of this is installed presently.
-;; anaconda-mode
-;; jedi
-    ;; py-autopep8
-    ;; company-anaconda
-    ;; elpy
 
+;; TODO: sometimes I wish dired didn't create a bizillion buffers.
+;; dired-single
 
 (defvar my-packages
   '(
     company-terraform
-    cyberpunk-theme
-    dired-single
+    terraform-mode
     docker
     docker-cli
     docker-compose-mode
@@ -140,19 +147,8 @@
     dockerfile-mode
     latex-extra
     markdown-mode
-    meghanada
-    popup
     reason-mode
-    scion
-    tagedit
-    terraform-mode
-    yaml-mode
     ))
-
-
-; (dolist (p my-packages)
-;   (when (not (package-installed-p p))
-;     (package-install p)))
 
 ;; Machine Generated
 
@@ -163,18 +159,20 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-	 ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
+   ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
  '(browse-url-browser-function 'browse-url-default-browser)
  '(browse-url-generic-program nil)
  '(cider-offer-to-open-cljs-app-in-browser nil)
  '(custom-safe-themes
-	 '("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default))
+   '("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default))
  '(fci-rule-color "#383838")
  '(ido-case-fold t)
  '(ido-enable-flex-matching t)
  '(magit-bury-buffer-function 'magit-mode-quit-window)
  '(org-modules
-	 '(ol-bbdb ol-bibtex ol-docview ol-gnus org-habit org-id org-tempo ol-w3m))
+   '(ol-bbdb ol-bibtex ol-docview ol-gnus org-habit org-id org-tempo ol-w3m))
+ '(package-selected-packages
+   '(0blayout ag anaconda-mode autodisass-llvm-bitcode bash-completion buffer-move cargo cider cl-generic cl-lib clj-refactor clojure-mode-extra-font-locking company company-anaconda company-terraform cyberpunk-theme dired-single docker docker-cli docker-compose-mode docker-tramp dockerfile-mode eglot elpy evil-leader evil-paredit evil-smartparens flycheck-rust gradle-mode groovy-mode ido-completing-read+ ido-select-window jedi js2-mode js2-refactor json-mode kibit-mode latex-extra lsp-mode lua-mode magit markdown-mode meacupla-theme meghanada nodejs-repl popup py-autopep8 racer reason-mode rustic scion scss-mode smex tagedit terraform-mode use-package vue-html-mode vue-mode wanderlust xref-js2 yaml-mode))
  '(sp-autoskip-closing-pair t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -190,18 +188,11 @@
  '(mode-line-highlight ((t nil)))
  '(mode-line-inactive ((t (:background "#1A1A1A" :foreground "#4D4D4D")))))
 
-(package-install-selected-packages)
-
 ;;;;;
 ;; Config
 ;;;;;
 
 (require 'org)
-
-(setenv "PATH" (concat (getenv "PATH") ":/home/thomas/bin"))
-(setq exec-path (append exec-path '("/home/thomas/bin")))
-
-(add-to-list 'load-path "~/.emacs.d/config")
 
 (load "parens-setup.el")
 
@@ -239,6 +230,7 @@
 ;;;;; TODO: Can this be rearranged more sensibly?
 
 (add-to-list 'after-make-frame-functions (lambda (_) (clean-ui)))
+;; TODO: Use display-graphic-p to make this run nicely in the console.
 
 (defun dark ()
 	(interactive)

@@ -5,6 +5,7 @@
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
 
+(setq-default indent-tabs-mode nil)
 (setq indent-tabs-mode nil)
 
 ;; Go straight to scratch buffer on startup

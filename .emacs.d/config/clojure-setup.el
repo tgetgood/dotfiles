@@ -8,6 +8,7 @@
 							(add-hook 'before-save-hook 'whitespace-cleanup nil t)
 							(set (make-local-variable 'comment-auto-fill-only-comments) t))))
 
+(evil-define-key 'normal clojure-mode-map "K" 'cider-doc)
 
 ;; A little more syntax highlighting
 (require 'clojure-mode-extra-font-locking)

@@ -1,27 +1,10 @@
-(require 'nodejs-repl)
+;;;; Something of a misnomer. All web stuff gets lumped here.
 
-;; CSS doesn't get its own file.
+;; CSS mode is built into emacs
 (setq css-indent-offset 2)
 
-(setq-default indent-tabs-mode nil)
-
-(setq js2-skip-preprocessor-directives t)
-(setq js2-strict-missing-semi-warning nil)
-(setq js2-include-node-externs t)
-;; (setq js2-missing-semi-one-line-override nil)
-
-;; (assq-delete-all "\\.jsm?\\'" auto-mode-alist)
-;; (assq-delete-all auto-mode-alist)
-;; (delq (cons "\\.json\\'" (javascript-mode)) auto-mode-alist)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-
-(add-hook 'js2-mode-hook #'js2-refactor-mode)
-
+;; So is js.el
 (setq js-indent-level 2)
-
-(add-hook 'js2-mode-hook
-					(add-hook 'before-save-hook 'whitespace-cleanup nil t)
-					(lambda () (setq indent-tabs-mode nil)))
 
 (defun load-file-in-new-node-repl ()
 	(interactive)
@@ -36,21 +19,50 @@
 			(insert "\n")
 			(end-of-buffer))))
 
-(add-hook 'js2-mode-hook
-					(lambda ()
-						(define-key nodejs-repl-mode-map (kbd "TAB")
-							'nodejs-repl-complete-from-process)
-						(define-key js2-mode-map (kbd "C-c M-j") 'nodejs-repl)
-						(define-key js2-mode-map (kbd "C-c C-k") 'load-file-in-new-node-repl)
-						(define-key js2-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
+(use-package scss-mode
+  :config
+  (setq scss-compile-at-save nil))
+
+(use-package json-mode)
+
+(use-package tagedit
+  :hook (html-mode . (lambda () (tagedit-mode 1)))
+  :config
+  ;; TODO: Set evil keybindings for this
+  (tagedit-add-experimental-features)
+  (tagedit-add-paredit-like-keybindings))
+
+(use-package yaml-mode)
+
+(use-package vue-mode
+  :mode "\\.vue\\'" )
+
+(use-package vue-html-mode)
+
+(use-package nodejs-repl
+  :bind ("TAB" . nodejs-repl-complete-from-process))
+
+(use-package js2-mode
+  :mode "\\.js\\'" 
+  :after (nodejs-repl)
+  :hook  (before-save . whitespace-cleanup)
+  :bind (("C-c M-j" . nodejs-repl)
+         ("C-c C-k" . load-file-in-new-node-repl)
+         ("C-c C-z" . nodejs-repl-switch-to-repl))
+  :config
+  (setq js2-skip-preprocessor-directives t)
+  (setq js2-strict-missing-semi-warning nil)
+  (setq js2-include-node-externs t))
+
+(use-package js2-refactor
+  :after (js2-mode)
+  :hook (js2-mode . js2-refactor-mode))
+
+(use-package xref-js2)
 
 (defun set-eslint-standard ()
 	"Set flycheck to use standard for linting"
 	(interactive)
 	(setq flycheck-javascript-eslint-executable "standard --verbose"))
-
-;;;;; Vue.js
-
-(add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
 
 

@@ -1,21 +1,8 @@
-;;;;; Modified from the wiki.
-;; EVIL stuff
-
-(use-package evil-leader)
-(use-package evil-paredit)
-(use-package evil-smartparens)
-
-;;; C-g as general purpose escape key sequence.
-;;;
 (defun esc-non-normal (prompt)
+  "Acts as escape in non-normal vim modes, and as C-g when in normal mode."
 	(if (or (evil-insert-state-p) (evil-replace-state-p) (evil-visual-state-p))
 			[escape]
 		(kbd "C-g")))
-
-(define-key key-translation-map (kbd "<f12>") 'esc-non-normal)
-
-(evil-mode 1)
-(global-evil-leader-mode)
 
 ;; Handy helper to figure out buffer mode names for below list.
 (defun buffer-mode (buffer-or-string)
@@ -58,25 +45,6 @@
 		magit-wazzup-mode
 		magit-wip-save-mode))
 
-(dolist (m my-emacs-modes)
-	(add-to-list 'evil-emacs-state-modes m))
-
-(define-key evil-normal-state-map (kbd "M-.") nil)
-
-(define-key evil-normal-state-map (kbd "*")
-	(lambda (arg)
-		(interactive "P")
-		(evil-search-word-forward arg (symbol-at-point))))
-
-(define-key evil-normal-state-map (kbd "#")
-	(lambda (arg)
-		(interactive "P")
-		(evil-search-word-backward arg (symbol-at-point))))
-
-;;;;;
-;; leader keybindings
-;;;;;
-
 (defun kill-the-annoying-popups ()
 	(interactive)
 	(dolist (buff (buffer-list))
@@ -99,39 +67,46 @@
 				(interactive)
 				(cider-eval-print-last-sexp 't)))
 
-(evil-leader/set-key
- ;; SMerge
- "1" 'smerge-keep-current
- "2" 'smerge-keep-other
- "`" 'smerge-next
- "~" 'smerge-prev
 
- ;; compilation error list
- "[" 'previous-error
- "]" 'next-error
+(use-package evil
+  :bind (("<escape>" . escape-non-normal)
+         :map evil-normal-state-map
+         ("#" . (lambda (arg)
+                  (interactive "P")
+                  (evil-search-word-backward arg (symbol-at-point))))
+         ("*" . (lambda (arg)
+                  (interactive "P")
+                  (evil-search-word-forward arg (symbol-at-point)))))
+  :config
+  (evil-mode 1)
+  (evil-ex-define-cmd "E[xplore]" (lambda () (interactive) (dired ".")))
+  (evil-define-key 'normal emacs-lisp-mode-map "K" 'describe-function)
+  (dolist (m my-emacs-modes)
+    (add-to-list 'evil-emacs-state-modes m)))
 
- ;; indentation helpers
- "TAB" (lambda () (interactive)
-				 (if (region-active-p)
-						 (evil-indent (region-beginning) (region-end))
-						 (evil-indent-line (point) (1+ (point)))))
+(use-package evil-leader
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-key
+    ;; SMerge
+    "1" 'smerge-keep-current
+    "2" 'smerge-keep-other
+    "`" 'smerge-next
+    "~" 'smerge-prev
 
- ;; Magit
- "s" 'magit-status
- "y" 'magit-show-refs-popup
- "b" 'magit-blame
- "B" 'magit-blame-mode
+    ;; compilation error list
+    "[" 'previous-error
+    "]" 'next-error
 
- ;; Ghetto tasklist pluging
+    ;; indentation helpers
+    "TAB" (lambda () (interactive)
+            (if (region-active-p)
+                (evil-indent (region-beginning) (region-end))
+              (evil-indent-line (point) (1+ (point)))))
 
- "q" 'kill-the-annoying-popups
+    "q" 'kill-the-annoying-popups
+    "w" 'whitespace-cleanup
+    "v" 'visual-line-mode))
 
- ;; Everyday stuff
- "w" 'whitespace-cleanup
- "v" 'visual-line-mode)
-
-(evil-ex-define-cmd "E[xplore]" (lambda () (interactive) (dired ".")))
-
-(evil-define-key 'normal emacs-lisp-mode-map "K" 'describe-function)
-(evil-define-key 'normal clojure-mode-map "K" 'cider-doc)
-(evil-define-key 'normal elpy-mode-map "K" 'elpy-doc)
+(use-package evil-paredit)
+(use-package evil-smartparens)
