@@ -1,4 +1,9 @@
 ;;;;; Modified from the wiki.
+;; EVIL stuff
+
+(use-package evil-leader)
+(use-package evil-paredit)
+(use-package evil-smartparens)
 
 ;;; C-g as general purpose escape key sequence.
 ;;;
@@ -117,11 +122,8 @@
  "b" 'magit-blame
  "B" 'magit-blame-mode
 
- "f" 'flymake-mode
-
- "a" 'ag-project-regexp
  ;; Ghetto tasklist pluging
- "t" 'tasklist-ag ; Defined in global.el
+
  "q" 'kill-the-annoying-popups
 
  ;; Everyday stuff

@@ -30,32 +30,81 @@
 
 (eval-when-compile 
 	(require 'use-package))
+(require 'bind-key)
 	
 (use-package auto-update-package
-						 :config
-						 (auto-package-update-maybe))
-
-(use-package ag)
-(use-package bash-completion)
+  :config
+  (auto-package-update-maybe))
 
 (use-package cl-generic)
+
 (use-package cl-lib)
+
+;; Modes, settings, and key bindings that apply to emacs core. 
+;; Plus random stuff that I don't know where else to put...
+(load "global.el")
+
 (use-package ido-completing-read+)
-(use-package ido-select-window)
+
+(use-package ido-select-window
+  :commands (ido-select-window)
+  :bind (("C-x o" . ido-select-window)))
+
+(use-package buffer-move
+  :bind (("M-H" . buf-move-left)
+         ("M-L" . buf-move-right)
+         ("M-J" . buf-move-down)
+         ("M-K" . buf-move-up)))
+
+(use-package company
+  :bind (:map company-active-map
+              ("RET" . nil)
+              ("M-RET" . company-complete-selection))
+  :hook (after-init global-company-mode))
+
+(use-package smex
+  :bind (("M-x" . smex))
+  :config
+  (setq smex-save-file (concat user-emacs-directory ".smex-items"))
+  (smex-initialize))
+
+(load "evil-setup.el")
+
+(use-package ag
+  :commands (ag-project-regexp)
+  :after (evil-leader)
+  :config
+  (setq ag-reuse-buffers 't)
+  (setq ag-reuse-window 't)
+  (defun tasklist-ag ()
+	  (interactive)
+	  (ag-project-regexp "@?(FIXME|TODO|HACK|OPTIMIZE|REVIEW):"))
+  (evil-leader/set-key
+    "a" 'ag-project-regexp
+    "t" 'tasklist-ag))
+
+(use-package bash-completion
+  :config
+  (bash-completion-setup)
+  (autoload 'bash-completion-dynamic-complete
+    "bash-completion"
+    "BASH completion hook")
+  ;; TODO: What do these do and are they necessary?
+  (add-hook 'shell-dynamic-complete-functions
+            'bash-completion-dynamic-complete)
+  (add-hook 'shell-command-complete-functions
+            'bash-completion-dynamic-complete))
+
 
 (use-package magit)
 
-;; EVIL stuff
 
-(use-package evil-leader)
-(use-package evil-paredit)
-(use-package evil-smartparens)
-
-;; Rust Stuff
-
-    ; cargo
 
 ;; js stuff
+
+(use-package scss-mode
+  :config
+  (setq scss-compile-at-save nil))
 
     vue-html-mode
     vue-mode
@@ -64,7 +113,6 @@
     js2-refactor
     json-mode
     nodejs-repl
-    scss-mode
 
 ;; Clojure stuff
 
@@ -82,7 +130,6 @@
 
 (defvar my-packages
   '(
-    company
     company-terraform
     cyberpunk-theme
     dired-single
@@ -97,7 +144,6 @@
     popup
     reason-mode
     scion
-    smex
     tagedit
     terraform-mode
     yaml-mode
@@ -156,10 +202,6 @@
 (setq exec-path (append exec-path '("/home/thomas/bin")))
 
 (add-to-list 'load-path "~/.emacs.d/config")
-
-(load "global.el")
-
-(load "evil-setup.el")
 
 (load "parens-setup.el")
 
