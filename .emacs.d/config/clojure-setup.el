@@ -13,6 +13,12 @@
 ;; A little more syntax highlighting
 (require 'clojure-mode-extra-font-locking)
 
+;; Clojure stuff
+
+    cider
+    clj-refactor
+    clojure-mode-extra-font-locking
+
 ;;;;;
 ;; Cider
 ;;;;;
@@ -57,7 +63,6 @@
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.cljx$" . clojurex-mode))
 (add-to-list 'auto-mode-alist '("\\.cljc$" . clojurec-mode))
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojurescript-mode))
 
