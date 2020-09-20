@@ -113,7 +113,6 @@
   (add-hook 'shell-command-complete-functions
             'bash-completion-dynamic-complete))
 
-
 (use-package magit
   :after (evil-leader)
   :config
@@ -123,35 +122,43 @@
     "b" 'magit-blame
     "B" 'magit-blame-mode))
 
+;; TODO: Configure this properly or don't bother installing it.
+;; (use-package dired-single)
 
+(use-package company-terraform)
+(use-package terraform-mode)
+(use-package docker)
+(use-package docker-cli)
+(use-package docker-compose-mode)
+(use-package docker-tramp)
+(use-package dockerfile-mode)
 
-;; js stuff
+(use-package tex
+  :ensure auctex
+  :hook ((LaTeX-mode . visual-line-mode)
+         (LaTeX-mode . flyspell-mode)
+         (LaTeX-mode . LaTeX-math-mode)
+         (LaTeX-mode . turn-on-reftex))
+  :config
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq TeX-PDF-mode t)
+  (setq reftex-plug-into-AUCTeX t)
+  (setq-default TeX-master nil))
 
-;; Clojure stuff
+(use-package latex-extra)
 
-    cider
-    clj-refactor
-    clojure-mode-extra-font-locking
+(use-package markdown-mode
+  :hook (markdown-mode
+         .
+         (lambda ()
+           (progn
+             (auto-fill-mode 1)
+             (add-hook 'before-save-hook 'whitespace-cleanup nil t)))))
 
-;; TODO: sometimes I wish dired didn't create a bizillion buffers.
-;; dired-single
-
-(defvar my-packages
-  '(
-    company-terraform
-    terraform-mode
-    docker
-    docker-cli
-    docker-compose-mode
-    docker-tramp
-    dockerfile-mode
-    latex-extra
-    markdown-mode
-    reason-mode
-    ))
+(use-package reason-mode)
 
 ;; Machine Generated
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -200,13 +207,10 @@
 
 (load "rust-setup.el")
 
+;; TODO: What does this do?
 (load "compilation-setup.el")
 
 (load "org.el")
-
-(load "markdown-setup.el")
-
-(load "latex-custom-config.el")
 
 (load "javascript-config.el")
 
@@ -223,11 +227,6 @@
 ;;;;;
 ;; Thematic info
 ;;;;;
-
-;;;;; This needs to override the theme settings. Which in turn need to
-;;;;; come after the custom stuff.
-;;;;;
-;;;;; TODO: Can this be rearranged more sensibly?
 
 (add-to-list 'after-make-frame-functions (lambda (_) (clean-ui)))
 ;; TODO: Use display-graphic-p to make this run nicely in the console.
