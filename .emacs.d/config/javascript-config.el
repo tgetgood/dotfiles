@@ -45,7 +45,8 @@
 (use-package js2-mode
   :mode "\\.js\\'" 
   :after (nodejs-repl)
-  :hook  (before-save . whitespace-cleanup)
+  :hook  (js2-mode . (lambda ()
+                       (add-hook 'before-save-hook 'whitespace-cleanup nil t)))
   :bind (("C-c M-j" . nodejs-repl)
          ("C-c C-k" . load-file-in-new-node-repl)
          ("C-c C-z" . nodejs-repl-switch-to-repl))
