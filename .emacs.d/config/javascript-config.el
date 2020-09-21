@@ -12,17 +12,17 @@
 
 (use-package json-mode)
 
-(use-package tagedit
-  :commands (tagedit-add-experimental-features
-             tagedit-add-paredit-like-keybindings
-             tagedit-mode)
+;; (use-package tagedit
+;;   :commands (tagedit-add-experimental-features
+;;              tagedit-add-paredit-like-keybindings
+;;              tagedit-mode)
 
-  :hook (html-mode . (lambda () (tagedit-mode 1)))
+;;   :hook (html-mode . (lambda () (tagedit-mode 1)))
 
-  :config
-  ;; TODO: Set evil keybindings for this
-  (tagedit-add-experimental-features)
-  (tagedit-add-paredit-like-keybindings))
+;;   :config
+;;   ;; TODO: Set evil keybindings for this
+;;   (tagedit-add-experimental-features)
+;;   (tagedit-add-paredit-like-keybindings))
 
 (use-package yaml-mode)
 
