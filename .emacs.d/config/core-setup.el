@@ -19,7 +19,7 @@
 
 (use-package company
   :demand t
-  :command company-complete-common
+  :commands company-complete-common
   :bind (:map company-active-map
               ("RET" . nil)
               ("M-RET" . company-complete-selection))

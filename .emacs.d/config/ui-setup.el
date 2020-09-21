@@ -1,13 +1,14 @@
 ;;;;; Customizations specific to window system mode
 ;;;;; A.K.A.: Turn off all the doodads.
 
-(use-package cyberpunk-theme
-  :demand t
-  :config
-  (defun cyberpunk-it ()
-    (load-theme 'cyberpunk t)
-    (set-face-attribute 'mode-line nil :box nil)
-    (set-face-attribute 'mode-line-inactive nil :box nil)))
+(unless (package-installed-p 'cyberpunk-theme)
+  (package-install 'cyberpunk-theme))
+
+(defun cyberpunk-it ()
+  "Load cyberpunk theme and disable excessive sci-fi"
+  (load-theme 'cyberpunk t)
+  (set-face-attribute 'mode-line nil :box nil)
+  (set-face-attribute 'mode-line-inactive nil :box nil))
 
 (defvar my-frame-alist
      '((width . 100)

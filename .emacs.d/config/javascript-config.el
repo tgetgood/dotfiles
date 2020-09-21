@@ -15,7 +15,7 @@
 (use-package tagedit
   :commands (tagedit-add-experimental-features
              tagedit-add-paredit-like-keybindings
-             tagedit-mide)
+             tagedit-mode)
 
   :hook (html-mode . (lambda () (tagedit-mode 1)))
 
@@ -32,7 +32,9 @@
 (use-package vue-html-mode)
 
 (use-package nodejs-repl
-  :commands (nodejs-repl-quit-or-cancel)
+  :commands (nodejs-repl-quit-or-cancel
+             nodejs-repl-load-file
+             nodejs-repl)
 
   :bind (:map nodejs-repl-mode-map
               ("TAB" . nodejs-repl-complete-from-process)))

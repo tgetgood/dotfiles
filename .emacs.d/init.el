@@ -30,30 +30,30 @@
 
 (setq use-package-always-ensure t)
 
-(load "ui-setup.elc")
+(load "ui-setup")
 
-(load "parens-setup.elc")
+(load "parens-setup")
 
-(load "evil-setup.elc")
+(load "evil-setup")
 
-(load "core-setup.elc")
+(load "core-setup")
 
-(load "org-setup.elc")
+(load "org-setup")
 
-(load "clojure-setup.elc")
+(load "clojure-setup")
 
-(load "rust-setup.elc")
+(load "rust-setup")
 
-(load "javascript-config.elc")
+(load "javascript-config")
 
 ;; TODO: What does this do?
 ;; (load "compilation-setup.el")
 
-(load "python-setup.elc")
+(load "python-setup")
 
-(load "java-setup.elc")
+(load "java-setup")
 
-(load "glsl-mode.elc")
+(load "glsl-mode")
 
 ;; TODO: Configure this properly or don't bother installing it.
 ;; (use-package dired-single)
