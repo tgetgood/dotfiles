@@ -26,9 +26,9 @@
 
 (setq default-frame-alist my-frame-alist)
 
-;; (fringe-mode 0)
-;; (tool-bar-mode -1)
-;; (scroll-bar-mode -1)
+(fringe-mode 0)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 (set-face-attribute 'default nil
                     :family "Hack"

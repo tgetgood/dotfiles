@@ -38,6 +38,7 @@
 		   ("gnu" . "http://elpa.gnu.org/packages/")))
 
 (unless (package-installed-p 'use-package)
+  	(package-refresh-contents)
 	(package-install 'use-package))
 
 ;; This isn't optimised for bytecode. We'll see if that ever matters.
