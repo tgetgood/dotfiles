@@ -51,6 +51,7 @@ export LEIN_SNAPSHOTS_IN_RELEASE=y
 # Custom ENV init
 export PATH=~/bin:~/.cargo/bin:$PATH
 export PAGER=less
+export VISUAL="emacsclient -c"
 export EDITOR=vim
 export BROWSER=firefox
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
