@@ -5,6 +5,7 @@
 (use-package smartparens)
 
 (use-package paredit
+  :commands (paredit-mode paredit-doublequote)
   :demand t
   :init
   (defun conditionally-enable-paredit-mode ()

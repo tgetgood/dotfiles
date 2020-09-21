@@ -11,10 +11,9 @@
 
   (setq lsp-rust-analyzer-server-command '("~/.cargo/bin/rust-analyzer"))
 
-  (add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1)))
+  (add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
   (setq flymake-start-on-save-buffer nil)
   (setq flymake-start-on-flymake-mode nil)
-  (setq flymake-start-syntax-check-on-find-file nil)
 
   (add-hook 'rustic-mode-hook 'cargo-minor-mode)
   (add-hook 'cargo-process-mode-hook 'visual-line-mode)

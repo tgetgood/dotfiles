@@ -1,4 +1,5 @@
 (use-package ido-completing-read+
+  :commands ido-ubiquitous-mode
   :demand t
   :defines (ido-cur-item ido-cur-item)
   :config (ido-ubiquitous-mode 1))
@@ -10,6 +11,7 @@
          ("M-K" . buf-move-up)))
 
 (use-package smex
+  :commands smex-initialize
   :bind (("M-x" . smex))
   :config
   (setq smex-save-file (concat user-emacs-directory ".smex-items"))
@@ -17,6 +19,7 @@
 
 (use-package company
   :demand t
+  :command company-complete-common
   :bind (:map company-active-map
               ("RET" . nil)
               ("M-RET" . company-complete-selection))
@@ -37,6 +40,7 @@
     "t" 'tasklist-ag))
 
 (use-package bash-completion
+  :commands bash-completion-setup
   :config
   (bash-completion-setup)
   (autoload 'bash-completion-dynamic-complete
@@ -131,15 +135,16 @@
 ;;;;;
 
 (defun indent-or-complete ()
-	(interactive)
-	(if (looking-at "\\_>")
-			(company-complete-common)
-		(indent-according-to-mode)))
+  (interactive)
+  (if (looking-at "\\_>")
+      (company-complete-common)
+    (indent-according-to-mode)))
 
 ;;;; ido
 
 (ido-mode 1)
-(ido-everywhere 1)
+;; REVIEW: I think this will conflict with ido-ubiquitous-mode
+;; (ido-everywhere 1)
 
 (setq ido-case-fold t)
 (setq ido-enable-flex-matching t)

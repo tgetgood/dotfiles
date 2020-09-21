@@ -94,6 +94,7 @@ case it's a no-op."
 
 (use-package evil-leader
   :demand t
+  :commands (global-evil-leader-mode evil-leader/set-key evil-leader/set-key-for-mode)
   :config
   (global-evil-leader-mode)
 
@@ -172,7 +173,12 @@ beginning, does not go to previous sexp. Check is rather naive."
 
 
 (use-package evil-smartparens
-  :commands (evil-sp-delete evil-sp-change)
+  :commands (evil-sp-delete
+             evil-sp-change
+             evil-sp--override
+             evil-sp--block-is-balanced
+             evil-sp--new-beginning
+             evil-sp--new-ending)
 
   :hook ((smartparens-enabled . evil-smartparens-mode)
          (smartparens-disabled . (lambda () (evil-smartparens-mode 0))))

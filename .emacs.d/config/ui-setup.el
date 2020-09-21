@@ -2,9 +2,12 @@
 ;;;;; A.K.A.: Turn off all the doodads.
 
 (use-package cyberpunk-theme
-  :defines cyberpunk
   :demand t
-  :config (load-theme 'cyberpunk t))
+  :config
+  (defun cyberpunk-it ()
+    (load-theme 'cyberpunk t)
+    (set-face-attribute 'mode-line nil :box nil)
+    (set-face-attribute 'mode-line-inactive nil :box nil)))
 
 (defvar my-frame-alist
      '((width . 100)
@@ -20,7 +23,6 @@
 
 (setq initial-frame-alist my-frame-alist)
  
-
 (setq default-frame-alist my-frame-alist)
 
 (fringe-mode 0)
@@ -31,10 +33,23 @@
                     :family "Hack"
                     :height 90)
 
-(set-face-attribute 'mode-line nil :box nil)
-(set-face-attribute 'mode-line-inactive nil :box nil)
-
 ;; Seems obsolete
 ;; (set-face-italic-p 'italic nil)
 
 (make-face-unitalic 'font-lock-comment-face)
+
+(defun light ()
+  "Sets light background theme."
+  (interactive)
+  (dolist (theme custom-enabled-themes)
+    (disable-theme theme))
+  (load-theme 'leuven))
+
+(defun dark ()
+  "Sets dark background theme."
+  (interactive)
+  (dolist (theme custom-enabled-themes)
+    (disable-theme theme))
+  (cyberpunk-it))
+
+(dark)

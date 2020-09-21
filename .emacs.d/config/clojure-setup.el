@@ -9,7 +9,7 @@
     (or endp
         (cond ((eq (char-syntax delim) ?\()
                (not (looking-back (regexp-quote "#?") 2 nil)))
-              (else t))))
+              (t t))))
 
   :hook (enable-paredit-mode
          (clojurec-mode . (lambda ()
@@ -97,6 +97,7 @@
 	  "e" 'cider-load-buffer))
 
 (use-package clj-refactor
+  :commands (clj-refactor-mode cljr-add-keybindings-with-prefix)
   :hook (clojure-mode . (lambda ()
                           (clj-refactor-mode 1)
                           (cljr-add-keybindings-with-prefix "C-c C-v")))
