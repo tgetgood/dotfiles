@@ -223,3 +223,6 @@
 ;; Rebind TAB
 ;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 (global-set-key (kbd "TAB") 'indent-or-complete)
+
+;; Escape quits minibuffer
+(define-key minibuffer-local-map (kbd "<escape>") 'minibuffer-keyboard-quit)
