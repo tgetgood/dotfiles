@@ -52,9 +52,6 @@
 
 (load "core-setup.el")
 
-;; REVIEW: I don't think I'm actually using this anywhere
-;; (use-package popup)
-
 ;; (load "parens-setup.el")
 
 ;; (load "org.el")
@@ -177,8 +174,6 @@
 ;;  '(ido-case-fold t)
 ;;  '(ido-enable-flex-matching t)
 ;;  '(magit-bury-buffer-function 'magit-mode-quit-window)
-;;  '(org-modules
-;;    '(ol-bbdb ol-bibtex ol-docview ol-gnus org-habit org-id org-tempo ol-w3m))
 ;;  '(package-selected-packages
 ;;    '(groovy-mode meghanada xref-js2 js2-refactor js2-mode nodejs-repl vue-mode tagedit scss-mode use-package smex rustic reason-mode magit ido-ubiquitous ido-select-window ido-completing-read+ evil-smartparens evil-paredit evil-leader eglot dockerfile-mode docker-compose-mode docker-cli docker cyberpunk-theme company-terraform buffer-move bash-completion autodisass-llvm-bitcode auto-package-update ag))
 ;;  '(sp-autoskip-closing-pair t))
@@ -219,26 +214,6 @@
 
 ;; (load "glsl-mode.el")
 
-;;;;;
-;; Thematic info
-;;;;;
-
-;; (add-to-list 'after-make-frame-functions (lambda (_) (clean-ui)))
-
-;; TODO: Use display-graphic-p to make this run nicely in the console.
-
-;; (defun dark ()
-;; 	(interactive)
-;; 	(load-theme 'cyberpunk t)
-;; 	(clean-ui))
-
-;; (defun light ()
-;; 	(interactive)
-;; 	(load-theme 'leuven t)
-;; 	(clean-ui))
-
-;; (load-theme 'leuven t)
-
 ;; (use-package auto-package-update
 ;;   :config
 ;;   (auto-package-update-maybe))
@@ -248,3 +223,22 @@
 ;; (use-package cl-generic)
 
 ;; (use-package cl-lib)
+
+;; REVIEW: I don't think I'm actually using this anywhere
+;; (use-package popup)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("20a8ec387dde11cc0190032a9f838edcc647863c824eed9c8e80a4155f8c6037" default))
+ '(fci-rule-color "#383838")
+ '(package-selected-packages '(evil-leader evil cyberpunk-theme use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
