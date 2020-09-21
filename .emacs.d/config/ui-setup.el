@@ -16,10 +16,7 @@
        (menu-bar-lines . 0)
        (tool-bar-lines . 0)
        ;; REVIEW: This might confuse and annoy me. Alternately, it might be a godsend.
-       (unsplittable . t)
-       (font-backend . (xft))
-       (font . -SRC-Hack-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1)
-       ))
+       (unsplittable . t)))
 
 (setq initial-frame-alist my-frame-alist)
  
