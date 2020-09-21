@@ -59,17 +59,9 @@
 					(progn
 						(quit-windows-on buff nil))))))
 
-(evil-leader/set-key-for-mode 'emacs-lisp-mode
- "e" 'eval-buffer	)
-
-(evil-leader/set-key-for-mode 'clojure-mode
-	"p" (lambda ()
-				(interactive)
-				(cider-eval-print-last-sexp 't)))
-
-
 (use-package evil
-  :bind (("<escape>" . escape-non-normal)
+  :demand t
+  :bind (("<escape>" . esc-non-normal)
          :map evil-normal-state-map
          ("#" . (lambda (arg)
                   (interactive "P")
@@ -85,6 +77,7 @@
     (add-to-list 'evil-emacs-state-modes m)))
 
 (use-package evil-leader
+  :demand t
   :config
   (global-evil-leader-mode)
   (evil-leader/set-key
@@ -106,7 +99,9 @@
 
     "q" 'kill-the-annoying-popups
     "w" 'whitespace-cleanup
-    "v" 'visual-line-mode))
+    "v" 'visual-line-mode)
+  (evil-leader/set-key-for-mode 'emacs-lisp-mode
+    "e" 'eval-buffer))
 
-(use-package evil-paredit)
-(use-package evil-smartparens)
+;; (use-package evil-paredit)
+;; (use-package evil-smartparens)

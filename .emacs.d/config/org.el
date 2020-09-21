@@ -1,53 +1,55 @@
-(use-package org
-  :bind ("M-h" . nil)
-  :config
-  ;; Don't clobber windows
-  (setq org-agenda-window-setup 'current-window)
+;; (require 'org)
 
-  ;; Agenda
-  (setq org-agenda-files '("~/org"))
+;; (use-package org
+;;   :bind ("M-h" . nil)
+;;   :config
+;;   ;; Don't clobber windows
+;;   (setq org-agenda-window-setup 'current-window)
 
-  ;; Time Tracking
-  (setq org-clock-persist 'history)
-  (org-clock-persistence-insinuate)
+;;   ;; Agenda
+;;   (setq org-agenda-files '("~/org"))
 
-  ;; Just add up hours in clock table. No days, weeks, months, ...
-  (setq org-time-clocksum-format
-			  (quote (:hours "%d" :require-hours t
-                       :minutes ":%02d" :require-minutes t)))
+;;   ;; Time Tracking
+;;   (setq org-clock-persist 'history)
+;;   (org-clock-persistence-insinuate)
 
-  ;; TODO config
-  (setq-default org-highest-priority ?A)
-  (setq-default org-lowest-priority ?E)
-  (setq-default org-default-priority ?D)
+;;   ;; Just add up hours in clock table. No days, weeks, months, ...
+;;   (setq org-time-clocksum-format
+;; 			  (quote (:hours "%d" :require-hours t
+;;                        :minutes ":%02d" :require-minutes t)))
 
-  (setq org-log-done t)
-  (setq org-log-repeat 'time)
+;;   ;; TODO config
+;;   (setq-default org-highest-priority ?A)
+;;   (setq-default org-lowest-priority ?E)
+;;   (setq-default org-default-priority ?D)
 
-  (setq org-duration-format '((special . h:mm)))
+;;   (setq org-log-done t)
+;;   (setq org-log-repeat 'time)
 
-  (setq org-hide-leading-stars t)
+;;   (setq org-duration-format '((special . h:mm)))
 
-  (setq org-cycle-include-plain-lists 'integrate)
+;;   (setq org-hide-leading-stars t)
 
-  (defun my-org-clocktable-indent-string (level)
-	  (if (= level 1)
-			  ""
-		  (let ((str "^"))
-			  (while (> level 2)
-				  (setq level (1- level)
-							  str (concat str "-")))
-			  (concat str "> "))))
+;;   (setq org-cycle-include-plain-lists 'integrate)
 
-  (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
+;;   (defun my-org-clocktable-indent-string (level)
+;; 	  (if (= level 1)
+;; 			  ""
+;; 		  (let ((str "^"))
+;; 			  (while (> level 2)
+;; 				  (setq level (1- level)
+;; 							  str (concat str "-")))
+;; 			  (concat str "> "))))
 
-  (evil-leader/set-key-for-mode 'org-mode
-    "g" 'org-agenda
-    "l" 'org-store-link)
-  :hook (org-mode . (lambda ()
-                      (progn
-                        (linum-mode -1)
-                        (add-hook 'before-save-hook 'whitespace-cleanup nil t)
-                        (visual-line-mode 1)
-                        (auto-fill-mode 1)
-                        (set-input-method "TeX")))))
+;;   (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
+
+;;   (evil-leader/set-key-for-mode 'org-mode
+;;     "g" 'org-agenda
+;;     "l" 'org-store-link)
+;;   :hook (org-mode . (lambda ()
+;;                       (progn
+;;                         (linum-mode -1)
+;;                         (add-hook 'before-save-hook 'whitespace-cleanup nil t)
+;;                         (visual-line-mode 1)
+;;                         (auto-fill-mode 1)
+;;                         (set-input-method "TeX")))))

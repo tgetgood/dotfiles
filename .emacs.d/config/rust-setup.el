@@ -1,12 +1,16 @@
 (use-package autodisass-llvm-bitcode)
 (use-package eglot)
 
-(defvar old-archives package-achives)
+(defvar old-archives package-archives)
 
-(setq package-archives '(("melpa" . "http://melpa.org/packages/")))
+(setq package-archives
+			'(("marmalade" . "https://marmalade-repo.org/packages/")
+ 			  ("melpa" . "http://melpa.org/packages/")
+		    ("gnu" . "http://elpa.gnu.org/packages/")))
 
 (use-package rustic
   :ensure t
+  :demand t
   :after (eglot evil-leader)
   :config 
   (setq rustic-lsp-client 'eglot)
@@ -33,7 +37,6 @@
 
     "f" 'rustic-cargo-fmt
 
-    "n" 'eglot-rename)
-  )
+    "n" 'eglot-rename))
 
 (setq package-archives old-archives)

@@ -25,7 +25,7 @@
 (electric-indent-mode -1)
 
 ;; Org grinds to a painful crawl if you try to number its lines
-(define-global-minor-mode almost-global-linum-mode linum-mode
+(define-global-minor-mode almost-global-linum-mode linum-mode                   
 	(lambda ()
 		(when (not (memq major-mode
 										 '(org-mode)))
@@ -80,7 +80,6 @@
 
 (ido-mode 1)
 (ido-everywhere 1)
-(ido-ubiquitous-mode 1)
 
 ;; Don't try to match file across all "work" directories; only match files
 ;; in the current directory displayed in the minibuffer

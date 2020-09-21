@@ -1,4 +1,4 @@
-;; This is useful for working with CamelCase tokens, like names of Java classes
+;; This is useful for workin CamelCase tokens, like names of Java classes
 ;; This is actually pretty annoying.
 ;; (add-hook 'clojure-mode-hook 'subword-mode)
 
@@ -13,11 +13,18 @@
 ;; A little more syntax highlighting
 (require 'clojure-mode-extra-font-locking)
 
-;; Clojure stuff
+;; Clojure stuff from elsewhere
 
     cider
     clj-refactor
     clojure-mode-extra-font-locking
+
+;; TODO: reinstate
+
+;; (evil-leader/set-key-for-mode 'clojure-mode
+;; 	"p" (lambda ()
+;; 				(interactive)
+;; 				(cider-eval-print-last-sexp 't)))
 
 ;;;;;
 ;; Cider
