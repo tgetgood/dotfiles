@@ -40,9 +40,28 @@
 
 (load "core-setup.el")
 
-
 (load "org-setup.el")
 
+(load "clojure-setup.el")
+
+(load "rust-setup.el")
+
+(load "javascript-config.el")
+
+;; TODO: What does this do?
+;; (load "compilation-setup.el")
+
+;; (load "python-setup.el")
+
+;; (load "java-setup.el")
+
+
+
+;; (load "glsl-mode.el")
+
+;; (use-package auto-package-update
+;;   :config
+;;   (auto-package-update-maybe))
 
 ;; TODO: Configure this properly or don't bother installing it.
 ;; (use-package dired-single)
@@ -93,8 +112,6 @@
 ;;  '(custom-safe-themes
 ;;    '("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default))
 ;;  '(fci-rule-color "#383838")
-;;  '(ido-case-fold t)
-;;  '(ido-enable-flex-matching t)
 ;;  '(magit-bury-buffer-function 'magit-mode-quit-window)
 ;;  '(package-selected-packages
 ;;    '(groovy-mode meghanada xref-js2 js2-refactor js2-mode nodejs-repl vue-mode tagedit scss-mode use-package smex rustic reason-mode magit ido-ubiquitous ido-select-window ido-completing-read+ evil-smartparens evil-paredit evil-leader eglot dockerfile-mode docker-compose-mode docker-cli docker cyberpunk-theme company-terraform buffer-move bash-completion autodisass-llvm-bitcode auto-package-update ag))
@@ -118,26 +135,6 @@
 ;;;;;
 
 
-;; (load "clojure-setup.el")
-
-;; (load "rust-setup.el")
-
-;; TODO: What does this do?
-;; (load "compilation-setup.el")
-
-;; (load "javascript-config.el")
-
-;; (load "python-setup.el")
-
-;; (load "java-setup.el")
-
-
-
-;; (load "glsl-mode.el")
-
-;; (use-package auto-package-update
-;;   :config
-;;   (auto-package-update-maybe))
 
 ;;;;; I think these things are dead weight
 
@@ -159,7 +156,7 @@
  '(org-modules
    '(ol-bbdb ol-bibtex ol-docview ol-gnus org-habit org-id org-tempo ol-w3m))
  '(package-selected-packages
-   '(magit bash-completion ag company smex buffer-move ido-select-window ido-completing-read+ ido-ubiquitous evil-leader evil cyberpunk-theme use-package)))
+   '(clj-refactor cider clojure-mode-extra-font-locking clojure-mode evil-smartparens evil-paredit magit bash-completion ag company smex buffer-move ido-select-window ido-completing-read+ ido-ubiquitous evil-leader evil cyberpunk-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

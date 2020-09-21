@@ -2,155 +2,122 @@
 ;; This is actually pretty annoying.
 ;; (add-hook 'clojure-mode-hook 'subword-mode)
 
-(add-hook 'clojure-mode-hook
-					(lambda ()
-						(progn
-							(add-hook 'before-save-hook 'whitespace-cleanup nil t)
-							(set (make-local-variable 'comment-auto-fill-only-comments) t))))
+(use-package clojure-mode
+  :init
+  (defun paredit-space-for-reader-conditional (endp delim)
+    "Do not insert a space between #? and ("
+    (or endp
+        (cond ((eq (char-syntax delim) ?\()
+               (not (looking-back (regexp-quote "#?") 2 nil)))
+              (else t))))
 
-(evil-define-key 'normal clojure-mode-map "K" 'cider-doc)
+  :hook (enable-paredit-mode
+         (clojurec-mode . (lambda ()
+                            (add-to-list
+                             'paredit-space-for-delimiter-predicates
+                             'paredit-space-for-reader-conditional)))
+         (clojure-mode . (lambda ()
+                            (progn
+                              (add-hook 'before-save-hook 'whitespace-cleanup nil t)
+                              (set (make-local-variable
+                                    'comment-auto-fill-only-comments)
+                                   t)))))
+  :mode ("\\.edn$"
+         "\\.clj$"
+         "\\.boot$"
+         ("\\.cljc$". clojurec-mode)
+         ("\\.cljs$" . clojurescript-mode))
 
-;; A little more syntax highlighting
-(require 'clojure-mode-extra-font-locking)
+  :bind ("K" . cider-doc)
 
-;; Clojure stuff from elsewhere
+  :config
+  (define-key evil-normal-state-map (kbd "g :") 'clojure-toggle-keyword-string))
 
-    cider
-    clj-refactor
-    clojure-mode-extra-font-locking
+(use-package clojure-mode-extra-font-locking)
 
-;; add-hook ... enable-paredit-mode
-clojure-mode-hook
-cider-repl-mode-hook
-cider-repl-mode-hook
+(use-package cider
+  :hook ((cider-mode . eldoc-mode)
+         (cider-repl-mode . enable-paredit-mode))
+  :bind (:map cider-mode-map
+         ("C-c C-o" . cider-repl-clear-buffer)
+         ("C-M-r" . cider-ns-refresh)
 
-evil-normal-state-map "g :" 'clojure-toggle-keyword-string)
-("g k k" . cljr-raise-sexp)
-("g k h" . cljr-splice-sexp-killing-backward)
-("g k l" . cljr-splice-sexp-killing-forward)
+         :map cider-repl-mode-map
+	       ("C-c C-n" . cider-repl-switch-to-other)
+         ("C-c C-a" . cider-switch-to-last-clojure-buffer)
+         ("TAB" . completion-at-point))
 
-
-(evil-leader/set-key-for-mode 'clojure-mode
+  :config
+  (evil-leader/set-key-for-mode 'clojure-mode
 	"p" (lambda ()
 				(interactive)
 				(cider-eval-print-last-sexp 't)))
 
-;;;;;
-;; Cider
-;;;;;
+  (set 'cider-repl-display-help-banner nil)
 
-(require 'cider)
+  ;; go right to the REPL buffer when it's finished connecting
+  (setq cider-repl-pop-to-buffer-on-connect nil)
 
-(set 'cider-repl-display-help-banner nil)
+  ;; When there's a cider error, show its buffer and switch to it
+  (setq cider-show-error-buffer t)
+  (setq cider-auto-select-error-buffer t)
+  (setq cider-auto-jump-to-error t)
 
-;; provides minibuffer documentation for the code you're typing into the repl
-(add-hook 'cider-mode-hook #'eldoc-mode)
+  ;; Fast docs
+  (setq cider-prompt-for-symbol nil)
 
-;; go right to the REPL buffer when it's finished connecting
-(setq cider-repl-pop-to-buffer-on-connect nil)
+  ;; More font lock
+  (setq cider-font-lock-dynamically '(macro core function var))
 
-;; When there's a cider error, show its buffer and switch to it
-(setq cider-show-error-buffer t)
-(setq cider-auto-select-error-buffer t)
-(setq cider-auto-jump-to-error t)
+  ;; Where to store the cider history.
+  (setq cider-repl-history-file
+        (concat user-emacs-directory "transient/cider-history"))
 
-;; Fast docs
-(setq cider-prompt-for-symbol nil)
+  ;; Wrap when navigating history.
+  (setq cider-repl-wrap-history t)
 
-;; More font lock
-(setq cider-font-lock-dynamically '(macro core function var))
+  (setq cider-show-error-buffer nil)
 
-;; Where to store the cider history.
-(setq cider-repl-history-file
-			(concat user-emacs-directory "transient/cider-history"))
+  ;; Always prefer figwheel-main
 
-;; Wrap when navigating history.
-(setq cider-repl-wrap-history t)
+  (setq cider-default-cljs-repl 'figwheel-main)
 
-(setq cider-show-error-buffer nil)
+  (setq cider-figwheel-main-default-options "dev")
+  
+  (evil-leader/set-key-for-mode 'clojure-mode
+    "r" 'cider-eval-region
+    "e" 'cider-load-buffer)
 
-;; Always prefer figwheel-main
+  (evil-leader/set-key-for-mode 'clojurescript-mode
+    "r" 'cider-eval-region
+    "e" 'cider-load-buffer)
 
-(setq cider-default-cljs-repl 'figwheel-main)
+  (evil-leader/set-key-for-mode 'clojurec-mode
+    "r" 'cider-eval-region
+	  "e" 'cider-load-buffer))
 
-(setq cider-figwheel-main-default-options "dev")
+(use-package clj-refactor
+  :hook (clojure-mode . (lambda ()
+                          (clj-refactor-mode 1)
+                          (cljr-add-keybindings-with-prefix "C-c C-v")))
 
-;; Use clojure mode for other extensions
-(add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.cljc$" . clojurec-mode))
-(add-to-list 'auto-mode-alist '("\\.cljs$" . clojurescript-mode))
+  :config
+  (setq cljr-warn-on-eval nil)
+  (setq cljr-magic-requires nil)
+  (setq cljr-favor-prefix-notation nil)
+  (setq cljr-eagerly-build-asts-on-startup nil)
 
-(add-hook 'clojure-mode-hook 'cider-mode)
-(add-hook 'cider-repl-mode-hook 'cider-mode)
+  (define-key evil-normal-state-map (kbd "g k h") 'cljr-splice-sexp-killing-backward)
+  (define-key evil-normal-state-map (kbd "g k l") 'cljr-splice-sexp-killing-forward)
 
-(defun cider-user-ns ()
-	(interactive)
-	;; TODO: cljs.user in cljs repl
-	(cider-repl-set-ns "user"))
+  (evil-leader/set-key-for-mode 'clojure-mode
+    "c" 'cljr-clean-ns
+    "m" 'cljr-add-missing-libspec)
 
-(eval-after-load 'cider
-	'(progn
-		 (define-key cider-mode-map (kbd "C-M-r") 'cider-ns-refresh)
-		 (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)
-		 (define-key cider-repl-mode-map (kbd "C-c C-n") 'cider-repl-switch-to-other)
-		 (define-key cider-mode-map (kbd "C-c C-o") 'cider-repl-clear-buffer)))
+  (evil-leader/set-key-for-mode 'clojurescript-mode
+    "c" 'cljr-clean-ns
+    "m" 'cljr-add-missing-libspec)
 
-;;;;;
-;; Cider keys
-;;;;;
-
-(define-key cider-repl-mode-map (kbd "C-c C-a")
-	'cider-switch-to-last-clojure-buffer)
-
-
-(define-key cider-repl-mode-map (kbd "TAB") 'completion-at-point)
-;;;;;
-;; clj-refactor
-;;;;;
-
-(require 'clj-refactor)
-(add-hook 'clojure-mode-hook (lambda ()
-															 (clj-refactor-mode 1)
-															 (cljr-add-keybindings-with-prefix "C-c C-v")))
-
-(setq cljr-warn-on-eval nil)
-(setq cljr-magic-requires nil)
-(setq cljr-favor-prefix-notation nil)
-(setq cljr-eagerly-build-asts-on-startup nil)
-
-;;;;;
-;; Compilation tasks
-;;;;;
-
-(defun paredit-space-for-reader-conditional (endp delim)
-	"Do not insert a space between #? and ("
-	(or endp
-			(cond ((eq (char-syntax delim) ?\()
-						 (not (looking-back (regexp-quote "#?") 2 nil)))
-						(else t))))
-
-(add-hook 'clojurec-mode-hook
-					(lambda ()
-						(add-to-list
-						 'paredit-space-for-delimiter-predicates
-						 'paredit-space-for-reader-conditional)))
-
-(evil-leader/set-key-for-mode 'clojure-mode
-	"c" 'cljr-clean-ns
-	"m" 'cljr-add-missing-libspec
-	"r" 'cider-eval-region
-	"e" 'cider-load-buffer)
-
-(evil-leader/set-key-for-mode 'clojurescript-mode
-	"c" 'cljr-clean-ns
-	"m" 'cljr-add-missing-libspec
-	"r" 'cider-eval-region
-	"e" 'cider-load-buffer)
-
-(evil-leader/set-key-for-mode 'clojurec-mode
-	"c" 'cljr-clean-ns
-	"m" 'cljr-add-missing-libspec
-	"r" 'cider-eval-region
-	"e" 'cider-load-buffer)
+  (evil-leader/set-key-for-mode 'clojurec-mode
+    "c" 'cljr-clean-ns
+    "m" 'cljr-add-missing-libspec))

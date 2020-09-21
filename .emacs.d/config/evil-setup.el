@@ -121,6 +121,7 @@ case it's a no-op."
     "e" 'eval-buffer))
 
 (use-package evil-paredit
+  :demand t
   :init
   (defun beginning-of-current-sexp ()
     "Moves point to beginning of current sexp. If point is at the
@@ -147,25 +148,28 @@ beginning, does not go to previous sexp. Check is rather naive."
     (interactive)
     (paredit-wrap-sexp argument ?\" ?\"))
 
-  :bind (:map evil-visual-state-map
-         ("g (" . paredit-wrap-round)
-         ("g [" . paredit-wrap-square)
-         ("g {" . paredit-wrap-curly)
-         ("g \"" . wrap-double-quote)
+  :config
+  (define-key evil-normal-state-map (kbd "g l")
+    (smart-slurp paredit-forward-slurp-sexp))
+  (define-key evil-normal-state-map (kbd "g L") 'paredit-forward-barf-sexp)
+  (define-key evil-normal-state-map (kbd "g h")
+    (smart-slurp paredit-backward-slurp-sexp))
+  (define-key evil-normal-state-map (kbd "g H") 'paredit-backward-barf-sexp)
+  (define-key evil-normal-state-map (kbd "g k k") 'paredit-raise-sexp)
+  (define-key evil-normal-state-map (kbd "g k K") 'paredit-splice-sexp)
+  (define-key evil-normal-state-map (kbd "g j") 'paredit-join-sexps)
+  (define-key evil-normal-state-map (kbd "g s") 'paredit-split-sexp)
 
-         :map evil-normal-state-map
-         ("g l" . (smart-slurp paredit-forward-slurp-sexp))
-         ("g L" . paredit-forward-barf-sexp)
-         ("g h" . (smart-slurp paredit-backward-slurp-sexp))
-         ("g H" . paredit-backward-barf-sexp)
-         ("g k K" . paredit-splice-sexp)
-         ("g j" . paredit-join-sexps)
-         ("g s" . paredit-split-sexp)
+  (define-key evil-normal-state-map (kbd "g (") (smart-wrap paredit-wrap-round))
+  (define-key evil-normal-state-map (kbd "g [") (smart-wrap paredit-wrap-square))
+  (define-key evil-normal-state-map (kbd "g {") (smart-wrap paredit-wrap-curly))
+  (define-key evil-normal-state-map (kbd "g \"") (smart-wrap wrap-double-quote))
 
-         ("g (" . (smart-wrap paredit-wrap-round))
-         ("g [" . (smart-wrap paredit-wrap-square))
-         ("g {" . (smart-wrap paredit-wrap-curly))
-         ("g \"" . (smart-wrap wrap-double-quote))))
+  (define-key evil-visual-state-map (kbd "g (") 'paredit-wrap-round)
+  (define-key evil-visual-state-map (kbd "g [") 'paredit-wrap-square)
+  (define-key evil-visual-state-map (kbd "g {") 'paredit-wrap-curly)
+  (define-key evil-visual-state-map (kbd "g \"") 'wrap-double-quote))
+
 
 (use-package evil-smartparens
   :commands (evil-sp-delete evil-sp-change)
@@ -173,9 +177,9 @@ beginning, does not go to previous sexp. Check is rather naive."
   :hook ((smartparens-enabled . evil-smartparens-mode)
          (smartparens-disabled . (lambda () (evil-smartparens-mode 0))))
 
-  :bind ("g c" . sp-convolute-sexp)
   :config
   (sp-pair "'" "'" :actions nil)
+  (define-key evil-normal-state-map (kbd "g c") 'sp-convolute-sexp)
 
   (evil-define-operator evil-sp-delete (beg end type register yank-handler)
     "Call `evil-delete' with a balanced region"
