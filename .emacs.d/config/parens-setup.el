@@ -1,92 +1,46 @@
-(require 'smartparens-config)
+(defvar paren-hooks '(scheme-mode-hook
+                      lisp-mode-hook
+                      emacs-lisp-mode-hook))
 
-(defvar paren-hooks '(clojure-mode-hook
-											 cider-repl-mode-hook
-											 cider-repl-mode-hook
-											 scheme-mode-hook
-											 lisp-mode-hook
-											 emacs-lisp-mode-hook))
+(use-package smartparens)
 
-(use-package paredit)
+(use-package paredit
+  :demand t
+  :init
+  (defun conditionally-enable-paredit-mode ()
+    "enable paredit-mode during eval-expression"
+    (if (eq this-command 'eval-expression)
+        (paredit-mode 1)))
+
+  (defun catchy-p-dq (&optional n)
+    (interactive "P")
+    (condition-case nil
+        (paredit-doublequote)
+      (error (progn
+               (insert ?\")
+               (insert ?\")
+               (backward-char)))))
+
+  :bind (("\"" . catchy-p-dq)
+         ("M-r" . nil)
+         ("M-j" . nil))
+
+  :hook ((paredit-mode . smartparens-strict-mode)
+         (minibuffer-setup . conditionally-enable-paredit-mode))
+  :config
+  (dolist (h paren-hooks)
+	  (add-hook h 'enable-paredit-mode)))
 
 
-(dolist (h paren-hooks)
-	(add-hook h 'enable-paredit-mode))
-
-;; And the minibuffer
-
-(defun conditionally-enable-paredit-mode ()
-	"enable paredit-mode during eval-expression"
-	(if (eq this-command 'eval-expression)
-			(paredit-mode 1)))
-
-(add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
-
-;;;;; Let's try and use paredit + evil-smartparens. This will be fun
-
-(add-hook 'paredit-mode-hook 'smartparens-strict-mode)
-(add-hook 'smartparens-enabled-hook 'evil-smartparens-mode)
-
-(add-hook 'smartparens-disabled-hook (lambda () (evil-smartparens-mode 0)))
-
-;; Disable some of smartparens
-
-(sp-pair "'" "'" :actions nil)
-
-(defun catchy-p-dq (&optional n)
-	(interactive "P")
-	(condition-case nil
-			(paredit-doublequote)
-		(error (progn
-						 (insert ?\")
-						 (insert ?\")
-						 (backward-char)))))
-
-(define-key paredit-mode-map (kbd "\"") 'catchy-p-dq)
 
 ;; Helper to wrap sexps more intuitively
 
-(defun beginning-of-current-sexp ()
-	"Moves point to beginning of current sexp. If point is at the
-beginning, does not go to previous sexp. Check is rather naive."
-	(when (not (member (char-before) '(?\  ?\( ?\[ ?\{ ?\n )))
-		(paredit-backward)))
-
-(defmacro smart-wrap (command)
-	`(lambda ()
-		 (interactive)
-		 (progn
-			 (beginning-of-current-sexp)
-			 (,command))))
-
-(defmacro smart-slurp (command)
-	`(lambda ()
-		 (interactive)
-		 (progn
-			 (when (member (char-after) '(?\( ?\[ ?\" ?\{))
-				 (right-char))
-			 (,command))))
-
 ;; Extensions to evil-smartparens
-
-(evil-define-operator smart-substitute (beg end type register)
-	"Normal vim substitute, unless current char is an sexp delimter in
-which case it's a no-op."
-	:motion evil-forward-char
-	(interactive "<R><x>")
-	(when (not (member (char-after) '(?\" ?\( ?\[ ?\{ ?\) ?\] ?\})))
-		(evil-substitute beg end type register)))
-
-(define-key evil-normal-state-map (kbd "s") #'smart-substitute)
 
 ;;;;;
 
-(defun wrap-double-quote (&optional argument)
-	(interactive)
-	(paredit-wrap-sexp argument ?\" ?\"))
 
-
-;; Paredit keymap REVIEW: should I not be using the g prefix here?
+;; Paredit keymap 
 
 (define-key evil-normal-state-map (kbd "g l") (smart-slurp paredit-forward-slurp-sexp))
 (define-key evil-normal-state-map (kbd "g L") 'paredit-forward-barf-sexp)
@@ -113,51 +67,3 @@ which case it's a no-op."
 (define-key evil-visual-state-map (kbd "g {") 'paredit-wrap-curly)
 (define-key evil-visual-state-map (kbd "g \"") 'wrap-double-quote)
 
-(define-key paredit-mode-map (kbd "M-J") nil)
-(define-key paredit-mode-map (kbd "M-r") nil)
-
-
-;;;;; Overriding evil-smartparens.
-;; TODO: There's got to be a better way to do this...
-
-
-(evil-define-operator evil-sp-delete (beg end type register yank-handler)
-	"Call `evil-delete' with a balanced region"
-	(interactive "<R><x><y>")
-	(if (or (evil-sp--override)
-					(= beg end)
-					(and (eq type 'block)
-							 (evil-sp--block-is-balanced beg end)))
-			(evil-delete beg end type register yank-handler)
-		(condition-case nil
-				(let ((new-beg (evil-sp--new-beginning beg end))
-							(new-end (evil-sp--new-ending beg end)))
-					(if (and (= new-end end)
-									 (= new-beg beg))
-							(evil-delete beg end type register yank-handler)
-						(evil-delete new-beg new-end 'inclusive register yank-handler)))
-			(error (let* ((beg (evil-sp--new-beginning beg end :shrink))
-										(end (evil-sp--new-ending beg end)))
-							 (evil-delete beg end type register yank-handler))))))
-
-(evil-define-operator evil-sp-change (beg end type register yank-handler)
-	"Call `evil-change' with a balanced region"
-	(interactive "<R><x><y>")
-	;; #20 don't delete the space after a word
-	(when (save-excursion (goto-char end) (looking-back " " (- (point) 5)))
-		(setq end (1- end)))
-	(if (or (evil-sp--override)
-					(= beg end)
-					(and (eq type 'block)
-							 (evil-sp--block-is-balanced beg end)))
-			(evil-change beg end type register yank-handler)
-		(condition-case nil
-				(let ((new-beg (evil-sp--new-beginning beg end))
-							(new-end (evil-sp--new-ending beg end)))
-					(if (and (= new-end end)
-									 (= new-beg beg))
-							(evil-change beg end type register yank-handler)
-						(evil-change new-beg new-end 'inclusive register yank-handler)))
-			(error (let* ((beg (evil-sp--new-beginning beg end :shrink))
-										(end (evil-sp--new-ending beg end)))
-							 (evil-change beg end type register yank-handler))))))

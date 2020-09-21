@@ -19,12 +19,21 @@
     clj-refactor
     clojure-mode-extra-font-locking
 
-;; TODO: reinstate
+;; add-hook ... enable-paredit-mode
+clojure-mode-hook
+cider-repl-mode-hook
+cider-repl-mode-hook
 
-;; (evil-leader/set-key-for-mode 'clojure-mode
-;; 	"p" (lambda ()
-;; 				(interactive)
-;; 				(cider-eval-print-last-sexp 't)))
+evil-normal-state-map "g :" 'clojure-toggle-keyword-string)
+("g k k" . cljr-raise-sexp)
+("g k h" . cljr-splice-sexp-killing-backward)
+("g k l" . cljr-splice-sexp-killing-forward)
+
+
+(evil-leader/set-key-for-mode 'clojure-mode
+	"p" (lambda ()
+				(interactive)
+				(cider-eval-print-last-sexp 't)))
 
 ;;;;;
 ;; Cider
