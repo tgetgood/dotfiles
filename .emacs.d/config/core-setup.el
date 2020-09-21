@@ -1,3 +1,63 @@
+(use-package ido-completing-read+
+  :demand t
+  :defines (ido-cur-item ido-cur-item)
+  :config (ido-ubiquitous-mode 1))
+
+(use-package buffer-move
+  :bind (("M-H" . buf-move-left)
+         ("M-L" . buf-move-right)
+         ("M-J" . buf-move-down)
+         ("M-K" . buf-move-up)))
+
+(use-package smex
+  :bind (("M-x" . smex))
+  :config
+  (setq smex-save-file (concat user-emacs-directory ".smex-items"))
+  (smex-initialize))
+
+(use-package company
+  :demand t
+  :bind (:map company-active-map
+              ("RET" . nil)
+              ("M-RET" . company-complete-selection))
+  :hook (after-init . global-company-mode))
+
+(use-package ag
+  :commands (ag-project-regexp)
+  :after (evil-leader)
+  :demand t
+  :config
+  (setq ag-reuse-buffers 't)
+  (setq ag-reuse-window 't)
+  (defun tasklist-ag ()
+	  (interactive)
+	  (ag-project-regexp "@?(FIXME|TODO|HACK|OPTIMIZE|REVIEW):"))
+  (evil-leader/set-key
+    "a" 'ag-project-regexp
+    "t" 'tasklist-ag))
+
+(use-package bash-completion
+  :config
+  (bash-completion-setup)
+  (autoload 'bash-completion-dynamic-complete
+    "bash-completion"
+    "BASH completion hook")
+  ;; TODO: What do these do and are they necessary?
+  (add-hook 'shell-dynamic-complete-functions
+            'bash-completion-dynamic-complete)
+  (add-hook 'shell-command-complete-functions
+            'bash-completion-dynamic-complete))
+
+(use-package magit
+  :after (evil-leader)
+  :demand t
+  :config
+  (evil-leader/set-key
+    "s" 'magit-status
+    "y" 'magit-show-refs-popup
+    "b" 'magit-blame
+    "B" 'magit-blame-mode))
+
 ;;;;;
 ;; Truly global editor config
 ;;;;;

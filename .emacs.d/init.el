@@ -54,72 +54,7 @@
 
 ;; (load "parens-setup.el")
 
-;; (load "org.el")
-
-;; (use-package ido-ubiquitous
-;;   :defines ido-default-item
-;;   :config
-;;   (ido-ubiquitous-mode 1))
-
-;; (use-package ido-completing-read+
-;;   :defines (ido-cur-item ido-cur-item))
-
-;; (use-package ido-select-window
-;;   :commands (ido-select-window)
-;;   :bind (("C-x o" . ido-select-window)))
-
-;; (use-package buffer-move
-;;   :bind (("M-H" . buf-move-left)
-;;          ("M-L" . buf-move-right)
-;;          ("M-J" . buf-move-down)
-;;          ("M-K" . buf-move-up)))
-
-;; (use-package smex
-;;   :bind (("M-x" . smex))
-;;   :config
-;;   (setq smex-save-file (concat user-emacs-directory ".smex-items"))
-;;   (smex-initialize))
-
-;; (use-package company
-;;   :bind (:map company-active-map
-;;               ("RET" . nil)
-;;               ("M-RET" . company-complete-selection))
-;;   :hook (after-init . global-company-mode))
-
-;; (use-package ag
-;;   :commands (ag-project-regexp)
-;;   :after (evil-leader)
-;;   :demand t
-;;   :config
-;;   (setq ag-reuse-buffers 't)
-;;   (setq ag-reuse-window 't)
-;;   (defun tasklist-ag ()
-;; 	  (interactive)
-;; 	  (ag-project-regexp "@?(FIXME|TODO|HACK|OPTIMIZE|REVIEW):"))
-;;   (evil-leader/set-key
-;;     "a" 'ag-project-regexp
-;;     "t" 'tasklist-ag))
-
-;; (use-package bash-completion
-;;   :config
-;;   (bash-completion-setup)
-;;   (autoload 'bash-completion-dynamic-complete
-;;     "bash-completion"
-;;     "BASH completion hook")
-;;   ;; TODO: What do these do and are they necessary?
-;;   (add-hook 'shell-dynamic-complete-functions
-;;             'bash-completion-dynamic-complete)
-;;   (add-hook 'shell-command-complete-functions
-;;             'bash-completion-dynamic-complete))
-
-;; (use-package magit
-;;   :after (evil-leader)
-;;   :config
-;;   (evil-leader/set-key
-;;     "s" 'magit-status
-;;     "y" 'magit-show-refs-popup
-;;     "b" 'magit-blame
-;;     "B" 'magit-blame-mode))
+(load "org-setup.el")
 
 
 ;; TODO: Configure this properly or don't bother installing it.
@@ -235,7 +170,10 @@
  '(custom-safe-themes
    '("20a8ec387dde11cc0190032a9f838edcc647863c824eed9c8e80a4155f8c6037" default))
  '(fci-rule-color "#383838")
- '(package-selected-packages '(evil-leader evil cyberpunk-theme use-package)))
+ '(org-modules
+   '(ol-bbdb ol-bibtex ol-docview ol-gnus org-habit org-id org-tempo ol-w3m))
+ '(package-selected-packages
+   '(magit bash-completion ag company smex buffer-move ido-select-window ido-completing-read+ ido-ubiquitous evil-leader evil cyberpunk-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
