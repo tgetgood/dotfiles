@@ -4,8 +4,7 @@
 (defvar old-archives package-archives)
 
 (setq package-archives
-			'(("marmalade" . "https://marmalade-repo.org/packages/")
- 			  ("melpa" . "http://melpa.org/packages/")
+			'(("melpa" . "http://melpa.org/packages/")
 		    ("gnu" . "http://elpa.gnu.org/packages/")))
 
 (use-package rustic

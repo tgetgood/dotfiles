@@ -26,7 +26,6 @@
 (setq package-archives
 			'(("melpa-stable" . "https://stable.melpa.org/packages/")
 			 ("org" . "https://orgmode.org/elpa/")
-			 ("marmalade" . "https://marmalade-repo.org/packages/")
  			 ("melpa" . "http://melpa.org/packages/")
 		   ("gnu" . "http://elpa.gnu.org/packages/")))
 
@@ -36,7 +35,6 @@
 (setq package-archives 
 			'(("melpa-stable" . "https://stable.melpa.org/packages/")
 			 ("org" . "https://orgmode.org/elpa/")
-			 ("marmalade" . "https://marmalade-repo.org/packages/")
 		   ("gnu" . "http://elpa.gnu.org/packages/")))
 
 (unless (package-installed-p 'use-package)
