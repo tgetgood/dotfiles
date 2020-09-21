@@ -1,12 +1,6 @@
 (use-package autodisass-llvm-bitcode)
 (use-package eglot)
 
-(defvar old-archives package-archives)
-
-(setq package-archives
-			'(("melpa" . "http://melpa.org/packages/")
-		    ("gnu" . "http://elpa.gnu.org/packages/")))
-
 (use-package rustic
   :ensure t
   :demand t
@@ -38,4 +32,3 @@
 
     "n" 'eglot-rename))
 
-(setq package-archives old-archives)

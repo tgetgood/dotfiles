@@ -1,41 +1,27 @@
-;;;;
-;; Packages
-;;;;
-
 (setenv "PATH" (concat (getenv "PATH") ":/home/thomas/bin"))
 (setq exec-path (append exec-path '("/home/thomas/bin")))
 
 (add-to-list 'load-path "~/.emacs.d/config")
+(add-to-list 'load-path "~/.emacs.d/downloaded")
 
 ;; Package repositories
 (require 'package)
 
- (when (not package--initialized)
-   (package-initialize))
+(when (not package--initialized)
+  (package-initialize))
 
-;;;;;
-;; This requires some explanation for future me:
-;;
-;; rustic only exists on unstable melpa, but I don't want to install anything
-;; else from there. At the same time, I don't want to refresh the package
-;; contents more than once per loading emacs.
-;;
-;; So, I refresh all archives, remove melpa unstable, and then add it back
-;; temporarily in "rust-setup.el" just to install rustic. Ugh
-;;;;;
-(setq package-archives
-			'(("melpa-stable" . "https://stable.melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")
- 			 ("melpa" . "http://melpa.org/packages/")
-		   ("gnu" . "http://elpa.gnu.org/packages/")))
+(setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("melpa" . "http://melpa.org/packages/")
+                         ("gnu" . "http://elpa.gnu.org/packages/"))
+
+      package-archive-priorities '(("melpa-stable" . 100)
+                                   ("gnu" . 50)
+                                   ("org" . 40)
+                                   ("melpa" . 0)))
 
 (when (not package-archive-contents)
 	(package-refresh-contents))
-
-(setq package-archives 
-			'(("melpa-stable" . "https://stable.melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")
-		   ("gnu" . "http://elpa.gnu.org/packages/")))
 
 (unless (package-installed-p 'use-package)
   	(package-refresh-contents)
@@ -48,11 +34,12 @@
 
 (load "ui-setup.el")
 
+(load "parens-setup.el")
+
 (load "evil-setup.el")
 
 (load "core-setup.el")
 
-;; (load "parens-setup.el")
 
 (load "org-setup.el")
 
@@ -145,7 +132,6 @@
 ;; (load "java-setup.el")
 
 
-;; (add-to-list 'load-path "~/.emacs.d/downloaded")
 
 ;; (load "glsl-mode.el")
 
