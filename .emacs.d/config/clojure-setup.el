@@ -36,8 +36,10 @@
 (use-package clojure-mode-extra-font-locking)
 
 (use-package cider
+  :commands (cider-eval-print-last-sexp)
   :hook ((cider-mode . eldoc-mode)
          (cider-repl-mode . enable-paredit-mode))
+
   :bind (:map cider-mode-map
          ("C-c C-o" . cider-repl-clear-buffer)
          ("C-M-r" . cider-ns-refresh)
