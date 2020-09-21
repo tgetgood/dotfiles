@@ -61,7 +61,9 @@
 
 (use-package evil
   :demand t
-  :bind (("<escape>" . esc-non-normal)
+  :bind (:map
+         key-translation-map
+         ("<escape>" . esc-non-normal)
          :map evil-normal-state-map
          ("#" . (lambda (arg)
                   (interactive "P")
