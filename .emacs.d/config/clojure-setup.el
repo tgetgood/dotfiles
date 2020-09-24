@@ -11,7 +11,7 @@
                (not (looking-back (regexp-quote "#?") 2 nil)))
               (t t))))
 
-  :hook (enable-paredit-mode
+  :hook ((clojure-mode . enable-paredit-mode)
          (clojurec-mode . (lambda ()
                             (add-to-list
                              'paredit-space-for-delimiter-predicates
