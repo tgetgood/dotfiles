@@ -28,9 +28,8 @@
          ("\\.cljc$". clojurec-mode)
          ("\\.cljs$" . clojurescript-mode))
 
-  :bind ("K" . cider-doc)
-
   :config
+  (evil-define-key 'normal clojure-mode-map (kbd "K") 'cider-doc)
   (define-key evil-normal-state-map (kbd "g :") 'clojure-toggle-keyword-string))
 
 (use-package clojure-mode-extra-font-locking)

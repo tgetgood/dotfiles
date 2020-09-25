@@ -40,8 +40,10 @@
     "t" 'tasklist-ag))
 
 (use-package bash-completion
+
   :commands bash-completion-setup
   :config
+  (evil-define-key 'normal shell-mode-map (kbd "K") 'man)
   (bash-completion-setup)
   (autoload 'bash-completion-dynamic-complete
     "bash-completion"

@@ -76,6 +76,7 @@
                   (evil-search-word-forward arg (symbol-at-point)))))
   :config
   (evil-mode 1)
+  (evil-define-key 'normal emacs-lisp-mode-map (kbd "K") 'describe-function)
 
   (evil-ex-define-cmd "E[xplore]" (lambda () (interactive) (dired ".")))
 
