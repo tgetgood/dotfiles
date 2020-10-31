@@ -95,7 +95,9 @@ case it's a no-op."
 
 (use-package evil-leader
   :demand t
+
   :commands (global-evil-leader-mode evil-leader/set-key evil-leader/set-key-for-mode)
+
   :config
   (global-evil-leader-mode)
 
@@ -124,6 +126,7 @@ case it's a no-op."
 
 (use-package evil-paredit
   :demand t
+
   :init
   (defun beginning-of-current-sexp ()
     "Moves point to beginning of current sexp. If point is at the
