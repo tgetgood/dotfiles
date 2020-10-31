@@ -19,11 +19,15 @@
        (right-fringe . 0)
        (menu-bar-lines . 0)
        (tool-bar-lines . 0)
-       ;; REVIEW: This might confuse and annoy me. Alternately, it might be a godsend.
        (unsplittable . t)))
 
+;; TODO: unsplittable is great 90% of the time, but when there' only one window
+;; in a frame and I start using magit it gets ugly. Can I exempt certain
+;; processes from unspilttable? Related, but not a solution:
+;; https://emacs.stackexchange.com/questions/327/how-can-i-block-a-frame-from-being-split
+
 (setq initial-frame-alist my-frame-alist)
- 
+
 (setq default-frame-alist my-frame-alist)
 
 (fringe-mode 0)
