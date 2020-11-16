@@ -21,17 +21,11 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(eval-when-compile
-  (require 'use-package))
+(require 'use-package)
 
 (require 'bind-key)
 
 (setq use-package-always-ensure t)
-
-(use-package auto-compile
-  :demand t
-  :commands auto-compile-on-load-mode
-  :config (auto-compile-on-load-mode))
 
 (load "ui-setup")
 
