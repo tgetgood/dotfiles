@@ -8,6 +8,8 @@
 # Damned bell...
 xset -b
 
+export XKB_DEFAULT_OPTIONS=caps:escape
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
@@ -53,6 +55,7 @@ export PATH=~/bin:~/.cargo/bin:$PATH
 export PAGER=less
 # export VISUAL="emacsclient -c"
 export EDITOR="emacsclient -c -nw"
+# export EDITOR=vim
 export BROWSER=firefox
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export PROMPT_COMMAND= # Handy against some forms of juvenile mischief.
