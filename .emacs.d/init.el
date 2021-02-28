@@ -106,7 +106,39 @@
  '(org-modules
    '(ol-bbdb ol-bibtex ol-docview ol-gnus org-habit org-id org-tempo ol-w3m))
  '(package-selected-packages
-   '(auto-compile reason-mode auctex dockerfile-mode docker-compose-mode docker-cli docker company-terraform auto-package-update groovy-mode meghanada clj-refactor cider clojure-mode-extra-font-locking clojure-mode evil-smartparens evil-paredit magit bash-completion ag company smex buffer-move ido-select-window ido-completing-read+ ido-ubiquitous evil-leader evil cyberpunk-theme use-package)))
+   '(
+     ag
+     auctex
+     auto-compile
+     auto-package-update
+     bash-completion
+     buffer-move
+     cider
+     clj-refactor
+     clojure-mode
+     clojure-mode-extra-font-locking
+     company
+     company-terraform
+     cyberpunk-theme
+     docker
+     docker-cli
+     docker-compose-mode
+     dockerfile-mode
+     evil
+     evil-leader
+     evil-paredit
+     evil-smartparens
+     groovy-mode
+     ido-completing-read+
+     ido-select-window
+     ido-ubiquitous
+     lua-mode
+     magit
+     meghanada
+     reason-mode
+     smex
+     use-package
+     )))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
