@@ -59,7 +59,7 @@ run_once("unclutter -root")
 
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
-local terminal = "xfce4-terminal"
+local terminal = "kitty"
 local editor = "emacsclient -c"
 local browser = "firefox"
 local modkey = "Mod4"
@@ -330,21 +330,31 @@ globalkeys = awful.util.table.join(
 
 		-- Multimedia
 		awful.key({ modkey },	"Down",
-							function() awful.spawn("pulseaudio-ctl down") end,
+							function() awful.spawn("amixer set Master 5%-") end,
 							{description = "decrease volume", group = "audio"}),
 		awful.key({ modkey },	"Up",
-							function() awful.spawn("pulseaudio-ctl up") end,
+							function() awful.spawn("amixer set Master 5%+") end,
 							{description = "increase volume", group = "audio"}),
 		awful.key({},	"XF86AudioLowerVolume",
-							function() awful.spawn("pulseaudio-ctl down") end,
+							function() awful.spawn("amixer set Master 5%-") end,
 							{description = "decrease volume", group = "audio"}),
 		awful.key({ },"XF86AudioRaiseVolume",
 							function() awful.spawn("pulseaudio-ctl up") end,
 							{description = "increase volume", group = "audio"}),
 		awful.key({}, "XF86AudioMute",
-							function () awful.spawn("pulseaudio-ctl mute") end,
+							function () awful.spawn("set Master toggle") end,
 							{description = "mute", group = "audio"}),
 
+    -- Screen Brightnes
+
+		awful.key({}, "XF86MonBrightnessDown",
+							function () awful.spawn("brightnessctl set -e 5%-") end,
+							{description = "decrease brightness", group = "screen"}),
+
+		awful.key({}, "XF86MonBrightnessUp",
+							function () awful.spawn("brightnessctl set -e 5%+") end,
+							{description = "increase brightness", group = "screen"}),
+   
 		-- Lock Screen
 		awful.key({ modkey, "Shift", "Control"},	"l",
 							function() awful.spawn("slimlock") end,
@@ -467,6 +477,7 @@ awful.rules.rules = {
 			properties = { border_width = beautiful.border_width,
 										 border_color = beautiful.border_normal,
 										 focus = awful.client.focus.filter,
+                     size_hints_honor = false,
 										 raise = true,
 										 keys = clientkeys,
 										 buttons = clientbuttons,
