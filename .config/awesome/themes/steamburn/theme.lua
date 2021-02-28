@@ -170,7 +170,7 @@ local bat = lain.widgets.bat({
     settings = function()
         bat_perc = bat_now.perc
 				local bat_sign
-				 if bat_now.ac_status == 1 then
+				 if bat_now.status == "Charging" then
 					 bat_sign = "+"
 				else
 					 bat_sign = "-"
