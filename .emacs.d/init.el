@@ -73,82 +73,87 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-	 ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
+   ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
  '(browse-url-browser-function 'browse-url-default-browser)
  '(browse-url-generic-program nil)
  '(cider-offer-to-open-cljs-app-in-browser nil)
  '(custom-safe-themes
-	 '("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default))
+   '("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" "f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" default))
  '(fci-rule-color "#383838")
  '(ido-case-fold t)
  '(ido-enable-flex-matching t)
  '(magit-bury-buffer-function 'magit-mode-quit-window)
  '(org-modules
-	 '(ol-bbdb ol-bibtex ol-docview ol-gnus org-habit org-id org-tempo ol-w3m))
+   '(ol-bbdb ol-bibtex ol-docview ol-gnus org-habit org-id org-tempo ol-w3m))
  '(package-selected-packages
-	 '(
-		 0blayout
-		 ag
-		 anaconda-mode
-		 autodisass-llvm-bitcode
-		 bash-completion
-		 buffer-move
-		 cargo
-		 cider
-		 cl-generic
-		 cl-lib
-		 clj-refactor
-		 clojure-mode-extra-font-locking
-		 company
-		 company-anaconda
-		 company-terraform
-		 cyberpunk-theme
-		 dired-single
-		 docker
-		 docker-cli
-		 docker-compose-mode
-		 docker-tramp
-		 dockerfile-mode
-		 eglot
-		 elpy
-		 evil-leader
-		 evil-paredit
-		 evil-smartparens
-		 flycheck-rust
-		 gradle-mode
-		 groovy-mode
-		 ido-completing-read+
-		 ido-select-window
-		 jedi
-		 js2-mode
-		 js2-refactor
-		 json-mode
-		 kibit-mode
-		 latex-extra
-		 lsp-mode
-		 lua-mode
-		 magit
-		 markdown-mode
-		 meacupla-theme
-		 meghanada
-		 nodejs-repl
-		 popup
-		 py-autopep8
-		 racer
-		 reason-mode
-		 rustic
-		 scion
-		 scss-mode
-		 smex
-		 tagedit
-		 terraform-mode
-		 use-package
-		 vue-html-mode
-		 vue-mode
-		 wanderlust
-		 xref-js2
-		 yaml-mode
-		 ))
+   '(
+     0blayout
+     ag
+     anaconda-mode
+     autodisass-llvm-bitcode
+     bash-completion
+     buffer-move
+     cargo
+     cider
+     cl-generic
+     cl-lib
+     clj-refactor
+     clojure-mode-extra-font-locking
+     company
+     company-anaconda
+     company-terraform
+     cyberpunk-theme
+     dired-single
+     docker
+     docker-cli
+     docker-compose-mode
+     docker-tramp
+     dockerfile-mode
+     eglot
+     elpy
+     evil-leader
+     evil-paredit
+     evil-smartparens
+     flycheck-rust
+     gradle-mode
+     groovy-mode
+     ido-completing-read+
+     ido-select-window
+     jedi
+     js2-mode
+     js2-refactor
+     json-mode
+     kibit-mode
+     latex-extra
+     lsp-metals
+     lsp-mode
+     lua-mode
+     magit
+     markdown-mode
+     meacupla-theme
+     meghanada
+     nodejs-repl
+     ob-prolog
+     popup
+     prolog
+     py-autopep8
+     racer
+     reason-mode
+     rustic
+     scala-mode
+     scion
+     scss-mode
+     smex
+     tagedit
+     terraform-mode
+     typescript-mode
+     use-package
+     vue-html-mode
+     vue-mode
+     wanderlust
+     xref-js2
+     yaml-mode
+     ))
  '(sp-autoskip-closing-pair t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

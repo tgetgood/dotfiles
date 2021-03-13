@@ -330,19 +330,19 @@ globalkeys = awful.util.table.join(
 
 		-- Multimedia
 		awful.key({ modkey },	"Down",
-							function() awful.spawn("pulseaudio-ctl down") end,
+							function() awful.spawn("amixer sset Master 5%-") end,
 							{description = "decrease volume", group = "audio"}),
 		awful.key({ modkey },	"Up",
-							function() awful.spawn("pulseaudio-ctl up") end,
+							function() awful.spawn("amixer sset Master 5%+") end,
 							{description = "increase volume", group = "audio"}),
 		awful.key({},	"XF86AudioLowerVolume",
-							function() awful.spawn("pulseaudio-ctl down") end,
+							function() awful.spawn("amixer sset Master 5%-") end,
 							{description = "decrease volume", group = "audio"}),
 		awful.key({ },"XF86AudioRaiseVolume",
-							function() awful.spawn("pulseaudio-ctl up") end,
+							function() awful.spawn("amixer sset Master 5%+") end,
 							{description = "increase volume", group = "audio"}),
 		awful.key({}, "XF86AudioMute",
-							function () awful.spawn("pulseaudio-ctl mute") end,
+							function () awful.spawn("/home/thomas/bin/mute") end,
 							{description = "mute", group = "audio"}),
 
 		-- Lock Screen
