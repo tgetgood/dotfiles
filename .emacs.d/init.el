@@ -118,6 +118,7 @@
      clojure-mode
      clojure-mode-extra-font-locking
      company
+     company-c-headers
      company-terraform
      cyberpunk-theme
      docker
