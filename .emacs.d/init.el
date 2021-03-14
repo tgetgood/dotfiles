@@ -52,6 +52,8 @@
 
 (load "glsl-mode")
 
+(load "clang-setup")
+
 ;; TODO: Configure this properly or don't bother installing it.
 ;; (use-package dired-single)
 
