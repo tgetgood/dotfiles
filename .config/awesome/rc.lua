@@ -359,7 +359,8 @@ globalkeys = awful.util.table.join(
 		awful.key({ modkey, "Shift", "Control"},	"l",
 							function() awful.spawn("slimlock") end,
 							{description = "lock screen", group = "launcher"}),
-		awful.key({ modkey, "Control"},	"s", function() awful.spawn("sleep-now") end,
+		awful.key({ modkey, "Control"},	"s",
+       function() awful.spawn("systemctl suspend") end,
 							{description = "suspend machine", group = "launcher"}),
 
 		-- Program Shortcuts
