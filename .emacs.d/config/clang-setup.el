@@ -16,3 +16,5 @@
 (load "llvm-mode")
 
 (add-to-list 'auto-mode-alist '("\\.ll\\'" . llvm-mode))
+
+(evil-leader/set-key-for-mode 'llvm-mode "c" 'compile)
