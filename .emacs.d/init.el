@@ -54,13 +54,10 @@
 
 (load "clang-setup")
 
-;; TODO: Configure this properly or don't bother installing it.
-;; (use-package dired-single)
+(load "terraform-setup")
 
 ;;;;; Homeless packages
 
-(use-package company-terraform)
-(use-package terraform-mode)
 (use-package docker)
 (use-package docker-cli)
 (use-package docker-compose-mode)
@@ -121,16 +118,7 @@
      clojure-mode-extra-font-locking
      company
      company-c-headers
-     company-terraform
      cyberpunk-theme
-     docker
-     docker-cli
-     docker-compose-mode
-     dockerfile-mode
-     evil
-     evil-leader
-     evil-paredit
-     evil-smartparens
      groovy-mode
      ido-completing-read+
      ido-select-window
