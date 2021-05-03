@@ -1,9 +1,8 @@
-
 --[[
-                                    
-     Steamburn Awesome WM theme 3.0 
-     github.com/copycat-killer      
-                                    
+
+     Steamburn Awesome WM theme 3.0
+     github.com/copycat-killer
+
 --]]
 
 local gears = require("gears")
@@ -137,14 +136,14 @@ theme.mpd = lain.widgets.mpd({
 
 -- CPU
 local cpu = lain.widgets.cpu({
-			timeout = 5,
+      timeout = 5,
     settings = function()
-			 local usages = 0
-			 for i = 1, #cpu_now do
-					usages = usages + cpu_now[i].usage
-				end
+       local usages = 0
+       for i = 1, #cpu_now do
+          usages = usages + cpu_now[i].usage
+        end
         widget:set_markup(markup.font(theme.font, markup(gray, " Cpu ") ..
-																				 usages .. " "))
+                                         usages .. " "))
     end
 })
 
@@ -152,35 +151,46 @@ local cpu = lain.widgets.cpu({
 local mem = lain.widgets.mem({
     settings = function()
         widget:set_markup(markup.font(theme.font, markup(gray, " Mem ") .. mem_now.used ..
-																				 " (" .. mem_now.swapused .. ") "))
+                                         " (" .. mem_now.swapused .. ") "))
     end
 })
 
 -- /home fs
 theme.fs = lain.widgets.fs({
-		notify = "off",
+    notify = "off",
     options = "--exclude-type=tmpfs",
     partition = "/home",
     notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Misc Tamsyn 9" },
 })
 
 -- Battery
-local bat = lain.widgets.bat({
-		notify = "off",
-    settings = function()
-        bat_perc = bat_now.perc
-				local bat_sign
-				 if bat_now.status == "Charging" then
-					 bat_sign = "+"
-				else
-					 bat_sign = "-"
-				end
-        widget:set_markup(markup.font(theme.font, markup(gray, " Bat ")
-																				 .. bat_perc .. " "
-																				 .. "(" .. bat_sign
-																				 .. bat_now.time .. ") "))
-    end
-})
+local f = io.popen("hostname")
+local hostname = f:read("*a"):match("^%s*(.-)%s*$")
+f:close()
+
+local bat
+
+if  hostname == "chip"
+then
+   bat = ""
+else
+   bat = lain.widgets.bat({
+         notify = "off",
+         settings = function()
+            bat_perc = bat_now.perc
+            local bat_sign
+            if bat_now.status == "Charging" then
+               bat_sign = "+"
+            else
+               bat_sign = "-"
+            end
+            widget:set_markup(markup.font(theme.font, markup(gray, " Bat ")
+                                          .. bat_perc .. " "
+                                          .. "(" .. bat_sign
+                                          .. bat_now.time .. ") "))
+         end
+   })
+end
 
 -- Net checker
 local net = lain.widgets.net({
@@ -193,7 +203,7 @@ local net = lain.widgets.net({
 
 -- ALSA volume
 theme.volume = lain.widgets.alsa({
-			settings = function()
+      settings = function()
         header = " Vol "
         vlevel  = volume_now.level
 
