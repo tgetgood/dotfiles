@@ -18,8 +18,6 @@ if has("multi_byte")
 endif
 
 "Better runtime paths
-call pathogen#infect()
-call pathogen#helptags()
 
 syntax on
 filetype on
