@@ -75,3 +75,7 @@
 
 (use-package xref-js2)
 
+(use-package typescript-mode
+  :mode ("\\.ts$" "\\.tsx$")
+  :config
+  (setq typescript-indent-level 2))
