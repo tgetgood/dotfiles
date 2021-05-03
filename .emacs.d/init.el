@@ -112,13 +112,24 @@
      auto-package-update
      bash-completion
      buffer-move
+     cargo
      cider
      clj-refactor
      clojure-mode
      clojure-mode-extra-font-locking
      company
      company-c-headers
+     company-terraform
      cyberpunk-theme
+     docker
+     docker-cli
+     docker-compose-mode
+     docker-tramp
+     dockerfile-mode
+     evil
+     evil-leader
+     evil-paredit
+     evil-smartparens
      groovy-mode
      ido-completing-read+
      ido-select-window
@@ -128,7 +139,12 @@
      meghanada
      reason-mode
      smex
+     terraform-mode
+     typescript-mode
      use-package
+     use-package
+     vue-html-mode
+     vue-mode
      )))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
