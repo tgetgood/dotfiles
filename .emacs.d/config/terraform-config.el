@@ -2,6 +2,5 @@
 
 (use-package terraform-mode
   :mode "\\.tf$"
-  :config
-  (evil-leader/set-key-for-mode 'terraform-mode
-	"c" 'terraform-format-buffer))
+  :bind (:map terraform-mode-map
+              ("C-c SPC" . terraform-format-buffer)))
