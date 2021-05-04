@@ -164,7 +164,7 @@ theme.fs = lain.widgets.fs({
 })
 
 -- Battery
-local f = io.popen("hostname")
+local f = io.open("/etc/hostname")
 local hostname = f:read("*a"):match("^%s*(.-)%s*$")
 f:close()
 
