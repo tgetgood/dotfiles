@@ -18,8 +18,7 @@
        (left-fringe . 0)
        (right-fringe . 0)
        (menu-bar-lines . 0)
-       (tool-bar-lines . 0)
-       (unsplittable . t)))
+       (tool-bar-lines . 0)))
 
 ;; TODO: unsplittable is great 90% of the time, but when there' only one window
 ;; in a frame and I start using magit it gets ugly. Can I exempt certain
