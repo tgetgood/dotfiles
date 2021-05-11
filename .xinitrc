@@ -7,6 +7,4 @@ fi
 
 source $HOME/.bashrc
 
-setxkbmap -option caps:escape
-
 dbus-launch awesome
