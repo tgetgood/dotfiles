@@ -1,4 +1,5 @@
 (require 'semantic)
+(require 'company-c-headers)
 
 (add-hook 'c-mode-hook
           (lambda ()
