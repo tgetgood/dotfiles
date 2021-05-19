@@ -27,8 +27,6 @@
 
 (setq use-package-always-ensure t)
 
-(load "ui-setup")
-
 (load "parens-setup")
 
 (load "evil-setup")
@@ -91,6 +89,10 @@
   :commands auto-package-update-maybe
   :config
   (auto-package-update-maybe))
+
+;;;;; Leave this last, so that it's obvious when something has gone wrong above
+
+(load "ui-setup")
 
 ;;;;; Machine Generated
 
