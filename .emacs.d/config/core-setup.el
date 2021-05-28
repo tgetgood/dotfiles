@@ -234,5 +234,5 @@
 ;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 (global-set-key (kbd "TAB") 'indent-or-complete)
 
-;; Escape quits minibuffer
-(define-key minibuffer-local-map (kbd "<escape>") 'minibuffer-keyboard-quit)
+;;;;; Globally use escape as quit.
+(define-key key-translation-map (kbd "ESC") (kbd "C-g"))

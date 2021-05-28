@@ -64,7 +64,7 @@
 
   :bind (:map
          key-translation-map
-         ("<escape>" . esc-non-normal)
+         ("C-g" . esc-non-normal)
          :map evil-normal-state-map
          ("K" . describe-function)
          ("s" . #'smart-substitute)
