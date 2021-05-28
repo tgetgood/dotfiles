@@ -123,3 +123,6 @@
   (evil-leader/set-key-for-mode 'clojurec-mode
     "c" 'cljr-clean-ns
     "m" 'cljr-add-missing-libspec))
+
+(define-key evil-normal-state-map (kbd "g k h") 'cljr-splice-sexp-killing-backward)
+(define-key evil-normal-state-map (kbd "g k l") 'cljr-splice-sexp-killing-forward)
