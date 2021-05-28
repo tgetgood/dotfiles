@@ -43,7 +43,16 @@
 		magit-reflog-mode
 		magit-status-mode
 		magit-wazzup-mode
-		magit-wip-save-mode))
+		magit-wip-save-mode
+
+    forge-pullreq-list-mode
+    forge-topic-list-mode
+    forge-issue-list-mode
+    forge-notifications-mode
+    forge-post-mode
+    forge-repository-list-mode
+    forge-topic-mode
+    ))
 
 (defun kill-the-annoying-popups ()
 	(interactive)

@@ -64,6 +64,9 @@
     "b" 'magit-blame
     "B" 'magit-blame-mode))
 
+(use-package forge
+  :after (magit magit-mode))
+
 ;;;;;
 ;; Truly global editor config
 ;;;;;

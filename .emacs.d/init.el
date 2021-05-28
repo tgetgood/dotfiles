@@ -132,6 +132,7 @@
      evil-leader
      evil-paredit
      evil-smartparens
+     forge
      groovy-mode
      ido-completing-read+
      ido-select-window
