@@ -239,3 +239,6 @@
 
 ;;;;; Globally use escape as quit.
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
+
+;;;;; I hit this too often reaching for slurp
+(define-key undo-tree-map (kbd "C-_") nil)
