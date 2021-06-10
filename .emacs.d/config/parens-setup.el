@@ -2,7 +2,9 @@
                       lisp-mode-hook
                       emacs-lisp-mode-hook))
 
-(use-package smartparens)
+(use-package smartparens
+  :config
+  (sp-pair "`" nil :actions nil))
 
 (use-package paredit
   :commands (paredit-mode paredit-doublequote)

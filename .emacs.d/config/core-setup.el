@@ -145,11 +145,13 @@
       (company-complete-common)
     (indent-according-to-mode)))
 
+;;;; Eldoc
+
+(setq eldoc-documentation-strategy 'eldoc-documentation-defaultset)
+
 ;;;; ido
 
 (ido-mode 1)
-;; REVIEW: I think this will conflict with ido-ubiquitous-mode
-;; (ido-everywhere 1)
 
 (setq ido-case-fold t)
 (setq ido-enable-flex-matching t)

@@ -44,15 +44,15 @@
          ("C-M-r" . cider-ns-refresh)
 
          :map cider-repl-mode-map
-	       ("C-c C-n" . cider-repl-switch-to-other)
+         ("C-c C-n" . cider-repl-switch-to-other)
          ("C-c C-a" . cider-switch-to-last-clojure-buffer)
          ("TAB" . completion-at-point))
 
   :config
   (evil-leader/set-key-for-mode 'clojure-mode
-	"p" (lambda ()
-				(interactive)
-				(cider-eval-print-last-sexp 't)))
+  "p" (lambda ()
+        (interactive)
+        (cider-eval-print-last-sexp 't)))
 
   (set 'cider-repl-display-help-banner nil)
 
@@ -66,6 +66,11 @@
 
   ;; Fast docs
   (setq cider-prompt-for-symbol nil)
+
+  ;; Eldoc
+  ;; (add-hook 'eldoc-documentation-functions #'cider-eldoc nil t)
+  (setq cider-eldoc-display-context-dependent-info t)
+  (setq cider-eldoc-display-for-symbol-at-point t)
 
   ;; More font lock
   (setq cider-font-lock-dynamically '(macro core function var))
@@ -84,7 +89,7 @@
   (setq cider-default-cljs-repl 'figwheel-main)
 
   (setq cider-figwheel-main-default-options "dev")
-  
+
   (evil-leader/set-key-for-mode 'clojure-mode
     "r" 'cider-eval-region
     "e" 'cider-load-buffer)
@@ -95,7 +100,7 @@
 
   (evil-leader/set-key-for-mode 'clojurec-mode
     "r" 'cider-eval-region
-	  "e" 'cider-load-buffer))
+    "e" 'cider-load-buffer))
 
 (use-package clj-refactor
   :commands (clj-refactor-mode cljr-add-keybindings-with-prefix)
