@@ -355,10 +355,10 @@ globalkeys = awful.util.table.join(
 							function () awful.spawn("brightnessctl set -e 5%+") end,
 							{description = "increase brightness", group = "screen"}),
    
-		-- Lock Screen
-		awful.key({ modkey, "Shift", "Control"},	"l",
-							function() awful.spawn("slimlock") end,
-							{description = "lock screen", group = "launcher"}),
+		-- Sleep
+		awful.key({ modkey, "Control"},	"h",
+							function() awful.spawn("systemctl hibernate") end,
+							{description = "hibernate", group = "launcher"}),
 		awful.key({ modkey, "Control"},	"s",
        function() awful.spawn("systemctl suspend") end,
 							{description = "suspend machine", group = "launcher"}),
