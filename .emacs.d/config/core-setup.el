@@ -58,6 +58,9 @@
   :after (evil-leader)
   :demand t
   :config
+  (define-key magit-mode-map (kbd "q") (lambda ()
+                                         (interactive)
+                                         (kill-buffer)))
   (evil-leader/set-key
     "s" 'magit-status
     "y" 'magit-show-refs-popup
