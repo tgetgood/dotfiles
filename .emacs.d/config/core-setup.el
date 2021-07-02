@@ -60,7 +60,7 @@
   :config
   (define-key magit-mode-map (kbd "q") (lambda ()
                                          (interactive)
-                                         (kill-buffer)))
+                                         (quit-window)))
   (evil-leader/set-key
     "s" 'magit-status
     "y" 'magit-show-refs-popup
