@@ -6,6 +6,7 @@
   :demand t
   :after (eglot evil-leader)
   :config 
+  (define-key rustic-mode-map (kbd "C-c SPC") 'rustic-cargo-fmt)
   (setq rustic-lsp-client 'eglot)
   (setq rustic-lsp-server 'rls)
 
