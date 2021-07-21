@@ -115,6 +115,7 @@
      bash-completion
      buffer-move
      cargo
+     cargo-mode
      cider
      clj-refactor
      clojure-mode
@@ -137,9 +138,11 @@
      ido-completing-read+
      ido-select-window
      ido-ubiquitous
+     lsp-mode
      lua-mode
      magit
      meghanada
+     racer
      reason-mode
      smex
      terraform-mode
@@ -148,7 +151,7 @@
      use-package
      vue-html-mode
      vue-mode
-     )))
+)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
