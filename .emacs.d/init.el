@@ -23,6 +23,10 @@
 
 (require 'use-package)
 
+(eval-and-compile
+  (setq use-package-always-ensure t
+        use-package-expand-minimally t))
+
 (require 'bind-key)
 
 (setq use-package-always-ensure t)
@@ -122,6 +126,7 @@
      clojure-mode-extra-font-locking
      company
      company-c-headers
+     company-racer
      company-terraform
      cyberpunk-theme
      docker
@@ -151,7 +156,7 @@
      use-package
      vue-html-mode
      vue-mode
-)))
+     )))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
