@@ -10,6 +10,8 @@
         (cond ((eq (char-syntax delim) ?\()
                (not (looking-back (regexp-quote "#?") 2 nil)))
               (t t))))
+  (evil-define-key 'normal clojure-mode-map (kbd "K") 'cider-doc)
+  (define-key evil-normal-state-map (kbd "g :") 'clojure-toggle-keyword-string) 
 
   :hook ((clojure-mode . enable-paredit-mode)
          (clojurec-mode . (lambda ()
@@ -26,11 +28,7 @@
          "\\.clj$"
          "\\.boot$"
          ("\\.cljc$". clojurec-mode)
-         ("\\.cljs$" . clojurescript-mode))
-
-  :config
-  (evil-define-key 'normal clojure-mode-map (kbd "K") 'cider-doc)
-  (define-key evil-normal-state-map (kbd "g :") 'clojure-toggle-keyword-string))
+         ("\\.cljs$" . clojurescript-mode)))
 
 (use-package clojure-mode-extra-font-locking)
 
@@ -48,7 +46,7 @@
          ("C-c C-a" . cider-switch-to-last-clojure-buffer)
          ("TAB" . completion-at-point))
 
-  :config
+  :init
   (evil-leader/set-key-for-mode 'clojure-mode
   "p" (lambda ()
         (interactive)
@@ -108,7 +106,7 @@
                           (clj-refactor-mode 1)
                           (cljr-add-keybindings-with-prefix "C-c C-v")))
 
-  :config
+  :init
   (setq cljr-warn-on-eval nil)
   (setq cljr-magic-requires nil)
   (setq cljr-favor-prefix-notation nil)
@@ -129,5 +127,3 @@
     "c" 'cljr-clean-ns
     "m" 'cljr-add-missing-libspec))
 
-(define-key evil-normal-state-map (kbd "g k h") 'cljr-splice-sexp-killing-backward)
-(define-key evil-normal-state-map (kbd "g k l") 'cljr-splice-sexp-killing-forward)
