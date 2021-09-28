@@ -5,6 +5,9 @@ then
 	/usr/bin/env xrdb $HOME/.Xresources
 fi
 
-source $HOME/.bashrc
+#source $HOME/.bashrc
 
-dbus-launch awesome
+export XKB_DEFAULT_OPTIONS="caps:escape"
+setxkbmap -option caps:escape
+
+awesome
