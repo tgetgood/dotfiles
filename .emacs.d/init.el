@@ -112,6 +112,7 @@
    '(ol-bbdb ol-bibtex ol-docview ol-gnus org-habit org-id org-tempo ol-w3m))
  '(package-selected-packages
    '(
+     pyvenv
      ag
      auctex
      auto-compile
@@ -143,6 +144,7 @@
      ido-completing-read+
      ido-select-window
      ido-ubiquitous
+     jupyter
      lsp-mode
      lua-mode
      magit
