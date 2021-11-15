@@ -8,7 +8,7 @@
 # Damned bell...
 xset -b
 
-xbindkeys
+xbindkeys -p
 
 export XKB_DEFAULT_OPTIONS=caps:escape
 setxkbmap -option caps:escape
